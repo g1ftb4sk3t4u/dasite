@@ -10,7 +10,7 @@
 <body>
     <header class="hero">
         <div class="logo-container">
-            <img src="assets/logo.png" alt="G1ftB0x Labs Logo" class="logo">
+            <img src="assets/logo.png" alt="G1ftB0x Labs Logo" class="logo pulse">
             <h1 class="site-title">G1ftB0x Labs</h1>
             <p class="tagline">Where Experiments Become Realities</p>
         </div>
@@ -20,19 +20,19 @@
         <section class="projects">
             <h2>Projects</h2>
             <div class="project-grid">
-                <a href="#" class="project-card">
+                <a href="#" class="project-card pulse">
                     <h3>Spacebook</h3>
                     <p>Our upcoming social platform. Launching soon.</p>
                 </a>
-                <a href="https://medium.com/@yourname" target="_blank" class="project-card">
+                <a href="https://medium.com/@yourname" target="_blank" class="project-card pulse">
                     <h3>Medium Blog</h3>
                     <p>Articles on AI, Tech, and Automation.</p>
                 </a>
-                <a href="https://github.com/g1ftb4sk3t4u" target="_blank" class="project-card">
+                <a href="https://github.com/g1ftb4sk3t4u" target="_blank" class="project-card pulse">
                     <h3>GitHub Tools</h3>
                     <p>Scripts, experiments, and open-source work.</p>
                 </a>
-                <a href="#" class="project-card coming-soon">
+                <a href="#" class="project-card pulse">
                     <h3>Coming Soon</h3>
                     <p>More projects and experiments on the way.</p>
                 </a>
@@ -60,3 +60,105 @@
     </footer>
 </body>
 </html>
+
+/* style.css */
+body {
+    margin: 0;
+    font-family: 'Share Tech Mono', monospace;
+    background: url('assets/grid-bg.png') repeat, radial-gradient(circle at top, #0a0a0a 0%, #000000 100%);
+    background-size: cover;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.hero {
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #fff;
+}
+
+.logo-container .logo {
+    width: 120px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px #1affd5);
+}
+
+.pulse {
+    animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { filter: drop-shadow(0 0 10px #1affd5); }
+    50% { filter: drop-shadow(0 0 30px #1affd5); }
+}
+
+.site-title {
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 0 0 15px #1affd5, 0 0 25px #1a75ff;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: #cce7ff;
+}
+
+.projects {
+    padding: 3rem 1rem;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.projects h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 8px #1affd5;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: #111;
+    border: 1px solid #1affd5;
+    padding: 1.5rem;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #1affd5;
+}
+
+.about {
+    padding: 3rem 1rem;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+footer {
+    background: #000;
+    color: #777;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer .social-links a {
+    margin: 0 1rem;
+    color: #1affd5;
+    text-decoration: none;
+}
+
+footer .social-links a:hover {
+    color: #1a75ff;
+}

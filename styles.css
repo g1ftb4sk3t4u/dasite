@@ -1,130 +1,111 @@
-/* Reset */
+/* style.css for G1ftB0x Labs */
+
 body {
     margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #0d0d0d;
-    color: #fff;
-    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    background: radial-gradient(circle at top, #0a0a0a 0%, #000000 100%);
+    color: #e0e0e0;
+    line-height: 1.6;
 }
 
-/* Header */
-header {
-    background: linear-gradient(90deg, #00ffcc, #007bff);
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 255, 204, 0.3);
-}
-
-header h1 {
-    font-size: 36px;
-    margin: 0;
-}
-
-header p {
-    font-size: 18px;
-    opacity: 0.8;
-}
-
-/* Navigation */
-nav {
-    margin-top: 10px;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #00ffcc;
-}
-
-/* Hero Section */
 .hero {
-    padding: 50px 20px;
-    background: linear-gradient(180deg, #007bff, #0d0d0d);
-    margin-top: 20px;
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
-    border-radius: 8px;
-}
-
-.hero h2 {
-    font-size: 28px;
-    color: #00ffcc;
-}
-
-.hero p {
-    font-size: 18px;
-    opacity: 0.8;
-}
-
-/* Button */
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #00ffcc;
-    color: #0d0d0d;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.button:hover {
-    background: #007bff;
+    background: linear-gradient(135deg, #1affd5, #1a75ff);
+    text-align: center;
+    padding: 3rem 1rem;
     color: #fff;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Content Section */
-.content {
-    padding: 40px 20px;
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    pointer-events: none;
+    animation: scan 8s linear infinite;
 }
 
-.content h2 {
-    font-size: 24px;
-    color: #00ffcc;
+@keyframes scan {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(100%); }
 }
 
-.content p {
-    font-size: 18px;
-    opacity: 0.8;
+.logo-container .site-title {
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 0 0 15px #1affd5, 0 0 25px #1a75ff;
 }
 
-/* Footer */
-footer {
-    background: #000;
-    padding: 15px;
-    font-size: 14px;
-    opacity: 0.6;
+.tagline {
+    font-size: 1.2rem;
+    color: #cce7ff;
 }
 
-.social-links {
-    margin-top: 30px;
-    padding: 20px;
-    background: linear-gradient(90deg, #00ffcc, #007bff);
+.projects {
+    padding: 3rem 1rem;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.projects h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 8px #1affd5;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: #111;
+    border: 1px solid #1affd5;
+    padding: 1.5rem;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 10px;
 }
 
-.social-links h2 {
-    color: #000;
-    font-size: 24px;
-    margin-bottom: 10px;
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #1affd5;
 }
 
-.social-links a {
-    color: #fff;
+.about {
+    padding: 3rem 1rem;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+footer {
+    background: #000;
+    color: #777;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer .social-links a {
+    margin: 0 1rem;
+    color: #1affd5;
     text-decoration: none;
-    font-weight: bold;
-    margin: 0 10px;
-    font-size: 18px;
-    transition: 0.3s;
 }
 
-.social-links a:hover {
-    color: #ffcc00;
+footer .social-links a:hover {
+    color: #1a75ff;
 }

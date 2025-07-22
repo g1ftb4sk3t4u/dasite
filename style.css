@@ -1,46 +1,103 @@
-/* style.css for G1ftB0x Labs 1 */
+from zipfile import ZipFile
+import os
 
-body {
+# Recreate the HTML and CSS content after environment reset
+html_fixed = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G1ftB0x Labs</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="G1ftB0x Labs Logo" class="logo pulse">
+            <h1 class="site-title">G1ftB0x Labs</h1>
+            <p class="tagline">Where Experiments Become Realities</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <a href="#" class="project-card pulse">
+                    <h3>Spacebook</h3>
+                    <p>Our upcoming social platform. Launching soon.</p>
+                </a>
+                <a href="https://medium.com/@yourname" target="_blank" class="project-card pulse">
+                    <h3>Medium Blog</h3>
+                    <p>Articles on AI, Tech, and Automation.</p>
+                </a>
+                <a href="https://github.com/g1ftb4sk3t4u" target="_blank" class="project-card pulse">
+                    <h3>GitHub Tools</h3>
+                    <p>Scripts, experiments, and open-source work.</p>
+                </a>
+                <a href="#" class="project-card pulse">
+                    <h3>Coming Soon</h3>
+                    <p>More projects and experiments on the way.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="about">
+            <h2>About G1ftB0x Labs</h2>
+            <p>
+                G1ftB0x Labs is a hub for tech, AI, art, and ideas. Built by a lifelong learner and creator,
+                this space is where experiments, tools, and future platforms take shape. Whether it’s
+                automation, social media, or creative tech projects, this is where it all begins.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://x.com" target="_blank">X</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://github.com/g1ftb4sk3t4u" target="_blank">GitHub</a>
+            <a href="https://medium.com/@yourname" target="_blank">Medium</a>
+        </div>
+        <p>&copy; 2025 G1ftB0x Labs. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+"""
+
+css_fixed = """body {
     margin: 0;
     font-family: 'Share Tech Mono', monospace;
-    background: radial-gradient(circle at top, #0a0a0a 0%, #000000 100%);
+    background: url('assets/grid-bg.png') repeat, radial-gradient(circle at top, #0a0a0a 0%, #000000 100%);
+    background-size: cover;
     color: #e0e0e0;
     line-height: 1.6;
 }
 
 .hero {
-    background: linear-gradient(135deg, #1affd5, #1a75ff);
+    background: rgba(0,0,0,0.7);
     text-align: center;
     padding: 3rem 1rem;
     color: #fff;
-    position: relative;
-    overflow: hidden;
 }
 
-.hero::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.03),
-        rgba(255,255,255,0.03) 1px,
-        transparent 1px,
-        transparent 4px
-    );
-    pointer-events: none;
-    animation: scan 8s linear infinite;
+.logo-container .logo {
+    width: 120px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px #1affd5);
 }
 
-@keyframes scan {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(100%); }
+.pulse {
+    animation: pulse 4s infinite ease-in-out;
 }
 
-.logo-container .site-title {
+@keyframes pulse {
+    0%, 100% { filter: drop-shadow(0 0 10px #1affd5); }
+    50% { filter: drop-shadow(0 0 30px #1affd5); }
+}
+
+.site-title {
     font-size: 3rem;
     margin: 0;
     text-shadow: 0 0 15px #1affd5, 0 0 25px #1a75ff;
@@ -108,4 +165,16 @@ footer .social-links a {
 
 footer .social-links a:hover {
     color: #1a75ff;
-}
+}"""
+
+# Save files to /mnt/data
+html_path = "/mnt/data/index.html"
+css_path = "/mnt/data/style.css"
+
+with open(html_path, "w") as f:
+    f.write(html_fixed)
+
+with open(css_path, "w") as f:
+    f.write(css_fixed)
+
+html_path, css_path

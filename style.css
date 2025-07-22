@@ -1,5 +1,3 @@
-from zipfile import ZipFile
-import os
 
 # Recreate the HTML and CSS content after environment reset
 html_fixed = """<!DOCTYPE html>

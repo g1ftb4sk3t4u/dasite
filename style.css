@@ -176,7 +176,7 @@ form button:hover {
 }
 
 /* =================================
-   BLOG STYLES
+   BLOG STYLES - Enhanced Cyberpunk
    ================================= */
 .blog-container {
     max-width: 900px;
@@ -191,35 +191,63 @@ form button:hover {
 }
 
 .blog-post {
-    background: #111;
-    border: 1px solid #1affd5;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+    border: 2px solid #00ffcc;
     padding: 2rem;
-    border-radius: 10px;
-    transition: box-shadow 0.3s ease;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00ffcc, #00ccff, #cc00ff);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blog-post:hover::before {
+    opacity: 1;
 }
 
 .blog-post:hover {
-    box-shadow: 0 0 20px #1affd5;
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.3), 0 0 60px rgba(0, 204, 255, 0.2);
+    transform: translateY(-2px);
+    border-color: #00ccff;
 }
 
 .blog-post h2 {
     margin-top: 0;
-    color: #1affd5;
+    color: #00ffcc;
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
 }
 
 .blog-post h2 a {
-    color: #1affd5;
+    color: #00ffcc;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .blog-post h2 a:hover {
-    color: #1a75ff;
-    text-shadow: 0 0 10px #1affd5;
+    color: #00ccff;
+    text-shadow: 0 0 15px rgba(0, 204, 255, 0.8);
+}
+
+.blog-post p {
+    color: #d0d0e0;
+    line-height: 1.8;
+    font-size: 1.05rem;
 }
 
 .blog-post a {
-    color: #1affd5;
+    color: #00ffcc;
     text-decoration: none;
 }
 
@@ -228,62 +256,146 @@ form button:hover {
 }
 
 .post-date {
-    color: #999;
-    font-size: 0.9rem;
+    color: #8899ff;
+    font-size: 0.95rem;
     margin: 0.5rem 0 1rem 0;
+    font-weight: 500;
 }
 
 .read-more {
     display: inline-block;
     margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid #1affd5;
-    border-radius: 5px;
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(135deg, #00ffcc, #00ccff);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
 }
 
 .read-more:hover {
-    background-color: #1affd5;
-    color: #000;
+    background: linear-gradient(135deg, #00ccff, #cc00ff);
+    box-shadow: 0 6px 25px rgba(0, 204, 255, 0.5);
+    transform: translateY(-2px);
+    text-decoration: none;
 }
 
-/* Blog Post Content Styles */
+/* Blog Post Content Styles - Clean Reading Theme */
 .blog-post-content {
     max-width: 900px;
     margin: 2rem auto;
-    padding: 2rem;
-    background: #111;
-    border: 1px solid #1affd5;
-    border-radius: 10px;
+    padding: 3rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 3px solid #00ffcc;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 255, 204, 0.2);
+    color: #1a1a2e;
 }
 
 .blog-post-content h1 {
-    color: #1affd5;
-    text-shadow: 0 0 8px #1affd5;
+    color: #0a0a1a;
+    text-shadow: 0 2px 4px rgba(0, 255, 204, 0.2);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 3px solid #00ffcc;
+    padding-bottom: 1rem;
 }
 
-.blog-post-content h2,
+.blog-post-content h2 {
+    color: #0a0a1a;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    border-left: 4px solid #00ccff;
+    padding-left: 1rem;
+}
+
 .blog-post-content h3 {
-    color: #1affd5;
+    color: #0a0a1a;
     margin-top: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.blog-post-content p {
+    color: #1a1a2e;
+    line-height: 1.9;
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+    color: #1a1a2e;
+    line-height: 1.9;
+    margin-left: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.blog-post-content li {
+    margin-bottom: 0.8rem;
+}
+
+.blog-post-content strong {
+    color: #0a0a1a;
+    font-weight: 700;
+}
+
+.blog-post-content a {
+    color: #0066cc;
+    text-decoration: none;
+    border-bottom: 2px solid #00ffcc;
+    transition: all 0.3s ease;
+}
+
+.blog-post-content a:hover {
+    color: #00ccff;
+    border-bottom-color: #00ccff;
+    text-shadow: 0 0 8px rgba(0, 204, 255, 0.3);
 }
 
 .blog-post-content code {
-    background: #000;
-    padding: 2px 6px;
-    border-radius: 3px;
-    color: #1affd5;
+    background: #1a1a2e;
+    color: #00ffcc;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.95em;
 }
 
 .blog-post-content pre {
-    background: #000;
-    border: 1px solid #1affd5;
-    padding: 1rem;
-    border-radius: 5px;
+    background: #0a0a1a;
+    border: 2px solid #00ffcc;
+    padding: 1.5rem;
+    border-radius: 8px;
     overflow-x: auto;
+    margin: 1.5rem 0;
 }
 
 .blog-post-content pre code {
     padding: 0;
     background: none;
+    color: #00ffcc;
+    font-size: 0.95rem;
+}
+
+.blog-post-content .post-date {
+    color: #5a5a6e;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+/* Header style for blog post pages - requires modern browsers (2023+) for :has() support */
+body:has(.blog-post-content) header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 100%);
+    padding: 1.5rem;
+    border-bottom: 3px solid #00ffcc;
+}
+
+body:has(.blog-post-content) header h1 {
+    color: #00ffcc;
+    text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    margin: 0;
+    font-size: 2rem;
 }

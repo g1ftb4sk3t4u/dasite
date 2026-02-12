@@ -304,7 +304,7 @@ form button:hover {
 }
 
 .blog-post-content h2 {
-    color: #1a1a2e;
+    color: #0a0a1a;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
     font-size: 1.8rem;
@@ -313,13 +313,13 @@ form button:hover {
 }
 
 .blog-post-content h3 {
-    color: #2a2a3e;
+    color: #0a0a1a;
     margin-top: 1.5rem;
     font-size: 1.4rem;
 }
 
 .blog-post-content p {
-    color: #2a2a3e;
+    color: #1a1a2e;
     line-height: 1.9;
     font-size: 1.1rem;
     margin-bottom: 1.2rem;
@@ -327,7 +327,7 @@ form button:hover {
 
 .blog-post-content ul,
 .blog-post-content ol {
-    color: #2a2a3e;
+    color: #1a1a2e;
     line-height: 1.9;
     margin-left: 1.5rem;
     margin-bottom: 1.2rem;
@@ -386,7 +386,7 @@ form button:hover {
     display: block;
 }
 
-/* Header style for blog post pages */
+/* Header style for blog post pages - requires modern browsers (2023+) for :has() support */
 body:has(.blog-post-content) header {
     background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 100%);
     padding: 1.5rem;

@@ -184,6 +184,55 @@ form button:hover {
     padding: 0 1rem;
 }
 
+.blog-header {
+    background: #0f1318;
+    border: 1px solid #2fd0ff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 18px rgba(47, 208, 255, 0.15);
+}
+
+.blog-header h2 {
+    margin: 0 0 0.5rem 0;
+    color: #7ee7ff;
+}
+
+.blog-header p {
+    margin: 0;
+    color: #c9d4e6;
+}
+
+.blog-section {
+    margin-bottom: 2.5rem;
+}
+
+.blog-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid #2fd0ff;
+    background: rgba(15, 19, 24, 0.6);
+}
+
+.blog-section-title h3 {
+    margin: 0;
+    color: #7ee7ff;
+    letter-spacing: 0.5px;
+}
+
+.section-tag {
+    font-size: 0.8rem;
+    color: #0b0f14;
+    background: #7ee7ff;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
 .blog-posts {
     display: flex;
     flex-direction: column;
@@ -191,8 +240,8 @@ form button:hover {
 }
 
 .blog-post {
-    background: #111;
-    border: 1px solid #1affd5;
+    background: #0f1318;
+    border: 1px solid #2fd0ff;
     padding: 2rem;
     border-radius: 10px;
     transition: box-shadow 0.3s ease;
@@ -204,11 +253,11 @@ form button:hover {
 
 .blog-post h2 {
     margin-top: 0;
-    color: #1affd5;
+    color: #7ee7ff;
 }
 
 .blog-post h2 a {
-    color: #1affd5;
+    color: #7ee7ff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -219,7 +268,7 @@ form button:hover {
 }
 
 .blog-post a {
-    color: #1affd5;
+    color: #7ee7ff;
     text-decoration: none;
 }
 
@@ -228,23 +277,71 @@ form button:hover {
 }
 
 .post-date {
-    color: #999;
+    color: #a8b4c7;
     font-size: 0.9rem;
     margin: 0.5rem 0 1rem 0;
+}
+
+.blog-post p {
+    color: #d8e2f0;
+    line-height: 1.75;
 }
 
 .read-more {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    border: 1px solid #1affd5;
+    border: 1px solid #2fd0ff;
     border-radius: 5px;
     transition: all 0.3s ease;
+    background: linear-gradient(90deg, rgba(47, 208, 255, 0.15), rgba(126, 231, 255, 0.05));
+    color: #e8f0ff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
 }
 
 .read-more:hover {
-    background-color: #1affd5;
+    background-color: #2fd0ff;
     color: #000;
+    box-shadow: 0 0 12px rgba(47, 208, 255, 0.5);
+}
+
+.blog-archive {
+    background: #0f1318;
+    border: 1px solid #2fd0ff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.blog-archive h3 {
+    margin-top: 0;
+    color: #7ee7ff;
+}
+
+.archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.archive-list a {
+    color: #c9d4e6;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.archive-list a:hover {
+    color: #7ee7ff;
+    border-color: #2fd0ff;
+    background: rgba(47, 208, 255, 0.08);
 }
 
 /* Blog Post Content Styles */
@@ -252,38 +349,129 @@ form button:hover {
     max-width: 900px;
     margin: 2rem auto;
     padding: 2rem;
-    background: #111;
-    border: 1px solid #1affd5;
+    background: #0f1318;
+    border: 1px solid #2fd0ff;
     border-radius: 10px;
+    color: #e8f0ff;
+    line-height: 1.8;
+    font-size: 1.05rem;
 }
 
 .blog-post-content h1 {
-    color: #1affd5;
-    text-shadow: 0 0 8px #1affd5;
+    color: #7ee7ff;
+    text-shadow: 0 0 8px rgba(47, 208, 255, 0.5);
 }
 
 .blog-post-content h2,
 .blog-post-content h3 {
-    color: #1affd5;
+    color: #7ee7ff;
     margin-top: 1.5rem;
 }
 
+.blog-post-content h3 {
+    padding: 0.35rem 0.75rem;
+    border-left: 3px solid #2fd0ff;
+    background: rgba(47, 208, 255, 0.06);
+    border-radius: 6px;
+}
+
+.blog-post-content p {
+    color: #d8e2f0;
+    margin: 0.6rem 0 1rem 0;
+}
+
 .blog-post-content code {
-    background: #000;
+    background: #0b0f14;
     padding: 2px 6px;
     border-radius: 3px;
-    color: #1affd5;
+    color: #7ee7ff;
 }
 
 .blog-post-content pre {
-    background: #000;
-    border: 1px solid #1affd5;
+    background: #0b0f14;
+    border: 1px solid #2fd0ff;
     padding: 1rem;
     border-radius: 5px;
     overflow-x: auto;
 }
 
+.blog-post-content ul,
+.blog-post-content ol {
+    padding: 0.75rem 1.25rem;
+    margin: 0.75rem 0 1.25rem 0;
+    background: #0b0f14;
+    border: 1px solid rgba(47, 208, 255, 0.35);
+    border-radius: 8px;
+}
+
+.blog-post-content li {
+    margin: 0.4rem 0;
+    color: #e3ecf8;
+}
+
 .blog-post-content pre code {
     padding: 0;
     background: none;
+}
+
+/* Weekly Wrap-Up Custom Styles */
+.blog-post-content ol {
+    list-style: none;
+    counter-reset: item;
+    padding-left: 0;
+}
+
+.blog-post-content ol li {
+    counter-increment: item;
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    background: rgba(11, 15, 20, 0.8);
+    border: 1px solid rgba(47, 208, 255, 0.4);
+    border-radius: 8px;
+    position: relative;
+    padding-left: 3.5rem;
+}
+
+.blog-post-content ol li::before {
+    content: counter(item) ".";
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2fd0ff;
+    text-shadow: 0 0 10px rgba(47, 208, 255, 0.6);
+}
+
+.blog-post-content ol li strong {
+    display: block;
+    font-size: 1.15rem;
+    color: #7ee7ff;
+    text-shadow: 0 0 8px rgba(126, 231, 255, 0.4);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.blog-post-content ol li a {
+    color: #7ee7ff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.blog-post-content ol li a:hover {
+    color: #2fd0ff;
+    text-shadow: 0 0 12px rgba(47, 208, 255, 0.8);
+}
+
+.blog-post-content ol li .source {
+    display: block;
+    font-size: 0.85rem;
+    color: #a8b4c7;
+    margin-top: 0.4rem;
+}
+
+.blog-post-content ol li .description {
+    color: #d8e2f0;
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
 }

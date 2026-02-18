@@ -124,16 +124,26 @@ footer .social-links a:hover {
 /* =================================
    NEW STYLES FOR CONTACT FORM
    ================================= */
-form {
+.contact-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-top: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 form label {
     font-size: 1.1em;
     text-align: left;
+    color: #7ee7ff;
 }
 
 form input,

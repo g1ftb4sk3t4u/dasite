@@ -4,46 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | G1FTB0X</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Contact Me</h1>
+        <h1>G1FTB0X</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
             <a href="resources.html">Resources</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <section class="content">
-        <h2>Reach Out</h2>
-        <p>Have questions, ideas, or want to collaborate? Reach me via:</p>
+    <article class="blog-post-content">
+        <h2>📬 Get In Touch</h2>
+        <p>Have questions, ideas, or want to collaborate? I'd love to hear from you. Reach out through any of these channels:</p>
 
+        <h3>💬 Connect With Me</h3>
         <ul>
             <li><strong>Email:</strong> <a href="mailto:your@email.com">your@email.com</a></li>
-            <li><strong>Twitter/X:</strong> <a href="https://x.com/YOUR_X" target="_blank">@YOUR_X</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">Connect with me</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/g1ftb4sk3t4u" target="_blank">@g1ftb4sk3t4u</a></li>
+            <li><strong>Medium:</strong> <a href="https://medium.com/@G1ftb4sk3t4u" target="_blank">@G1ftb4sk3t4u</a></li>
         </ul>
 
-        <h2>Send a Message</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+        <h3>✉️ Send a Message</h3>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
 
-            <button type="submit">Send</button>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
         </form>
-    </section>
+
+        <p><a href="index.html">&larr; Back to Home</a></p>
+    </article>
 
     <footer>
-        <p>© 2025 G1FTB0X | All Rights Reserved</p>
+        <div class="social-links">
+            <a href="https://github.com/g1ftb4sk3t4u" target="_blank">GitHub</a>
+            <a href="https://medium.com/@G1ftb4sk3t4u" target="_blank">Medium</a>
+        </div>
+        <p>&copy; 2025 G1FTB0X | All Rights Reserved</p>
     </footer>
 </body>
 </html>

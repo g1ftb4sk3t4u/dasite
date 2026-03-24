@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git add index\\.html; git commit -m \"Add Intel-Terminal link to navigation\"; git push$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

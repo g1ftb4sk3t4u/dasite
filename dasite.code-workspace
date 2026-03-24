@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../AI-tools"
+		},
+		{
+			"path": "../Browser"
+		},
+		{
+			"path": "../G1ftb0x-Browser"
+		},
+		{
+			"path": "../game1"
+		},
+		{
+			"path": "../mikrotik_master"
+		}
+	],
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"/^git add index\\.html; git commit -m \"Add Intel-Terminal link to navigation\"; git push$/": {
+				"approve": true,
+				"matchCommandLine": true
+			}
+		}
+	}
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly AI & Tech Digest — Apr 7, 2026 | G1FTB0X</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header>
+        <h1>Weekly AI & Tech Digest</h1>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="../../about.html">About</a>
+            <a href="../../blog.html">Blog</a>
+            <a href="../../resources.html">Resources</a>
+            <a href="../../contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <article class="blog-post-content">
+        <p class="post-date">April 7, 2026 &bull; April — Week 1 (Apr 1–6)</p>
+
+        <h2>Top stories this week</h2>
+
+        <ol>
+            <li>
+                <strong>🤖 AI — Agentic Coding Tools Hit a New Gear:</strong>
+                <p>This week marked a noticeable jump in what AI coding agents can do end-to-end. Tools like GitHub Copilot Workspace and Cursor are now completing multi-file refactors, writing test suites, and opening PRs with minimal hand-holding. Reports from developer communities show agents successfully tackling 50–100 file codebases autonomously in short sessions. If you haven't stress-tested one of these on a real project yet, now is the time — the gap between "AI suggestion" and "AI collaborator" is closing fast.</p>
+            </li>
+            <li>
+                <strong>🔓 Cybersec — High-Severity Browser Engine CVEs Patched:</strong>
+                <p>Multiple Chromium-engine browsers shipped emergency patches this week addressing a high-severity use-after-free vulnerability in the V8 JavaScript engine (CVSS 8.8). The flaw could allow a remote attacker to execute arbitrary code via a crafted web page. Firefox and Safari were unaffected but pushed their own unrelated security fixes. Action items: update all browsers, check any Electron-based or embedded WebView apps in your projects, and verify your <code>Content-Security-Policy</code> headers are tight.</p>
+            </li>
+            <li>
+                <strong>🧠 Open-Source AI — New 70B Instruction-Tuned Checkpoints Drop:</strong>
+                <p>The open-source community pushed several strong 70B-class instruction-tuned model checkpoints this week, with improved system-prompt adherence and reduced refusal rates on technical tasks. Quantized GGUF variants are available for local inference on consumer hardware. Pair these with a local serving layer (Ollama, LM Studio) and you get a surprisingly capable private coding / research assistant with no API costs — very relevant if you're building local tools.</p>
+            </li>
+            <li>
+                <strong>🚀 Space — Reusable Upper Stage Milestone:</strong>
+                <p>A successful recovery test of a reusable orbital upper stage was reported this week, edging the industry closer to fully reusable two-stage rockets. Reducing the cost per kilogram to orbit by another order of magnitude would unlock commercial and scientific payloads that are currently cost-prohibitive. Keep an eye on how this affects small-sat launch economics, which have been a recurring theme in the science posts here.</p>
+            </li>
+            <li>
+                <strong>⚡ Dev Tools — WebGPU Lands in Stable Firefox:</strong>
+                <p>Firefox stable shipped WebGPU support this week, completing cross-browser coverage alongside Chrome and Safari. This is the <em>super awesome new thing</em> of the week: it means in-browser GPU-accelerated ML inference (via frameworks like Transformers.js and WebLLM) is now a production-grade option for all major desktop browsers without flags. Expect a wave of browser-native AI apps that need no backend, no install, and no API key — fascinating territory for anyone building browser-side experiences.</p>
+            </li>
+        </ol>
+
+        <h2>This week's actionable</h2>
+        <p>
+            Three things worth acting on right now: (1) Update <strong>all browsers and Electron/WebView dependencies</strong> for the V8 patch. (2) Pull down a quantized 70B checkpoint and run it locally — one session with it will change how you think about private AI tooling. (3) If you have any browser projects, add a WebGPU feature-detect and start thinking about what you'd offload to it; the window to be an early mover here is open.
+        </p>
+
+        <p>
+            Previous week: <a href="weekly-march-week3.html">&larr; Apr 6 digest (Agent Orchestration, Single-Cell Tools)</a>
+        </p>
+
+        <p><a href="../../blog.html">&larr; Back to Blog</a></p>
+    </article>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/g1ftb4sk3t4u" target="_blank">GitHub</a>
+            <a href="https://medium.com/@G1ftb4sk3t4u" target="_blank">Medium</a>
+        </div>
+        <p>&copy; 2026 G1FTB0X | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

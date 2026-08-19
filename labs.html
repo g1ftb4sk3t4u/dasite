@@ -10,202 +10,61 @@
 </head>
 <body>
   <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="labs.html" class="active">Labs</a>
-    <a href="blog.html">Blog</a>
-    <a href="resources.html">Resources</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="http://intel3000.g1ftb0x.com:3000" target="_blank" rel="noopener">Intel Terminal 3000 ↗</a>
+    <a href="index.html">Home</a><a href="labs.html" class="active">Labs</a><a href="blog.html">Blog</a><a href="resources.html">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="http://intel3000.g1ftb0x.com:3000" target="_blank" rel="noopener">Intel Terminal 3000 ↗</a>
   </nav>
 
   <main class="labs-shell">
     <section class="labs-hero">
-      <div class="labs-eyebrow">G1FTB0X // PROJECT ARCHIVE</div>
+      <div class="labs-eyebrow">G1FTB0X // PROJECT ARCHIVE + LAUNCHPAD</div>
       <h1>G1ft <span>Labs</span></h1>
-      <p>Experiments, tools, educational worlds and strange ideas worth exploring. Some projects are live browser prototypes. Others are actively being migrated from the lab archive into public builds.</p>
-      <div class="labs-stats">
-        <div><strong>15+</strong><span>projects cataloged</span></div>
-        <div><strong>7</strong><span>core disciplines</span></div>
-        <div><strong>∞</strong><span>rabbit holes remaining</span></div>
-      </div>
+      <p>The catalog for everything being built under G1FTB0X. Each project can have its own branded page here, while the full interactive experience may live on GPT Sites, GitHub, a dedicated service, or eventually its own domain.</p>
+      <div class="labs-stats"><div><strong>15+</strong><span>projects cataloged</span></div><div><strong>7</strong><span>core disciplines</span></div><div><strong>∞</strong><span>rabbit holes remaining</span></div></div>
     </section>
 
     <section class="labs-controls" aria-label="Project filters">
       <input id="labSearch" type="search" placeholder="Search labs: fiber, scams, AI, aircraft, science…" aria-label="Search projects">
-      <div class="lab-filters" id="labFilters">
-        <button class="active" data-filter="all">All</button>
-        <button data-filter="learning">Learning</button>
-        <button data-filter="networking">Networking</button>
-        <button data-filter="security">Security</button>
-        <button data-filter="science">Science</button>
-        <button data-filter="tools">Tools</button>
-        <button data-filter="creative">Creative</button>
-      </div>
+      <div class="lab-filters" id="labFilters"><button class="active" data-filter="all">All</button><button data-filter="learning">Learning</button><button data-filter="networking">Networking</button><button data-filter="security">Security</button><button data-filter="science">Science</button><button data-filter="tools">Tools</button><button data-filter="creative">Creative</button></div>
     </section>
 
     <section>
       <div class="section-label"><span></span> FEATURED BUILDS</div>
       <div class="lab-grid" id="labGrid">
-        <article class="lab-card featured" data-tags="learning science ai networking security music forensics signals">
-          <div class="lab-card-top"><span class="lab-icon">◉</span><span class="lab-status status-building">Flagship</span></div>
-          <h2>Rabbit Hole Labs</h2>
-          <p>An interactive discovery museum where visitors can move from plain-English explanations all the way into technical and expert-level rabbit holes.</p>
-          <div class="lab-tags"><span>AI</span><span>Internet</span><span>Reality</span><span>Forensics</span><span>Signals</span></div>
-          <a class="lab-action" href="labs/rabbit-hole/">Explore the world →</a>
-        </article>
+        <article class="lab-card featured" data-tags="learning science ai networking security music forensics signals"><div class="lab-card-top"><span class="lab-icon">◉</span><span class="lab-status status-building">Flagship</span></div><h2>Rabbit Hole Labs</h2><p>An interactive discovery museum where visitors can move from plain-English explanations all the way into technical and expert-level rabbit holes.</p><div class="lab-tags"><span>AI</span><span>Internet</span><span>Reality</span><span>Forensics</span><span>Signals</span></div><a class="lab-action" href="labs/rabbit-hole/">View project preview →</a></article>
 
-        <article class="lab-card" data-tags="security tools scams cyber learning">
-          <div class="lab-card-top"><span class="lab-icon">✓</span><span class="lab-status status-live">Live prototype</span></div>
-          <h2>SignalSafe</h2>
-          <p>A calm cyber-safety companion for checking suspicious messages, recognizing manipulation patterns and choosing safer next steps.</p>
-          <div class="lab-tags"><span>Cyber</span><span>Scams</span><span>Safety</span></div>
-          <a class="lab-action" href="labs/signalsafe/">Open SignalSafe →</a>
-        </article>
+        <article class="lab-card" data-tags="security tools scams cyber learning"><div class="lab-card-top"><span class="lab-icon">✓</span><span class="lab-status status-live">GitHub preview</span></div><h2>SignalSafe</h2><p>A calm cyber-safety companion for checking suspicious messages, recognizing manipulation patterns and choosing safer next steps.</p><div class="lab-tags"><span>Cyber</span><span>Scams</span><span>Safety</span></div><a class="lab-action" href="labs/signalsafe/">View project preview →</a></article>
 
-        <article class="lab-card" data-tags="tools decisions finance shopping psychology">
-          <div class="lab-card-top"><span class="lab-icon">W</span><span class="lab-status status-live">Live prototype</span></div>
-          <h2>WorthWise</h2>
-          <p>Decision tools that separate “I want it” from “it is worth it,” including true-cost thinking, cost-per-use and purchase-pressure checks.</p>
-          <div class="lab-tags"><span>Decisions</span><span>Value</span><span>Behavior</span></div>
-          <a class="lab-action" href="labs/worthwise/">Open WorthWise →</a>
-        </article>
+        <article class="lab-card" data-tags="tools decisions finance shopping psychology"><div class="lab-card-top"><span class="lab-icon">W</span><span class="lab-status status-live">GitHub preview</span></div><h2>WorthWise</h2><p>Decision tools that separate “I want it” from “it is worth it,” including true-cost thinking, cost-per-use and purchase-pressure checks.</p><div class="lab-tags"><span>Decisions</span><span>Value</span><span>Behavior</span></div><a class="lab-action" href="labs/worthwise/">View project preview →</a></article>
 
-        <article class="lab-card" data-tags="learning science networking biology space disasters invisible ai">
-          <div class="lab-card-top"><span class="lab-icon">⌬</span><span class="lab-status status-building">Migration queue</span></div>
-          <h2>Mysteries of Knowledge</h2>
-          <p>An interactive science museum covering hidden everyday systems: packets, GPS, storms, black holes, biology, radio, fiber and more.</p>
-          <div class="lab-tags"><span>30 exhibits</span><span>Simulations</span><span>Sources</span></div>
-          <span class="lab-action muted-action">Full interactive build being migrated</span>
-        </article>
+        <article class="lab-card" data-tags="networking learning juniper ospf mpls troubleshooting engineering"><div class="lab-card-top"><span class="lab-icon">#</span><span class="lab-status status-external">Full GPT Site</span></div><h2>TransportLab</h2><p>Network troubleshooting simulations built around routing, transport, optics, OSPF/MPLS state and realistic engineering fault isolation.</p><div class="lab-tags"><span>Juniper</span><span>OSPF</span><span>MPLS</span></div><a class="lab-action" href="projects/transportlab.html">View project + launch site →</a></article>
 
-        <article class="lab-card" data-tags="networking learning fiber otdr optics engineering">
-          <div class="lab-card-top"><span class="lab-icon">↝</span><span class="lab-status status-building">Migration queue</span></div>
-          <h2>Fiber Field Lab</h2>
-          <p>Hands-on fiber training with link budgets, OTDR traces, splices, reflections, SFP DOM diagnosis and field-engineering scenarios.</p>
-          <div class="lab-tags"><span>Fiber</span><span>OTDR</span><span>Optics</span></div>
-          <span class="lab-action muted-action">Standalone trainer archived</span>
-        </article>
+        <article class="lab-card" data-tags="science outdoors weather astronomy fishing tools"><div class="lab-card-top"><span class="lab-icon">P°</span><span class="lab-status status-external">Full GPT Site</span></div><h2>PerfectDay Atlas</h2><p>Ranks upcoming days for camping, hiking, fishing, stargazing, photography and other outdoor plans using activity-specific conditions.</p><div class="lab-tags"><span>Weather</span><span>Outdoors</span><span>Planning</span></div><a class="lab-action" href="projects/perfectday-atlas.html">View project + launch site →</a></article>
 
-        <article class="lab-card" data-tags="networking learning juniper ospf mpls troubleshooting engineering">
-          <div class="lab-card-top"><span class="lab-icon">#</span><span class="lab-status status-building">Migration queue</span></div>
-          <h2>TransportLab</h2>
-          <p>Network troubleshooting simulations built around routing, transport, optics, OSPF/MPLS state and realistic engineering fault isolation.</p>
-          <div class="lab-tags"><span>Juniper</span><span>OSPF</span><span>MPLS</span></div>
-          <span class="lab-action muted-action">Trainer builds being consolidated</span>
-        </article>
+        <article class="lab-card" data-tags="learning science networking biology space disasters invisible ai"><div class="lab-card-top"><span class="lab-icon">⌬</span><span class="lab-status status-building">Link being recovered</span></div><h2>Mysteries of Knowledge</h2><p>An interactive science museum covering hidden everyday systems: packets, GPS, storms, black holes, biology, radio, fiber and more.</p><div class="lab-tags"><span>30 exhibits</span><span>Simulations</span><span>Sources</span></div><span class="lab-action muted-action">Project cataloged — full site link next</span></article>
 
-        <article class="lab-card" data-tags="science space learning cosmology dimensions">
-          <div class="lab-card-top"><span class="lab-icon">✦</span><span class="lab-status status-building">Migration queue</span></div>
-          <h2>Cosmic Dimensions Explorer</h2>
-          <p>A navigable reference experience for exploring layered cosmology concepts while separating established physics from interpretation and speculation.</p>
-          <div class="lab-tags"><span>Space</span><span>Cosmology</span><span>Reference</span></div>
-          <span class="lab-action muted-action">Interactive archive located</span>
-        </article>
+        <article class="lab-card" data-tags="networking learning fiber otdr optics engineering"><div class="lab-card-top"><span class="lab-icon">↝</span><span class="lab-status status-building">Link being recovered</span></div><h2>Fiber Field Lab</h2><p>Hands-on fiber training with link budgets, OTDR traces, splices, reflections, SFP DOM diagnosis and field-engineering scenarios.</p><div class="lab-tags"><span>Fiber</span><span>OTDR</span><span>Optics</span></div><span class="lab-action muted-action">Project cataloged — full site link next</span></article>
 
-        <article class="lab-card" data-tags="science outdoors weather astronomy fishing tools">
-          <div class="lab-card-top"><span class="lab-icon">P°</span><span class="lab-status status-building">Migration queue</span></div>
-          <h2>PerfectDay Atlas</h2>
-          <p>Ranks upcoming days for camping, hiking, fishing, stargazing, photography and other outdoor plans using activity-specific conditions.</p>
-          <div class="lab-tags"><span>Weather</span><span>Outdoors</span><span>Planning</span></div>
-          <span class="lab-action muted-action">Live-data prototype archived</span>
-        </article>
+        <article class="lab-card" data-tags="science space learning cosmology dimensions"><div class="lab-card-top"><span class="lab-icon">✦</span><span class="lab-status status-building">Link being recovered</span></div><h2>Cosmic Dimensions Explorer</h2><p>A navigable reference experience for exploring layered cosmology concepts while separating established physics from interpretation and speculation.</p><div class="lab-tags"><span>Space</span><span>Cosmology</span><span>Reference</span></div><span class="lab-action muted-action">Project cataloged — full site link next</span></article>
 
-        <article class="lab-card" data-tags="creative aircraft aviation science tracking game">
-          <div class="lab-card-top"><span class="lab-icon">✈</span><span class="lab-status status-building">Migration queue</span></div>
-          <h2>SkyDex</h2>
-          <p>An aircraft-spotting collection game that turns ADS-B hunting into a giant aviation dex with rarity, families, variants and unusual mission aircraft.</p>
-          <div class="lab-tags"><span>Aviation</span><span>ADS-B</span><span>Collection</span></div>
-          <span class="lab-action muted-action">Large standalone build archived</span>
-        </article>
+        <article class="lab-card" data-tags="creative aircraft aviation science tracking game"><div class="lab-card-top"><span class="lab-icon">✈</span><span class="lab-status status-building">Link being recovered</span></div><h2>SkyDex</h2><p>An aircraft-spotting collection game that turns ADS-B hunting into a giant aviation dex with rarity, families, variants and unusual mission aircraft.</p><div class="lab-tags"><span>Aviation</span><span>ADS-B</span><span>Collection</span></div><span class="lab-action muted-action">Project cataloged — full site link next</span></article>
 
-        <article class="lab-card" data-tags="creative kindness social community">
-          <div class="lab-card-top"><span class="lab-icon">◎</span><span class="lab-status status-concept">Prototype</span></div>
-          <h2>Ripple</h2>
-          <p>A kindness engine built around small achievable actions, appreciation notes, pass-it-forward chains and low-pressure community goals.</p>
-          <div class="lab-tags"><span>Kindness</span><span>Community</span><span>Local-first</span></div>
-          <span class="lab-action muted-action">Prototype source archived</span>
-        </article>
+        <article class="lab-card" data-tags="creative kindness social community"><div class="lab-card-top"><span class="lab-icon">◎</span><span class="lab-status status-concept">Project</span></div><h2>Ripple</h2><p>A kindness engine built around small achievable actions, appreciation notes, pass-it-forward chains and low-pressure community goals.</p><div class="lab-tags"><span>Kindness</span><span>Community</span><span>Local-first</span></div><span class="lab-action muted-action">Project page/link coming</span></article>
 
-        <article class="lab-card" data-tags="learning marketing psychology awareness business">
-          <div class="lab-card-top"><span class="lab-icon">◈</span><span class="lab-status status-concept">In development</span></div>
-          <h2>Marketing Trigger Lab</h2>
-          <p>Learn how attention, color, scarcity, pricing, social proof and sensory design influence buying—and separate evidence from marketing folklore.</p>
-          <div class="lab-tags"><span>Psychology</span><span>Marketing</span><span>Myth check</span></div>
-          <span class="lab-action muted-action">Learner + archive modes planned</span>
-        </article>
+        <article class="lab-card" data-tags="learning marketing psychology awareness business"><div class="lab-card-top"><span class="lab-icon">◈</span><span class="lab-status status-concept">In development</span></div><h2>Marketing Trigger Lab</h2><p>Learn how attention, color, scarcity, pricing, social proof and sensory design influence buying—and separate evidence from marketing folklore.</p><div class="lab-tags"><span>Psychology</span><span>Marketing</span><span>Myth check</span></div><span class="lab-action muted-action">Project page/link coming</span></article>
 
-        <article class="lab-card" data-tags="tools networking security intelligence dashboard">
-          <div class="lab-card-top"><span class="lab-icon">▰</span><span class="lab-status status-external">External live</span></div>
-          <h2>Intel Terminal 3000</h2>
-          <p>A multi-source intelligence dashboard and one of the original G1FTB0X public experiments.</p>
-          <div class="lab-tags"><span>OSINT</span><span>Dashboard</span><span>Feeds</span></div>
-          <a class="lab-action" href="http://intel3000.g1ftb0x.com:3000" target="_blank" rel="noopener">Launch terminal ↗</a>
-        </article>
+        <article class="lab-card" data-tags="tools networking security intelligence dashboard"><div class="lab-card-top"><span class="lab-icon">▰</span><span class="lab-status status-external">External live</span></div><h2>Intel Terminal 3000</h2><p>A multi-source intelligence dashboard and one of the original G1FTB0X public experiments.</p><div class="lab-tags"><span>OSINT</span><span>Dashboard</span><span>Feeds</span></div><a class="lab-action" href="http://intel3000.g1ftb0x.com:3000" target="_blank" rel="noopener">Launch terminal ↗</a></article>
 
-        <article class="lab-card" data-tags="networking tools mikrotik engineering github">
-          <div class="lab-card-top"><span class="lab-icon">M</span><span class="lab-status status-external">GitHub</span></div>
-          <h2>MikroTik Master</h2>
-          <p>Network engineering scripts, experiments and MikroTik-focused utilities from the public GitHub workshop.</p>
-          <div class="lab-tags"><span>MikroTik</span><span>Networking</span><span>Automation</span></div>
-          <a class="lab-action" href="https://github.com/g1ftb4sk3t4u/Mikrotik-Master" target="_blank" rel="noopener">View repository ↗</a>
-        </article>
+        <article class="lab-card" data-tags="networking tools mikrotik engineering github"><div class="lab-card-top"><span class="lab-icon">M</span><span class="lab-status status-external">GitHub</span></div><h2>MikroTik Master</h2><p>Network engineering scripts, experiments and MikroTik-focused utilities from the public GitHub workshop.</p><div class="lab-tags"><span>MikroTik</span><span>Networking</span><span>Automation</span></div><a class="lab-action" href="https://github.com/g1ftb4sk3t4u/Mikrotik-Master" target="_blank" rel="noopener">View repository ↗</a></article>
 
-        <article class="lab-card" data-tags="security tools ai github">
-          <div class="lab-card-top"><span class="lab-icon">A</span><span class="lab-status status-external">GitHub</span></div>
-          <h2>AI Tools</h2>
-          <p>Public AI utilities, experiments and technical prototypes that do not yet need their own standalone lab.</p>
-          <div class="lab-tags"><span>AI</span><span>Utilities</span><span>Experiments</span></div>
-          <a class="lab-action" href="https://github.com/g1ftb4sk3t4u/AI-tools-" target="_blank" rel="noopener">View repository ↗</a>
-        </article>
+        <article class="lab-card" data-tags="security tools ai github"><div class="lab-card-top"><span class="lab-icon">A</span><span class="lab-status status-external">GitHub</span></div><h2>AI Tools</h2><p>Public AI utilities, experiments and technical prototypes that do not yet need their own standalone lab.</p><div class="lab-tags"><span>AI</span><span>Utilities</span><span>Experiments</span></div><a class="lab-action" href="https://github.com/g1ftb4sk3t4u/AI-tools-" target="_blank" rel="noopener">View repository ↗</a></article>
 
-        <article class="lab-card" data-tags="creative ui interface design learning">
-          <div class="lab-card-top"><span class="lab-icon">UI</span><span class="lab-status status-concept">Archive</span></div>
-          <h2>Interface Lab</h2>
-          <p>A home for interface experiments, unusual controls and interactive concepts that do not belong inside a conventional app.</p>
-          <div class="lab-tags"><span>UI</span><span>Experiments</span><span>Interaction</span></div>
-          <span class="lab-action muted-action">Cataloged for migration</span>
-        </article>
+        <article class="lab-card" data-tags="creative ui interface design learning"><div class="lab-card-top"><span class="lab-icon">UI</span><span class="lab-status status-concept">Archive</span></div><h2>Interface Lab</h2><p>A home for interface experiments, unusual controls and interactive concepts that do not belong inside a conventional app.</p><div class="lab-tags"><span>UI</span><span>Experiments</span><span>Interaction</span></div><span class="lab-action muted-action">Project page/link coming</span></article>
       </div>
       <p class="no-results" id="noResults" hidden>No labs match that search yet.</p>
     </section>
 
-    <section class="lab-manifesto">
-      <div><div class="section-label"><span></span> HOW THIS WORKS</div><h2>Prototype first. Infrastructure when it earns it.</h2></div>
-      <p>G1ft Labs is intentionally lightweight. Browser-first ideas can live here without accounts, databases or unnecessary infrastructure. When a project proves useful enough to need users, persistent data, private APIs or heavier compute, it can graduate into its own production stack without losing its identity.</p>
-    </section>
+    <section class="lab-manifesto"><div><div class="section-label"><span></span> HOW THIS WORKS</div><h2>The hub lives here. The full experience lives where it works best.</h2></div><p>GitHub Pages is the branded catalog and permanent project home. Full builds can stay on GPT Sites while they are proving themselves. When one needs accounts, persistent data, APIs or its own infrastructure, the launch button can simply move to the production version later.</p></section>
   </main>
 
-  <footer>
-    <div class="social-links"><a href="https://github.com/g1ftb4sk3t4u" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@G1ftb4sk3t4u" target="_blank" rel="noopener">Medium</a></div>
-    <p>&copy; 2026 G1FTB0X</p>
-  </footer>
-
-  <script>
-    const search = document.getElementById('labSearch');
-    const cards = [...document.querySelectorAll('.lab-card')];
-    const filterButtons = [...document.querySelectorAll('#labFilters button')];
-    const noResults = document.getElementById('noResults');
-    let activeFilter = 'all';
-    function applyFilters(){
-      const q = search.value.toLowerCase().trim();
-      let visible = 0;
-      cards.forEach(card => {
-        const text = (card.textContent + ' ' + card.dataset.tags).toLowerCase();
-        const categoryOK = activeFilter === 'all' || card.dataset.tags.includes(activeFilter);
-        const searchOK = !q || text.includes(q);
-        const show = categoryOK && searchOK;
-        card.hidden = !show;
-        if(show) visible++;
-      });
-      noResults.hidden = visible !== 0;
-    }
-    search.addEventListener('input', applyFilters);
-    filterButtons.forEach(btn => btn.addEventListener('click', () => {
-      activeFilter = btn.dataset.filter;
-      filterButtons.forEach(b => b.classList.toggle('active', b === btn));
-      applyFilters();
-    }));
-  </script>
-</body>
-</html>
+  <footer><div class="social-links"><a href="https://github.com/g1ftb4sk3t4u" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@G1ftb4sk3t4u" target="_blank" rel="noopener">Medium</a></div><p>&copy; 2026 G1FTB0X</p></footer>
+  <script>const search=document.getElementById('labSearch'),cards=[...document.querySelectorAll('.lab-card')],filterButtons=[...document.querySelectorAll('#labFilters button')],noResults=document.getElementById('noResults');let activeFilter='all';function applyFilters(){const q=search.value.toLowerCase().trim();let visible=0;cards.forEach(card=>{const text=(card.textContent+' '+card.dataset.tags).toLowerCase(),categoryOK=activeFilter==='all'||card.dataset.tags.includes(activeFilter),searchOK=!q||text.includes(q),show=categoryOK&&searchOK;card.hidden=!show;if(show)visible++});noResults.hidden=visible!==0}search.addEventListener('input',applyFilters);filterButtons.forEach(btn=>btn.addEventListener('click',()=>{activeFilter=btn.dataset.filter;filterButtons.forEach(b=>b.classList.toggle('active',b===btn));applyFilters()}));</script>
+</body></html>

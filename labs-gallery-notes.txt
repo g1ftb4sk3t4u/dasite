@@ -1,1 +1,0 @@
-G1ft Labs visual gallery implementation: live same-origin previews where available, project-specific themed preview panels elsewhere, preserved search/filter behavior, responsive layout, reduced-motion support, and full-card navigation for linked projects.

@@ -6,6 +6,7 @@
   <meta name="description" content="G1ft Labs — interactive experiments, educational worlds, network tools, cyber safety projects, science explorations and prototypes by G1FTB0X.">
   <title>G1ft Labs — Project Directory</title>
   <link href="style.css" rel="stylesheet">
+  <link href="labs-gallery.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +18,7 @@
     <section class="labs-hero">
       <div class="labs-eyebrow">G1FTB0X // PROJECT ARCHIVE + LAUNCHPAD</div>
       <h1>G1ft <span>Labs</span></h1>
-      <p>The catalog for everything being built under G1FTB0X. Each project can have its own branded page here, while the full interactive experience may live on GPT Sites, GitHub, a dedicated service, or eventually its own domain.</p>
+      <p>A visual catalog of experiments, learning worlds, engineering tools and strange rabbit holes. The cyber frame belongs to G1ft Labs; every project inside it gets to look like itself.</p>
       <div class="labs-stats"><div><strong>15+</strong><span>projects cataloged</span></div><div><strong>7</strong><span>core disciplines</span></div><div><strong>∞</strong><span>rabbit holes remaining</span></div></div>
     </section>
 
@@ -27,42 +28,126 @@
     </section>
 
     <section>
-      <div class="section-label"><span></span> FEATURED BUILDS</div>
+      <div class="section-label"><span></span> FEATURED BUILDS + EXPERIMENTS</div>
       <div class="lab-grid" id="labGrid">
-        <article class="lab-card featured" data-tags="learning science ai networking security music forensics signals"><div class="lab-card-top"><span class="lab-icon">◉</span><span class="lab-status status-building">Flagship</span></div><h2>Rabbit Hole Labs</h2><p>An interactive discovery museum where visitors can move from plain-English explanations all the way into technical and expert-level rabbit holes.</p><div class="lab-tags"><span>AI</span><span>Internet</span><span>Reality</span><span>Forensics</span><span>Signals</span></div><a class="lab-action" href="labs/rabbit-hole/">View project preview →</a></article>
 
-        <article class="lab-card" data-tags="security tools scams cyber learning"><div class="lab-card-top"><span class="lab-icon">✓</span><span class="lab-status status-live">GitHub preview</span></div><h2>SignalSafe</h2><p>A calm cyber-safety companion for checking suspicious messages, recognizing manipulation patterns and choosing safer next steps.</p><div class="lab-tags"><span>Cyber</span><span>Scams</span><span>Safety</span></div><a class="lab-action" href="labs/signalsafe/">View project preview →</a></article>
+        <article class="lab-card featured" data-tags="learning science ai networking security music forensics signals">
+          <div class="lab-preview lab-preview-live lab-preview--rabbit">
+            <div class="preview-fallback"></div>
+            <iframe src="labs/rabbit-hole/" loading="lazy" tabindex="-1" aria-hidden="true" title="Rabbit Hole Labs preview"></iframe>
+          </div>
+          <div class="lab-card-top"><span class="lab-icon">◉</span><span class="lab-status status-building">Flagship</span></div>
+          <div class="lab-card-content"><h2>Rabbit Hole Labs</h2><p>An interactive discovery museum where visitors can move from plain-English explanations all the way into technical and expert-level rabbit holes.</p><div class="lab-tags"><span>AI</span><span>Internet</span><span>Reality</span><span>Forensics</span><span>Signals</span></div><a class="lab-action" href="labs/rabbit-hole/">Enter Rabbit Hole Labs →</a></div>
+          <a class="lab-card-link" href="labs/rabbit-hole/" aria-label="Open Rabbit Hole Labs">Open Rabbit Hole Labs</a>
+        </article>
 
-        <article class="lab-card" data-tags="tools decisions finance shopping psychology"><div class="lab-card-top"><span class="lab-icon">W</span><span class="lab-status status-live">GitHub preview</span></div><h2>WorthWise</h2><p>Decision tools that separate “I want it” from “it is worth it,” including true-cost thinking, cost-per-use and purchase-pressure checks.</p><div class="lab-tags"><span>Decisions</span><span>Value</span><span>Behavior</span></div><a class="lab-action" href="labs/worthwise/">View project preview →</a></article>
+        <article class="lab-card" data-tags="security tools scams cyber learning">
+          <div class="lab-preview lab-preview-live lab-preview--signalsafe">
+            <div class="preview-fallback"></div>
+            <iframe src="labs/signalsafe/" loading="lazy" tabindex="-1" aria-hidden="true" title="SignalSafe preview"></iframe>
+          </div>
+          <div class="lab-card-top"><span class="lab-icon">✓</span><span class="lab-status status-live">GitHub preview</span></div>
+          <div class="lab-card-content"><h2>SignalSafe</h2><p>A calm cyber-safety companion for checking suspicious messages, recognizing manipulation patterns and choosing safer next steps.</p><div class="lab-tags"><span>Cyber</span><span>Scams</span><span>Safety</span></div><a class="lab-action" href="labs/signalsafe/">Explore SignalSafe →</a></div>
+          <a class="lab-card-link" href="labs/signalsafe/" aria-label="Open SignalSafe">Open SignalSafe</a>
+        </article>
 
-        <article class="lab-card" data-tags="networking learning juniper ospf mpls troubleshooting engineering"><div class="lab-card-top"><span class="lab-icon">#</span><span class="lab-status status-external">Full GPT Site</span></div><h2>TransportLab</h2><p>Network troubleshooting simulations built around routing, transport, optics, OSPF/MPLS state and realistic engineering fault isolation.</p><div class="lab-tags"><span>Juniper</span><span>OSPF</span><span>MPLS</span></div><a class="lab-action" href="projects/transportlab.html">View project + launch site →</a></article>
+        <article class="lab-card" data-tags="tools decisions finance shopping psychology">
+          <div class="lab-preview lab-preview-live lab-preview--worthwise">
+            <div class="preview-fallback"></div>
+            <iframe src="labs/worthwise/" loading="lazy" tabindex="-1" aria-hidden="true" title="WorthWise preview"></iframe>
+          </div>
+          <div class="lab-card-top"><span class="lab-icon">W</span><span class="lab-status status-live">GitHub preview</span></div>
+          <div class="lab-card-content"><h2>WorthWise</h2><p>Decision tools that separate “I want it” from “it is worth it,” including true-cost thinking, cost-per-use and purchase-pressure checks.</p><div class="lab-tags"><span>Decisions</span><span>Value</span><span>Behavior</span></div><a class="lab-action" href="labs/worthwise/">Explore WorthWise →</a></div>
+          <a class="lab-card-link" href="labs/worthwise/" aria-label="Open WorthWise">Open WorthWise</a>
+        </article>
 
-        <article class="lab-card" data-tags="science outdoors weather astronomy fishing tools"><div class="lab-card-top"><span class="lab-icon">P°</span><span class="lab-status status-external">Full GPT Site</span></div><h2>PerfectDay Atlas</h2><p>Ranks upcoming days for camping, hiking, fishing, stargazing, photography and other outdoor plans using activity-specific conditions.</p><div class="lab-tags"><span>Weather</span><span>Outdoors</span><span>Planning</span></div><a class="lab-action" href="projects/perfectday-atlas.html">View project + launch site →</a></article>
+        <article class="lab-card" data-tags="networking learning juniper ospf mpls troubleshooting engineering">
+          <div class="lab-preview lab-preview-live lab-preview--transport">
+            <div class="preview-fallback"><div class="preview-network"><span></span><span></span><span></span><span></span></div></div>
+            <iframe src="projects/transportlab.html" loading="lazy" tabindex="-1" aria-hidden="true" title="TransportLab preview"></iframe>
+          </div>
+          <div class="lab-card-top"><span class="lab-icon">#</span><span class="lab-status status-external">Full GPT Site</span></div>
+          <div class="lab-card-content"><h2>TransportLab</h2><p>Network troubleshooting simulations built around routing, transport, optics, OSPF/MPLS state and realistic engineering fault isolation.</p><div class="lab-tags"><span>Juniper</span><span>OSPF</span><span>MPLS</span></div><a class="lab-action" href="https://transportlab.g1ft.chatgpt.site" target="_blank" rel="noopener">Launch full site ↗</a></div>
+          <a class="lab-card-link" href="projects/transportlab.html" aria-label="View TransportLab project page">View TransportLab</a>
+        </article>
 
-        <article class="lab-card" data-tags="learning science networking biology space disasters invisible ai"><div class="lab-card-top"><span class="lab-icon">⌬</span><span class="lab-status status-building">Link being recovered</span></div><h2>Mysteries of Knowledge</h2><p>An interactive science museum covering hidden everyday systems: packets, GPS, storms, black holes, biology, radio, fiber and more.</p><div class="lab-tags"><span>30 exhibits</span><span>Simulations</span><span>Sources</span></div><span class="lab-action muted-action">Project cataloged — full site link next</span></article>
+        <article class="lab-card" data-tags="science outdoors weather astronomy fishing tools">
+          <div class="lab-preview lab-preview-live lab-preview--perfectday">
+            <div class="preview-fallback"><div class="preview-weather"><div><small>PERFECT DAY SCORE</small><div class="score">94</div><small>OUTDOOR WINDOW</small></div><div class="days"><span>FRI<br>91</span><span>SAT<br>94</span><span>SUN<br>82</span></div></div></div>
+            <iframe src="projects/perfectday-atlas.html" loading="lazy" tabindex="-1" aria-hidden="true" title="PerfectDay Atlas preview"></iframe>
+          </div>
+          <div class="lab-card-top"><span class="lab-icon">P°</span><span class="lab-status status-external">Full GPT Site</span></div>
+          <div class="lab-card-content"><h2>PerfectDay Atlas</h2><p>Ranks upcoming days for camping, hiking, fishing, stargazing, photography and other outdoor plans using activity-specific conditions.</p><div class="lab-tags"><span>Weather</span><span>Outdoors</span><span>Planning</span></div><a class="lab-action" href="https://perfectday-atlas.g1ft.chatgpt.site" target="_blank" rel="noopener">Launch full site ↗</a></div>
+          <a class="lab-card-link" href="projects/perfectday-atlas.html" aria-label="View PerfectDay Atlas project page">View PerfectDay Atlas</a>
+        </article>
 
-        <article class="lab-card" data-tags="networking learning fiber otdr optics engineering"><div class="lab-card-top"><span class="lab-icon">↝</span><span class="lab-status status-building">Link being recovered</span></div><h2>Fiber Field Lab</h2><p>Hands-on fiber training with link budgets, OTDR traces, splices, reflections, SFP DOM diagnosis and field-engineering scenarios.</p><div class="lab-tags"><span>Fiber</span><span>OTDR</span><span>Optics</span></div><span class="lab-action muted-action">Project cataloged — full site link next</span></article>
+        <article class="lab-card" data-tags="learning science networking biology space disasters invisible ai">
+          <div class="lab-preview lab-preview--mysteries"><div class="preview-fallback"></div><div class="preview-ui"><strong>MYSTERIES OF KNOWLEDGE</strong><div class="mini-line"></div><div class="mini-line short"></div><div class="mini-grid"><div class="mini-cell"></div><div class="mini-cell"></div><div class="mini-cell"></div></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">⌬</span><span class="lab-status status-building">Site link pending</span></div>
+          <div class="lab-card-content"><h2>Mysteries of Knowledge</h2><p>An interactive science museum covering hidden everyday systems: packets, GPS, storms, black holes, biology, radio, fiber and more.</p><div class="lab-tags"><span>30 exhibits</span><span>Simulations</span><span>Sources</span></div><span class="lab-action muted-action">Cataloged — full site link next</span></div>
+        </article>
 
-        <article class="lab-card" data-tags="science space learning cosmology dimensions"><div class="lab-card-top"><span class="lab-icon">✦</span><span class="lab-status status-building">Link being recovered</span></div><h2>Cosmic Dimensions Explorer</h2><p>A navigable reference experience for exploring layered cosmology concepts while separating established physics from interpretation and speculation.</p><div class="lab-tags"><span>Space</span><span>Cosmology</span><span>Reference</span></div><span class="lab-action muted-action">Project cataloged — full site link next</span></article>
+        <article class="lab-card" data-tags="networking learning fiber otdr optics engineering">
+          <div class="lab-preview lab-preview--fiber"><div class="preview-fallback"></div><div class="preview-ui"><strong>FIBER FIELD LAB</strong><div class="mini-line"></div><div class="mini-line short"></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">↝</span><span class="lab-status status-building">Site link pending</span></div>
+          <div class="lab-card-content"><h2>Fiber Field Lab</h2><p>Hands-on fiber training with link budgets, OTDR traces, splices, reflections, SFP DOM diagnosis and field-engineering scenarios.</p><div class="lab-tags"><span>Fiber</span><span>OTDR</span><span>Optics</span></div><span class="lab-action muted-action">Cataloged — full site link next</span></div>
+        </article>
 
-        <article class="lab-card" data-tags="creative aircraft aviation science tracking game"><div class="lab-card-top"><span class="lab-icon">✈</span><span class="lab-status status-building">Link being recovered</span></div><h2>SkyDex</h2><p>An aircraft-spotting collection game that turns ADS-B hunting into a giant aviation dex with rarity, families, variants and unusual mission aircraft.</p><div class="lab-tags"><span>Aviation</span><span>ADS-B</span><span>Collection</span></div><span class="lab-action muted-action">Project cataloged — full site link next</span></article>
+        <article class="lab-card" data-tags="science space learning cosmology dimensions">
+          <div class="lab-preview lab-preview--cosmic"><div class="preview-fallback"></div><div class="preview-ui"><strong>COSMIC DIMENSIONS</strong><div class="mini-line"></div><div class="mini-line short"></div><div class="mini-grid"><div class="mini-cell"></div><div class="mini-cell"></div><div class="mini-cell"></div></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">✦</span><span class="lab-status status-building">Site link pending</span></div>
+          <div class="lab-card-content"><h2>Cosmic Dimensions Explorer</h2><p>A navigable reference experience for exploring layered cosmology concepts while separating established physics from interpretation and speculation.</p><div class="lab-tags"><span>Space</span><span>Cosmology</span><span>Reference</span></div><span class="lab-action muted-action">Cataloged — full site link next</span></div>
+        </article>
 
-        <article class="lab-card" data-tags="creative kindness social community"><div class="lab-card-top"><span class="lab-icon">◎</span><span class="lab-status status-concept">Project</span></div><h2>Ripple</h2><p>A kindness engine built around small achievable actions, appreciation notes, pass-it-forward chains and low-pressure community goals.</p><div class="lab-tags"><span>Kindness</span><span>Community</span><span>Local-first</span></div><span class="lab-action muted-action">Project page/link coming</span></article>
+        <article class="lab-card" data-tags="creative aircraft aviation science tracking game">
+          <div class="lab-preview lab-preview--skydex"><div class="preview-fallback"></div><div class="preview-ui"><strong>SKYDEX // ADS-B HUNT</strong><div class="preview-skyrows"><span></span><span></span><span></span></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">✈</span><span class="lab-status status-building">Site link pending</span></div>
+          <div class="lab-card-content"><h2>SkyDex</h2><p>An aircraft-spotting collection game that turns ADS-B hunting into a giant aviation dex with rarity, families, variants and unusual mission aircraft.</p><div class="lab-tags"><span>Aviation</span><span>ADS-B</span><span>Collection</span></div><span class="lab-action muted-action">Cataloged — full site link next</span></div>
+        </article>
 
-        <article class="lab-card" data-tags="learning marketing psychology awareness business"><div class="lab-card-top"><span class="lab-icon">◈</span><span class="lab-status status-concept">In development</span></div><h2>Marketing Trigger Lab</h2><p>Learn how attention, color, scarcity, pricing, social proof and sensory design influence buying—and separate evidence from marketing folklore.</p><div class="lab-tags"><span>Psychology</span><span>Marketing</span><span>Myth check</span></div><span class="lab-action muted-action">Project page/link coming</span></article>
+        <article class="lab-card" data-tags="creative kindness social community">
+          <div class="lab-preview lab-preview--ripple"><div class="preview-fallback"></div><div class="preview-ui"><strong>RIPPLE</strong><div class="mini-line"></div><div class="mini-line short"></div><div class="mini-grid"><div class="mini-cell"></div><div class="mini-cell"></div><div class="mini-cell"></div></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">◎</span><span class="lab-status status-concept">Project</span></div>
+          <div class="lab-card-content"><h2>Ripple</h2><p>A kindness engine built around small achievable actions, appreciation notes, pass-it-forward chains and low-pressure community goals.</p><div class="lab-tags"><span>Kindness</span><span>Community</span><span>Local-first</span></div><span class="lab-action muted-action">Project page/link coming</span></div>
+        </article>
 
-        <article class="lab-card" data-tags="tools networking security intelligence dashboard"><div class="lab-card-top"><span class="lab-icon">▰</span><span class="lab-status status-external">External live</span></div><h2>Intel Terminal 3000</h2><p>A multi-source intelligence dashboard and one of the original G1FTB0X public experiments.</p><div class="lab-tags"><span>OSINT</span><span>Dashboard</span><span>Feeds</span></div><a class="lab-action" href="http://intel3000.g1ftb0x.com:3000" target="_blank" rel="noopener">Launch terminal ↗</a></article>
+        <article class="lab-card" data-tags="learning marketing psychology awareness business">
+          <div class="lab-preview lab-preview--marketing"><div class="preview-fallback"></div><div class="preview-ui"><strong>MARKETING TRIGGER LAB</strong><div class="mini-line"></div><div class="mini-line short"></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">◈</span><span class="lab-status status-concept">In development</span></div>
+          <div class="lab-card-content"><h2>Marketing Trigger Lab</h2><p>Learn how attention, color, scarcity, pricing, social proof and sensory design influence buying—and separate evidence from marketing folklore.</p><div class="lab-tags"><span>Psychology</span><span>Marketing</span><span>Myth check</span></div><span class="lab-action muted-action">Project page/link coming</span></div>
+        </article>
 
-        <article class="lab-card" data-tags="networking tools mikrotik engineering github"><div class="lab-card-top"><span class="lab-icon">M</span><span class="lab-status status-external">GitHub</span></div><h2>MikroTik Master</h2><p>Network engineering scripts, experiments and MikroTik-focused utilities from the public GitHub workshop.</p><div class="lab-tags"><span>MikroTik</span><span>Networking</span><span>Automation</span></div><a class="lab-action" href="https://github.com/g1ftb4sk3t4u/Mikrotik-Master" target="_blank" rel="noopener">View repository ↗</a></article>
+        <article class="lab-card" data-tags="tools networking security intelligence dashboard">
+          <div class="lab-preview lab-preview--intel"><div class="preview-fallback"></div><div class="preview-ui"><strong>INTEL TERMINAL 3000</strong><div>&gt; feed.aggregate()</div><div>&gt; sources: ACTIVE</div><div>&gt; intelligence: STREAMING</div><div class="mini-line"></div><div class="mini-line short"></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">▰</span><span class="lab-status status-external">External live</span></div>
+          <div class="lab-card-content"><h2>Intel Terminal 3000</h2><p>A multi-source intelligence dashboard and one of the original G1FTB0X public experiments.</p><div class="lab-tags"><span>OSINT</span><span>Dashboard</span><span>Feeds</span></div><a class="lab-action" href="http://intel3000.g1ftb0x.com:3000" target="_blank" rel="noopener">Launch terminal ↗</a></div>
+          <a class="lab-card-link" href="http://intel3000.g1ftb0x.com:3000" target="_blank" rel="noopener" aria-label="Launch Intel Terminal 3000">Launch Intel Terminal 3000</a>
+        </article>
 
-        <article class="lab-card" data-tags="security tools ai github"><div class="lab-card-top"><span class="lab-icon">A</span><span class="lab-status status-external">GitHub</span></div><h2>AI Tools</h2><p>Public AI utilities, experiments and technical prototypes that do not yet need their own standalone lab.</p><div class="lab-tags"><span>AI</span><span>Utilities</span><span>Experiments</span></div><a class="lab-action" href="https://github.com/g1ftb4sk3t4u/AI-tools-" target="_blank" rel="noopener">View repository ↗</a></article>
+        <article class="lab-card" data-tags="networking tools mikrotik engineering github">
+          <div class="lab-preview lab-preview--mikrotik"><div class="preview-fallback"><div class="preview-network"><span></span><span></span><span></span><span></span></div></div><div class="preview-ui"><strong>MIKROTIK MASTER</strong><div class="mini-line"></div><div class="mini-line short"></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">M</span><span class="lab-status status-external">GitHub</span></div>
+          <div class="lab-card-content"><h2>MikroTik Master</h2><p>Network engineering scripts, experiments and MikroTik-focused utilities from the public GitHub workshop.</p><div class="lab-tags"><span>MikroTik</span><span>Networking</span><span>Automation</span></div><a class="lab-action" href="https://github.com/g1ftb4sk3t4u/Mikrotik-Master" target="_blank" rel="noopener">View repository ↗</a></div>
+          <a class="lab-card-link" href="https://github.com/g1ftb4sk3t4u/Mikrotik-Master" target="_blank" rel="noopener" aria-label="View MikroTik Master on GitHub">View MikroTik Master</a>
+        </article>
 
-        <article class="lab-card" data-tags="creative ui interface design learning"><div class="lab-card-top"><span class="lab-icon">UI</span><span class="lab-status status-concept">Archive</span></div><h2>Interface Lab</h2><p>A home for interface experiments, unusual controls and interactive concepts that do not belong inside a conventional app.</p><div class="lab-tags"><span>UI</span><span>Experiments</span><span>Interaction</span></div><span class="lab-action muted-action">Project page/link coming</span></article>
+        <article class="lab-card" data-tags="security tools ai github">
+          <div class="lab-preview lab-preview--aitools"><div class="preview-fallback"></div><div class="preview-ui"><strong>AI TOOLS // WORKSHOP</strong><div class="mini-grid"><div class="mini-cell"></div><div class="mini-cell"></div><div class="mini-cell"></div></div><div class="mini-line"></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">A</span><span class="lab-status status-external">GitHub</span></div>
+          <div class="lab-card-content"><h2>AI Tools</h2><p>Public AI utilities, experiments and technical prototypes that do not yet need their own standalone lab.</p><div class="lab-tags"><span>AI</span><span>Utilities</span><span>Experiments</span></div><a class="lab-action" href="https://github.com/g1ftb4sk3t4u/AI-tools-" target="_blank" rel="noopener">View repository ↗</a></div>
+          <a class="lab-card-link" href="https://github.com/g1ftb4sk3t4u/AI-tools-" target="_blank" rel="noopener" aria-label="View AI Tools on GitHub">View AI Tools</a>
+        </article>
+
+        <article class="lab-card" data-tags="creative ui interface design learning">
+          <div class="lab-preview lab-preview--interface"><div class="preview-fallback"></div><div class="preview-ui"><strong>INTERFACE LAB</strong><div class="mini-line"></div><div class="mini-line short"></div></div></div>
+          <div class="lab-card-top"><span class="lab-icon">UI</span><span class="lab-status status-concept">Archive</span></div>
+          <div class="lab-card-content"><h2>Interface Lab</h2><p>A home for interface experiments, unusual controls and interactive concepts that do not belong inside a conventional app.</p><div class="lab-tags"><span>UI</span><span>Experiments</span><span>Interaction</span></div><span class="lab-action muted-action">Project page/link coming</span></div>
+        </article>
       </div>
       <p class="no-results" id="noResults" hidden>No labs match that search yet.</p>
     </section>
 
-    <section class="lab-manifesto"><div><div class="section-label"><span></span> HOW THIS WORKS</div><h2>The hub lives here. The full experience lives where it works best.</h2></div><p>GitHub Pages is the branded catalog and permanent project home. Full builds can stay on GPT Sites while they are proving themselves. When one needs accounts, persistent data, APIs or its own infrastructure, the launch button can simply move to the production version later.</p></section>
+    <section class="lab-manifesto"><div><div class="section-label"><span></span> HOW THIS WORKS</div><h2>One lab. Many visual identities.</h2></div><p>G1ft Labs is the permanent cyber-framed launchpad. Inside each frame, the project keeps its own visual personality. Full builds can live on GPT Sites, GitHub or dedicated infrastructure, while this page remains the recognizable front door to the whole collection.</p></section>
   </main>
 
   <footer><div class="social-links"><a href="https://github.com/g1ftb4sk3t4u" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@G1ftb4sk3t4u" target="_blank" rel="noopener">Medium</a></div><p>&copy; 2026 G1FTB0X</p></footer>

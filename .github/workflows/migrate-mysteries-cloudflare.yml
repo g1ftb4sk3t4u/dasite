@@ -1,0 +1,51 @@
+name: Migrate Mysteries to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cloudflare/mysteries/**"
+      - ".github/workflows/migrate-mysteries-cloudflare.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Reconstruct and verify owned source
+        working-directory: cloudflare/mysteries
+        run: |
+          set -euo pipefail
+          rm -rf public
+          mkdir -p public
+          base64 -d source/mysteries.html.xz.b64 | xz -d > public/index.html
+          actual="$(sha256sum public/index.html | awk '{print $1}')"
+          expected="d455579a8755b86891a05a47545704c232114778a5db22960c667bd444802d98"
+          test "$actual" = "$expected"
+          test "$(wc -c < public/index.html)" -eq 91391
+          grep -qi "GPS.gov" public/index.html
+          printf '%s  public/index.html\n' "$actual" | tee source-sha256.txt
+
+      - name: Deploy temporary Cloudflare preview
+        working-directory: cloudflare/mysteries
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy --temporary 2>&1 | tee cloudflare-deploy.txt
+
+      - name: Save migration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mysteries-cloudflare-migration
+          path: |
+            cloudflare/mysteries/public
+            cloudflare/mysteries/source-sha256.txt
+            cloudflare/mysteries/cloudflare-deploy.txt
+          if-no-files-found: warn

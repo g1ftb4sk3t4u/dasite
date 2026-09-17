@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="How I use AI, GitHub and Cloudflare to prototype, own and deploy websites without spending a fortune.">
+  <title>How I’m Building AI-Powered Websites Without Spending a Fortune | G1FTB0X</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../labs.html">Labs</a>
+    <a href="../../blog.html" class="active">Blog</a>
+    <a href="../../resources.html">Resources</a>
+    <a href="../../about.html">About</a>
+    <a href="../../contact.html">Contact</a>
+  </nav>
+
+  <article class="blog-post-content">
+    <div class="post-kicker">G1FTB0X // FIELD NOTES</div>
+    <h1>How I’m Building AI-Powered Websites Without Spending a Fortune</h1>
+    <p class="post-date">September 17, 2026 • G1ft Labs</p>
+    <p class="post-dek">Want your own website? Want it public, private, experimental, educational, or just something weird you thought of at 2 AM? Want AI to do most of the coding for you? You absolutely can.</p>
+
+    <h2>The Easiest Way: Start With an AI Site Builder</h2>
+    <p>The simplest option is an AI site builder such as ChatGPT’s site tools. You describe what you want, it builds the first version, hosts it, and gives you something you can immediately click, test and share.</p>
+    <p>Then you keep iterating in plain language: change the colors, add a section, fix a button, add search, make it mobile friendly, or make the whole thing look like a 1998 cyberpunk terminal.</p>
+    <p>For turning an idea into something real quickly, that is hard to beat.</p>
+    <p>The problem for me is simple: I experiment a lot. That means I can burn through AI usage pretty fast. I wanted a setup where AI could still build everything, but where I could also own and host the finished projects myself.</p>
+
+    <h2>My Current Setup</h2>
+    <p>Do not get scared by words like GitHub, Cloudflare, repositories, Workers, DNS or deployments. They sound like a lot more than they are.</p>
+    <p>The basic idea is:</p>
+    <pre><code>AI → GitHub → Cloudflare → My Domain</code></pre>
+    <p>That is really the whole architecture.</p>
+
+    <h2>Step 1: VS Code</h2>
+    <p>I use Visual Studio Code on my PC. It is basically my workbench for code. I can see all the files that make up a site, edit them manually if I want, and use different AI coding tools from one place.</p>
+    <p>You do not have to use VS Code. If you only use ChatGPT or Claude, their website, desktop app or phone app may be all you need. I like VS Code because I bounce between several AI systems, including local models.</p>
+
+    <h2>Step 2: GitHub</h2>
+    <p>Next is a free GitHub account. GitHub sounds intimidating if you have never used it, but the basic idea is simple: <strong>GitHub stores your code.</strong></p>
+    <p>A project lives in a repository, or repo. Think of it like a folder for your website that also remembers its history. If something breaks, you can see what changed and roll back when needed.</p>
+    <p>I can also keep the repository private, which means the development source does not have to be publicly browsable on GitHub.</p>
+    <p>One important distinction: a private repository does not make a public website private. Anything sent to a visitor’s browser can still be inspected. Server-side code, API keys, databases and private development files are the things you keep off the public side.</p>
+
+    <h2>Step 3: Cloudflare</h2>
+    <p>Then I use Cloudflare. Cloudflare can handle several parts of the puzzle: domains and DNS, static site hosting, server-side Workers, GitHub-connected deployments, caching, security and other services.</p>
+    <p>For the kinds of experiments I build, a lot can live comfortably inside free tiers. That means I do not need a separate paid server for every little idea.</p>
+
+    <h2>Step 4: Add a Domain</h2>
+    <p>Eventually you will probably want your own domain name. Mine is <strong>g1ftb0x.com</strong>.</p>
+    <p>From there I can give individual projects their own subdomains:</p>
+    <pre><code>g1ftb0x.com
+skydex.g1ftb0x.com
+signalsafe.g1ftb0x.com
+rural.g1ftb0x.com
+dialup.g1ftb0x.com</code></pre>
+    <p>You do not have to buy a domain immediately. Temporary hosting URLs are perfectly fine while you are experimenting.</p>
+
+    <h2>Step 5: Connect the AI</h2>
+    <p>This is where it becomes useful instead of just interesting.</p>
+    <p>Once the AI has access to the GitHub project, I can ask for normal changes in plain English: change the color scheme, add a page, fix the mobile layout, add a feature, or clean up the navigation.</p>
+    <p>The AI changes the project in GitHub. Cloudflare can then deploy the new version. GitHub becomes the source of truth, Cloudflare becomes the deployment platform, and the AI becomes part of the development workflow.</p>
+
+    <h2>My Workflow Now</h2>
+    <pre><code>IDEA
+  ↓
+AI prototype
+  ↓
+Test and experiment
+  ↓
+Private GitHub repository
+  ↓
+Cloudflare deployment
+  ↓
+g1ftb0x.com subdomain</code></pre>
+    <p>I can still use an AI-hosted site as the fastest way to prototype something. Once I decide I actually want to keep it, I move it into infrastructure I control.</p>
+
+    <h2>We Tested This With SignalSafe and SkyDex</h2>
+    <p>SignalSafe was a good first test because it could be moved as a mostly self-contained site.</p>
+    <p>SkyDex was the more interesting test. It is not just one HTML page. The published build includes a compiled application bundle, CSS, framework/runtime files, fonts, imagery references and interactive behavior.</p>
+    <p>We mirrored the published application and its supporting files into Cloudflare and ran it independently from the original hosted copy. It worked.</p>
+    <p>That mattered because it proved I am not permanently locked into the platform where an idea was first created.</p>
+
+    <h2>AI Can Still Run the Whole Thing</h2>
+    <p>Moving a project away from an AI-hosted website does not mean losing AI development. It actually gives me more choices.</p>
+    <p>I can use ChatGPT, Claude, Codex, local AI models, VS Code coding agents, or several of them together. They can all work against the same project.</p>
+    <p>The important part is that the project itself is mine.</p>
+
+    <h2>What Does This Cost?</h2>
+    <p>For what I am doing right now, surprisingly little.</p>
+    <ul>
+      <li>GitHub offers free private repositories.</li>
+      <li>Cloudflare provides useful free tiers for hosting and Workers.</li>
+      <li>VS Code is free.</li>
+      <li>Local AI models can be free once you have the hardware.</li>
+      <li>A domain name usually costs a little each year.</li>
+      <li>You decide how much you want to spend on AI subscriptions or APIs.</li>
+    </ul>
+
+    <h2>There Are a Million Other Ways to Host Things</h2>
+    <p>You can use a VPS, traditional web hosting, AWS, Azure, Vercel, Netlify, your own server, a Raspberry Pi in the basement, or probably an old refrigerator if you are determined enough.</p>
+    <p>But right now, <strong>AI + GitHub + Cloudflare</strong> works extremely well for me.</p>
+    <p>It is inexpensive, flexible, and most importantly it lets me experiment.</p>
+
+    <div class="post-takeaway">
+      <h2>The G1ft Labs Point</h2>
+      <p>I can have an idea and turn it into an actual working website without needing a development company, a huge budget, or months of work.</p>
+      <p>That is basically the entire point of G1ft Labs: <strong>build weird things, build useful things, learn how they work, share them, and see where the ideas go.</strong></p>
+    </div>
+
+    <p><a href="../../blog.html">&larr; Back to Field Notes</a></p>
+  </article>
+
+  <footer><div class="social-links"><a href="https://github.com/g1ftb4sk3t4u" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@G1ftb4sk3t4u" target="_blank" rel="noopener">Medium</a></div><p>&copy; 2026 G1FTB0X</p></footer>
+</body>
+</html>

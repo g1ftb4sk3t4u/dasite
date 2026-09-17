@@ -23,6 +23,10 @@ const PROJECTS = {
     origin: "https://g1ft-mysteries.spangled-watch.workers.dev",
     rewriteAssets: false,
   },
+  "/fiberlab": {
+    origin: "https://g1ft-fiberlab.coconut-rudbeckia.workers.dev",
+    rewriteAssets: false,
+  },
 };
 
 function matchProject(pathname) {
@@ -86,7 +90,7 @@ export default {
         const text = await response.text();
         return new Response(rewriteText(text, project.prefix), {
           status: response.status,
-          statusText: response.statusText,
+          statusText: response.status.statusText,
           headers: outHeaders,
         });
       }

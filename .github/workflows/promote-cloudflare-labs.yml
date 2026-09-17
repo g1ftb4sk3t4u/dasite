@@ -1,0 +1,31 @@
+name: Promote Migrated Labs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/promote_cloudflare_labs.py"
+      - ".github/workflows/promote-cloudflare-labs.yml"
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update canonical links
+        run: python3 scripts/promote_cloudflare_labs.py
+
+      - name: Commit promoted links
+        run: |
+          git config user.name "g1ftb0x-site-bot"
+          git config user.email "157822034+g1ftb4sk3t4u@users.noreply.github.com"
+          git add index.html labs.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Point Rabbit Hole and WorthWise to canonical paths"
+          git push origin main

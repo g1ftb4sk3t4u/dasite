@@ -6,6 +6,7 @@ on:
     paths:
       - "cloudflare/transportlab/**"
       - "cloudflare/perfectday/**"
+      - "scripts/mirror_gpt_site.py"
       - ".github/workflows/migrate-gpt-sites-cloudflare.yml"
   workflow_dispatch:
 

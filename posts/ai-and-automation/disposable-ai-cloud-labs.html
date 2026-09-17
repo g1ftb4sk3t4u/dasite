@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="How I use AI with Docker containers and disposable cloud VMs to test ideas quickly, isolate experiments, and avoid turning every prototype into permanent infrastructure.">
+  <title>Disposable AI Cloud Labs: Test More, Spend Less | G1FTB0X</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="site-nav"><a href="../../index.html">Home</a><a href="../../labs.html">Labs</a><a href="../../blog.html" class="active">Blog</a><a href="../../resources.html">Resources</a><a href="../../about.html">About</a><a href="../../contact.html">Contact</a></nav>
+
+  <article class="blog-post-content">
+    <div class="post-kicker">G1FTB0X // FIELD NOTES</div>
+    <h1>Disposable AI Cloud Labs: Test More, Spend Less</h1>
+    <p class="post-date">September 17, 2026 • AI / Docker / Cloud / Automation</p>
+    <p class="post-dek">One of my favorite uses for AI has almost nothing to do with chatting. I use it as a temporary infrastructure assistant: spin up a Docker container or cheap cloud VM, build the experiment, test it, save what matters, and destroy the machine when I am done.</p>
+
+    <p>That sounds like serious cloud-engineering territory if you have never done it before. In practice, it can be one of the simplest ways to experiment without filling your main PC with random packages, breaking working systems, or paying for servers that sit idle for months.</p>
+
+    <h2>The basic idea</h2>
+    <p>Instead of asking, “Where am I going to permanently host this?” I start with a different question:</p>
+    <p><strong>“What is the cheapest disposable environment I can give this idea long enough to find out whether it works?”</strong></p>
+
+    <pre>IDEA
+  ↓
+AI writes the setup
+  ↓
+Docker container or temporary cloud VM
+  ↓
+Install → build → test → break things
+  ↓
+Keep the code/data that matters
+  ↓
+Destroy the test environment
+  ↓
+Promote the winners to real infrastructure</pre>
+
+    <p>That last step matters. I do not want every random experiment I have at 11:30 at night becoming another server I have to patch for the next five years.</p>
+
+    <h2>Docker is perfect for local disposable labs</h2>
+    <p>Docker gives you isolated environments that can be created and removed quickly. If I want to test a database, web app, crawler, automation stack, monitoring package, API, or some strange open-source project I just discovered, I can have AI generate the Docker setup instead of manually installing everything on Windows.</p>
+
+    <p>A prompt can be as simple as:</p>
+    <pre>Create a Docker Compose lab for this project.
+Keep persistent data in named volumes.
+Expose only the ports I need.
+Include a health check.
+Give me the commands to start it, inspect it, and completely remove it.</pre>
+
+    <p>Now the experiment has walls around it. If it is garbage, I delete it. If it is great, the Docker configuration becomes documentation for how to reproduce it later.</p>
+
+    <h2>Cloud VMs are the same idea with a public IP</h2>
+    <p>Sometimes local Docker is not enough. Maybe I need Linux, a public IP, DNS, incoming webhooks, multiple people testing something, or a machine that can run while my PC is off.</p>
+
+    <p>That is where a small VM from Linode/Akamai, DigitalOcean, Hetzner, AWS, Azure, Google Cloud or another provider becomes useful.</p>
+
+    <p>I can give an AI coding agent a goal such as:</p>
+    <pre>Build this prototype on a fresh Ubuntu VM.
+Use Docker where practical.
+Do not expose unnecessary ports.
+Put configuration in files I can save to GitHub.
+Run the tests.
+Tell me what worked and what failed.
+Then give me the teardown procedure.</pre>
+
+    <p>The AI can generate shell commands, Docker files, firewall rules, reverse-proxy configuration, test scripts and deployment notes. With proper API/CLI access and permissions, an automation agent can even create and destroy the VM as part of the workflow.</p>
+
+    <h2>The economics are different when the machine is temporary</h2>
+    <p>A cheap VM left online forever becomes another monthly bill. A cheap VM used for an hour or an afternoon can be almost negligible, depending on the provider's billing model and minimum charges.</p>
+
+    <p>That changes how I think about infrastructure.</p>
+
+    <p>I am not necessarily “buying another server.” I may be renting a disposable laboratory for a short experiment.</p>
+
+    <p>Instead of worrying whether I want to commit to another $5, $10 or $20 every month, I can use the environment long enough to answer the question I actually care about:</p>
+
+    <p><strong>Does this idea work?</strong></p>
+
+    <h2>Where AI saves the most time</h2>
+    <p>The biggest benefit is not that AI magically makes compute free. It reduces the amount of human setup time around the compute.</p>
+
+    <ul>
+      <li>Generate Dockerfiles and Compose stacks.</li>
+      <li>Install packages on a clean Linux VM.</li>
+      <li>Create nginx or Caddy reverse-proxy configs.</li>
+      <li>Configure application environment files.</li>
+      <li>Generate firewall and service definitions.</li>
+      <li>Clone a GitHub project and figure out how to run it.</li>
+      <li>Read logs and troubleshoot failed installs.</li>
+      <li>Create quick test data and health checks.</li>
+      <li>Benchmark two different approaches.</li>
+      <li>Document the working setup before the VM is destroyed.</li>
+    </ul>
+
+    <p>That can turn a project I might have avoided because I did not feel like spending an hour configuring Linux into something I can test almost immediately.</p>
+
+    <h2>Disposable infrastructure also encourages better experiments</h2>
+    <p>There is something freeing about knowing the machine does not matter.</p>
+
+    <p>I can let an agent try something. If it breaks the environment, who cares? Destroy it and create another clean one.</p>
+
+    <p>That makes temporary VMs especially useful for:</p>
+    <ul>
+      <li>Testing unfamiliar open-source software.</li>
+      <li>Trying different database or web stacks.</li>
+      <li>CI/CD experiments.</li>
+      <li>Network services and monitoring tools.</li>
+      <li>AI agents and MCP servers.</li>
+      <li>Compatibility testing across Linux versions.</li>
+      <li>Performance tests that you do not want contaminating your normal workstation.</li>
+      <li>Security labs using systems and data you are authorized to test.</li>
+    </ul>
+
+    <h2>Save the recipe, not necessarily the server</h2>
+    <p>This is the part that makes the workflow really useful.</p>
+
+    <p>The VM itself should be disposable. The knowledge should not be.</p>
+
+    <p>If something works, I want the important pieces committed somewhere:</p>
+    <ul>
+      <li>Dockerfile</li>
+      <li>docker-compose.yml</li>
+      <li>setup scripts</li>
+      <li>configuration templates</li>
+      <li>README</li>
+      <li>test scripts</li>
+      <li>notes about what failed</li>
+    </ul>
+
+    <p>GitHub becomes the memory of the experiment. The server was just a temporary workbench.</p>
+
+    <h2>AI + infrastructure APIs gets even more interesting</h2>
+    <p>The next level is letting an agent work with infrastructure programmatically.</p>
+
+    <p>Cloud providers expose APIs and command-line tools. Docker has its own command line. GitHub has APIs and Actions. Cloudflare has Wrangler and APIs.</p>
+
+    <p>Connect those carefully and you can start building workflows that look like this:</p>
+
+    <pre>“Test this project on a clean Linux machine.”
+             ↓
+AI creates temporary VM
+             ↓
+AI installs Docker
+             ↓
+AI deploys repository
+             ↓
+AI runs tests
+             ↓
+AI collects logs/results
+             ↓
+AI commits useful fixes/docs
+             ↓
+VM is destroyed</pre>
+
+    <p>That is where AI starts feeling less like a chatbot and more like an actual lab assistant.</p>
+
+    <h2>There are still rules I keep</h2>
+    <p>I do not want an AI agent with unlimited access to everything I own. Disposable infrastructure is useful partly because I can give an experiment limited credentials and a limited blast radius.</p>
+
+    <p>My preferred setup is:</p>
+    <ul>
+      <li>Temporary machine.</li>
+      <li>Minimal permissions.</li>
+      <li>No production secrets unless absolutely necessary.</li>
+      <li>Firewall closed by default.</li>
+      <li>Anything important saved outside the VM.</li>
+      <li>Delete the environment when the experiment ends.</li>
+    </ul>
+
+    <p>AI makes infrastructure faster. It does not make bad credential hygiene a good idea.</p>
+
+    <h2>This fits the way I like to build</h2>
+    <p>Most of what I do begins as curiosity.</p>
+
+    <p>Can this work?</p>
+    <p>Can these systems talk to each other?</p>
+    <p>Can AI automate this annoying part?</p>
+    <p>Can I build a useful version without spending much money?</p>
+
+    <p>Disposable Docker and cloud environments let me answer those questions without turning every idea into permanent infrastructure.</p>
+
+    <p>Some experiments die after 30 minutes.</p>
+    <p>Some become scripts I keep.</p>
+    <p>Some become full projects.</p>
+    <p>And occasionally one ends up with its own spot on G1ftB0x.</p>
+
+    <div class="post-takeaway">
+      <h2>The takeaway</h2>
+      <p><strong>Do not build permanent infrastructure for temporary questions.</strong></p>
+      <p>Use AI to make a clean lab, test the idea, save the recipe, destroy the lab, and only spend real time and money on the experiments that earn it.</p>
+    </div>
+
+    <p class="post-sources-note">Cloud VM pricing and billing increments vary by provider, region and product. “Pennies” is possible for short-lived low-cost resources, but always check the provider's current billing and minimum-charge rules before automating creation of resources.</p>
+
+    <p><a href="../../blog.html">&larr; Back to Field Notes</a></p>
+  </article>
+
+  <footer><div class="social-links"><a href="https://github.com/g1ftb4sk3t4u" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@G1ftb4sk3t4u" target="_blank" rel="noopener">Medium</a></div><p>&copy; 2026 G1FTB0X</p></footer>
+</body>
+</html>

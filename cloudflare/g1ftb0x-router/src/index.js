@@ -16,7 +16,7 @@ const PROJECTS = {
     rewriteAssets: false,
   },
   "/perfectday": {
-    origin: "https://g1ft-perfectday.marked-swoop.workers.dev",
+    origin: "https://g1ft-perfectday.smiling-reply.workers.dev",
     rewriteAssets: true,
   },
 };

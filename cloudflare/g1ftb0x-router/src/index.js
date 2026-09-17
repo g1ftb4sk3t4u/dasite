@@ -19,6 +19,10 @@ const PROJECTS = {
     origin: "https://g1ft-perfectday.smiling-reply.workers.dev",
     rewriteAssets: true,
   },
+  "/mysteries": {
+    origin: "https://g1ft-mysteries.spangled-watch.workers.dev",
+    rewriteAssets: false,
+  },
 };
 
 function matchProject(pathname) {

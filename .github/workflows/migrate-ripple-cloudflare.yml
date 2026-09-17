@@ -1,0 +1,53 @@
+name: Migrate Ripple to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cloudflare/ripple/**"
+      - ".github/workflows/migrate-ripple-cloudflare.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Reconstruct and verify owned Ripple source
+        working-directory: cloudflare/ripple
+        run: |
+          set -euo pipefail
+          rm -rf public
+          mkdir -p public
+          cat source/chunk-*.b64 | base64 -d | xz -d > public/index.html
+          actual="$(sha256sum public/index.html | awk '{print $1}')"
+          expected="56420dcec14c1805297790d5d820e6d7a79af28359a3749739960237b2d8e877"
+          test "$actual" = "$expected"
+          test "$(wc -c < public/index.html)" -eq 28371
+          grep -q "Daily Kindness Generator" public/index.html
+          grep -q "Appreciation Note Studio" public/index.html
+          grep -q "Pass It Forward" public/index.html
+          printf '%s  public/index.html\n' "$actual" | tee source-sha256.txt
+
+      - name: Deploy temporary Cloudflare preview
+        working-directory: cloudflare/ripple
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy --temporary 2>&1 | tee cloudflare-deploy.txt
+
+      - name: Save migration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ripple-cloudflare-migration
+          path: |
+            cloudflare/ripple/public
+            cloudflare/ripple/source-sha256.txt
+            cloudflare/ripple/cloudflare-deploy.txt
+          if-no-files-found: warn

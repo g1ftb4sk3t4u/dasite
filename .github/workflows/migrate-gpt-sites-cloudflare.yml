@@ -1,0 +1,67 @@
+name: Migrate GPT Sites to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cloudflare/transportlab/**"
+      - "cloudflare/perfectday/**"
+      - ".github/workflows/migrate-gpt-sites-cloudflare.yml"
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: transportlab
+            origin: https://transportlab.g1ft.chatgpt.site
+            marker: TransportLab
+            min_bytes: 50000
+          - app: perfectday
+            origin: https://perfectday-atlas.g1ft.chatgpt.site
+            marker: PerfectDay
+            min_bytes: 50000
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Mirror published GPT Site
+        env:
+          APP: ${{ matrix.app }}
+          ORIGIN: ${{ matrix.origin }}
+          MARKER: ${{ matrix.marker }}
+          MIN_BYTES: ${{ matrix.min_bytes }}
+        run: |
+          set -euo pipefail
+          rm -rf "cloudflare/$APP/public"
+          mkdir -p "cloudflare/$APP/public"
+          python3 scripts/mirror_gpt_site.py "$ORIGIN" "cloudflare/$APP/public" "cloudflare/$APP/mirror-manifest.txt" "$MARKER" "$MIN_BYTES"
+          sha256sum "cloudflare/$APP/public/index.html" | tee "cloudflare/$APP/source-sha256.txt"
+
+      - name: Deploy temporary Cloudflare preview
+        working-directory: cloudflare/${{ matrix.app }}
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy --temporary 2>&1 | tee cloudflare-deploy.txt
+
+      - name: Save migration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.app }}-cloudflare-migration
+          path: |
+            cloudflare/${{ matrix.app }}/public
+            cloudflare/${{ matrix.app }}/mirror-manifest.txt
+            cloudflare/${{ matrix.app }}/source-sha256.txt
+            cloudflare/${{ matrix.app }}/cloudflare-deploy.txt
+          if-no-files-found: warn

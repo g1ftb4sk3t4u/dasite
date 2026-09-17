@@ -1,0 +1,69 @@
+name: Migrate GitHub Labs to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "labs/rabbit-hole/**"
+      - "labs/worthwise/**"
+      - "cloudflare/rabbit-hole/**"
+      - "cloudflare/worthwise/**"
+      - ".github/workflows/migrate-github-labs-cloudflare.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: rabbit-hole
+            source: labs/rabbit-hole/index.html
+            marker: Rabbit Hole Labs
+          - app: worthwise
+            source: labs/worthwise/index.html
+            marker: WorthWise
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Prepare exact project copy
+        run: |
+          set -euo pipefail
+          app="${{ matrix.app }}"
+          source="${{ matrix.source }}"
+          mkdir -p "cloudflare/$app/public"
+          cp "$source" "cloudflare/$app/public/index.html"
+          python3 - "$app" <<'PY'
+          from pathlib import Path
+          import sys
+          app=sys.argv[1]
+          path=Path(f"cloudflare/{app}/public/index.html")
+          text=path.read_text()
+          text=text.replace('href="../../labs.html"','href="https://www.g1ftb0x.com/labs.html"')
+          path.write_text(text)
+          PY
+          grep -q "${{ matrix.marker }}" "cloudflare/$app/public/index.html"
+          test -s "cloudflare/$app/public/index.html"
+          sha256sum "cloudflare/$app/public/index.html" | tee "cloudflare/$app/source-sha256.txt"
+
+      - name: Deploy temporary Cloudflare preview
+        working-directory: cloudflare/${{ matrix.app }}
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy --temporary 2>&1 | tee cloudflare-deploy.txt
+
+      - name: Save migration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.app }}-cloudflare-migration
+          path: |
+            cloudflare/${{ matrix.app }}/public
+            cloudflare/${{ matrix.app }}/source-sha256.txt
+            cloudflare/${{ matrix.app }}/cloudflare-deploy.txt
+          if-no-files-found: warn

@@ -30,11 +30,17 @@ def local_path(url):
 def enqueue(ref, base):
     if not ref or ref.startswith(('data:', 'mailto:', 'javascript:', '#')) or re.search(r'\s', ref):
         return
+    # Compiled bundles sometimes contain source-code fragments that look like
+    # asset paths to a regex but are not real URLs. Do not mirror those.
+    if any(token in ref for token in ('`', '${', "'+", '"+')) or ref.endswith(('\\', '`')):
+        return
     absolute = urljoin(base, ref)
     parsed = urlparse(absolute)
     if parsed.netloc != origin_host:
         return
     path = parsed.path
+    if any(token in path for token in ('`', '${', '\\')):
+        return
     if path == '/' or path == '/favicon.svg' or path.startswith('/assets/'):
         clean = origin + path
         if clean not in seen:

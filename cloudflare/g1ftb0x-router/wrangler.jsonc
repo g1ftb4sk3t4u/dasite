@@ -10,11 +10,13 @@
     { "pattern": "www.g1ftb0x.com/worthwise*", "zone_name": "g1ftb0x.com" },
     { "pattern": "www.g1ftb0x.com/perfectday*", "zone_name": "g1ftb0x.com" },
     { "pattern": "www.g1ftb0x.com/mysteries*", "zone_name": "g1ftb0x.com" },
+    { "pattern": "www.g1ftb0x.com/fiberlab*", "zone_name": "g1ftb0x.com" },
     { "pattern": "g1ftb0x.com/signalsafe*", "zone_name": "g1ftb0x.com" },
     { "pattern": "g1ftb0x.com/skydex*", "zone_name": "g1ftb0x.com" },
     { "pattern": "g1ftb0x.com/rabbit-hole*", "zone_name": "g1ftb0x.com" },
     { "pattern": "g1ftb0x.com/worthwise*", "zone_name": "g1ftb0x.com" },
     { "pattern": "g1ftb0x.com/perfectday*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/mysteries*", "zone_name": "g1ftb0x.com" }
+    { "pattern": "g1ftb0x.com/mysteries*", "zone_name": "g1ftb0x.com" },
+    { "pattern": "g1ftb0x.com/fiberlab*", "zone_name": "g1ftb0x.com" }
   ]
 }

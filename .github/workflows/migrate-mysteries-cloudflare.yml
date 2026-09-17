@@ -25,7 +25,7 @@ jobs:
           set -euo pipefail
           rm -rf public
           mkdir -p public
-          base64 -d source/mysteries.html.xz.b64 | xz -d > public/index.html
+          cat source/chunk-*.b64 | base64 -d | xz -d > public/index.html
           actual="$(sha256sum public/index.html | awk '{print $1}')"
           expected="d455579a8755b86891a05a47545704c232114778a5db22960c667bd444802d98"
           test "$actual" = "$expected"

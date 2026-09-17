@@ -7,6 +7,14 @@ const PROJECTS = {
     origin: "https://g1ft-skydex.meteor-shark.workers.dev",
     rewriteAssets: true,
   },
+  "/rabbit-hole": {
+    origin: "https://g1ft-rabbit-hole.graceful-pendulum.workers.dev",
+    rewriteAssets: false,
+  },
+  "/worthwise": {
+    origin: "https://g1ft-worthwise.cautious-drive.workers.dev",
+    rewriteAssets: false,
+  },
 };
 
 function matchProject(pathname) {
@@ -30,9 +38,6 @@ export default {
   async fetch(request) {
     const incoming = new URL(request.url);
     const project = matchProject(incoming.pathname);
-
-    // These Worker routes should only be attached to known project paths.
-    // If a broader route is ever configured accidentally, preserve the main origin.
     if (!project) return fetch(request);
 
     let upstreamPath = incoming.pathname.slice(project.prefix.length) || "/";
@@ -57,7 +62,6 @@ export default {
     const outHeaders = new Headers(response.headers);
     outHeaders.set("x-g1ftb0x-router", "1");
 
-    // Keep upstream redirects inside the canonical G1ftB0x path where possible.
     const location = outHeaders.get("location");
     if (location) {
       try {

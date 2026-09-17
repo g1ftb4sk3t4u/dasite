@@ -1,0 +1,32 @@
+name: Apply Retro Cyberpunk Polish
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "retro-polish.css"
+      - "scripts/apply_retro_polish.py"
+      - ".github/workflows/apply-retro-polish.yml"
+  workflow_dispatch:
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Link retro theme
+        run: python3 scripts/apply_retro_polish.py
+
+      - name: Commit linked pages
+        run: |
+          git config user.name "g1ftb0x-site-bot"
+          git config user.email "157822034+g1ftb4sk3t4u@users.noreply.github.com"
+          git add index.html labs.html blog.html about.html resources.html contact.html deadlink/index.html countysignal/index.html posts || true
+          git diff --cached --quiet && exit 0
+          git commit -m "Apply retro cyberpunk theme across G1ftB0x shell"
+          git push origin main

@@ -1,0 +1,53 @@
+name: Migrate Fiber Field Lab to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cloudflare/fiberlab/**"
+      - ".github/workflows/migrate-fiberlab-cloudflare.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Reconstruct and verify owned Fiber Field Lab source
+        working-directory: cloudflare/fiberlab
+        run: |
+          set -euo pipefail
+          rm -rf public
+          mkdir -p public
+          cat source/chunk-*.b64 | base64 -d | xz -d > public/index.html
+          actual="$(sha256sum public/index.html | awk '{print $1}')"
+          expected="79b5ac742c21fd217f2a586e15ef3183012d977c33292cb24242bed8f35a3ca7"
+          test "$actual" = "$expected"
+          test "$(wc -c < public/index.html)" -eq 230080
+          grep -q "OTDR" public/index.html
+          grep -q "SFP & DOM Lab" public/index.html
+          grep -q "Fiber" public/index.html
+          printf '%s  public/index.html\n' "$actual" | tee source-sha256.txt
+
+      - name: Deploy temporary Cloudflare preview
+        working-directory: cloudflare/fiberlab
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy --temporary 2>&1 | tee cloudflare-deploy.txt
+
+      - name: Save migration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fiberlab-cloudflare-migration
+          path: |
+            cloudflare/fiberlab/public
+            cloudflare/fiberlab/source-sha256.txt
+            cloudflare/fiberlab/cloudflare-deploy.txt
+          if-no-files-found: warn

@@ -1,0 +1,28 @@
+name: Promote Mysteries and Fiber
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/promote-mysteries-fiber.yml"
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Update Labs cards
+        run: python3 scripts/promote_mysteries_fiber.py
+      - name: Commit promoted Labs links
+        run: |
+          git config user.name "g1ftb0x-site-bot"
+          git config user.email "157822034+g1ftb4sk3t4u@users.noreply.github.com"
+          git add labs.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Promote Mysteries and Fiber Field Lab"
+          git push origin main

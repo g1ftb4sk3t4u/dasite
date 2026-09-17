@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "g1ftb0x-project-router",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-17",
+  "routes": [
+    { "pattern": "www.g1ftb0x.com/signalsafe*", "zone_name": "g1ftb0x.com" },
+    { "pattern": "www.g1ftb0x.com/skydex*", "zone_name": "g1ftb0x.com" },
+    { "pattern": "g1ftb0x.com/signalsafe*", "zone_name": "g1ftb0x.com" },
+    { "pattern": "g1ftb0x.com/skydex*", "zone_name": "g1ftb0x.com" }
+  ]
+}

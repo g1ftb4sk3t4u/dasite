@@ -15,6 +15,10 @@ const PROJECTS = {
     origin: "https://g1ft-worthwise.cautious-drive.workers.dev",
     rewriteAssets: false,
   },
+  "/perfectday": {
+    origin: "https://g1ft-perfectday.marked-swoop.workers.dev",
+    rewriteAssets: true,
+  },
 };
 
 function matchProject(pathname) {

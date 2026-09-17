@@ -90,7 +90,7 @@ export default {
         const text = await response.text();
         return new Response(rewriteText(text, project.prefix), {
           status: response.status,
-          statusText: response.status.statusText,
+          statusText: response.statusText,
           headers: outHeaders,
         });
       }

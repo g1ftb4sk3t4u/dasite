@@ -1,0 +1,134 @@
+/* G1ftB0x retro-cyberpunk polish — deliberately less generic AI-neon */
+:root{
+  --bg:#070806;
+  --panel:#10120e;
+  --panel2:#171812;
+  --text:#ece9dc;
+  --muted:#aaa491;
+  --cyan:#73e6ad;
+  --blue:#c89b54;
+  --orange:#e5a45c;
+  --line:rgba(115,230,173,.19);
+  --softline:rgba(226,216,184,.10);
+  --shadow:0 22px 60px rgba(0,0,0,.46);
+  --phosphor:#73e6ad;
+  --amber:#d2a15c;
+  --crt:#171811;
+}
+
+body{
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 4px),
+    radial-gradient(circle at 13% -4%,rgba(115,230,173,.075),transparent 29rem),
+    radial-gradient(circle at 88% 8%,rgba(210,161,92,.06),transparent 28rem),
+    #070806;
+  color:var(--text);
+}
+
+.site-nav,nav{
+  background:rgba(7,8,6,.94);
+  border-bottom-color:rgba(115,230,173,.17);
+}
+nav a{color:#c8c3b3}
+nav a:hover,nav a.active{color:var(--phosphor);text-shadow:0 0 8px rgba(115,230,173,.22)}
+
+.hero{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.58),rgba(7,8,6,.18)),
+    repeating-linear-gradient(90deg,transparent 0 79px,rgba(115,230,173,.018) 80px);
+}
+.logo-container .logo{filter:drop-shadow(0 0 14px rgba(115,230,173,.48))}
+.site-title{text-shadow:0 0 12px rgba(115,230,173,.30)}
+.tagline{color:#c8c1ad}
+.home-intro .eyebrow,.labs-eyebrow,.post-kicker{color:var(--phosphor)}
+.section-label{color:#9d9786}.section-label span{background:var(--amber)}
+
+.button-link{border-radius:6px;border-color:rgba(210,161,92,.22);background:rgba(210,161,92,.025)}
+.button-link.primary{background:var(--phosphor);border-color:var(--phosphor);color:#07100b}
+.button-link:hover{box-shadow:0 0 14px rgba(115,230,173,.12)}
+
+/* Homepage cards: give each project breathing room and a more physical terminal-card feel. */
+.home-projects .project-grid,.project-grid{gap:1.55rem}
+.project-card{
+  border-radius:9px;
+  border-color:rgba(198,187,153,.15);
+  background:
+    linear-gradient(180deg,rgba(210,161,92,.025),transparent 34%),
+    linear-gradient(155deg,#151710,#0b0d09);
+  box-shadow:inset 0 1px rgba(255,255,255,.025),0 10px 28px rgba(0,0,0,.24);
+}
+.project-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(115,230,173,.42);
+  box-shadow:0 14px 34px rgba(0,0,0,.34),0 0 16px rgba(115,230,173,.055);
+}
+.project-card h3{color:#efe9d4}
+.project-card p{color:#aaa491}
+
+.workbench-panel{
+  background:
+    radial-gradient(circle at 100% 0,rgba(210,161,92,.10),transparent 18rem),
+    linear-gradient(160deg,#15170f,#0a0c08);
+  border-color:rgba(115,230,173,.22);
+  border-radius:11px;
+}
+.workbench-status{color:var(--phosphor)}
+.status-dot{background:var(--phosphor);box-shadow:0 0 9px rgba(115,230,173,.58)}
+.note-label{color:var(--amber)}
+.workbench-note{border-radius:7px;background:rgba(210,161,92,.018)}
+
+/* Labs: more separation between projects, less wall-of-cards. */
+.lab-grid{gap:1.7rem;row-gap:1.9rem}
+.lab-card{
+  border-radius:11px;
+  border-color:rgba(198,187,153,.14);
+  background:linear-gradient(155deg,#14160f,#090b08);
+  box-shadow:0 9px 25px rgba(0,0,0,.24);
+}
+.lab-card.featured{
+  background:
+    radial-gradient(circle at 90% 0,rgba(210,161,92,.075),transparent 18rem),
+    linear-gradient(155deg,#161910,#090b08);
+  border-color:rgba(115,230,173,.22);
+}
+.lab-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(115,230,173,.38);
+  box-shadow:0 18px 40px rgba(0,0,0,.36),0 0 16px rgba(115,230,173,.045);
+}
+.lab-card h2{color:#eee9d8}
+.lab-card p{color:#a7a18f}
+.lab-icon{border-radius:6px;color:var(--phosphor);background:rgba(115,230,173,.025)}
+.lab-tags span{border-radius:4px;color:#98927f}
+.lab-status{border-radius:4px}
+.lab-action{color:var(--phosphor)}
+.labs-hero h1 span{background:linear-gradient(90deg,var(--phosphor),var(--amber));background-clip:text;-webkit-background-clip:text}
+.labs-controls input,.lab-filters button{border-radius:6px}
+.lab-filters button.active,.lab-filters button:hover{background:var(--phosphor);border-color:var(--phosphor);color:#07100b}
+.lab-preview{border-bottom-color:rgba(115,230,173,.14)}
+.lab-preview::before{
+  background:
+    linear-gradient(90deg,rgba(115,230,173,.09) 1px,transparent 1px),
+    linear-gradient(rgba(210,161,92,.055) 1px,transparent 1px);
+  background-size:48px 48px;
+  opacity:.10;
+}
+.lab-preview-live::after{color:#b6efce;border-color:rgba(115,230,173,.20);border-radius:2px}
+.lab-manifesto{border-radius:10px;background:linear-gradient(120deg,rgba(115,230,173,.025),rgba(210,161,92,.025))}
+
+/* Blog + content surfaces inherit the same older-terminal materials. */
+.blog-header,.blog-archive,.blog-post,.blog-post-content{
+  background:linear-gradient(160deg,#151710,#0b0d09);
+  border-color:rgba(198,187,153,.16);
+  border-radius:9px;
+}
+.blog-header h2,.blog-archive h3,.blog-post h2,.blog-post h2 a,.blog-post a,.blog-post-content h2,.blog-post-content h3{color:#d7b77e}
+.blog-section-title{border-left-color:var(--phosphor);background:rgba(17,20,13,.72)}
+.section-tag{background:var(--phosphor);color:#07100b}
+.read-more{border-color:var(--amber)}
+.blog-post-content pre,.blog-post-content ul,.blog-post-content ol{background:#090a07;border-color:rgba(115,230,173,.14);border-radius:5px}
+
+footer{background:#050604;border-top-color:rgba(210,161,92,.10)}
+
+@media(max-width:900px){.lab-grid{gap:1.35rem;row-gap:1.55rem}}
+@media(max-width:620px){.project-grid,.home-projects .project-grid,.lab-grid{gap:1.25rem}}

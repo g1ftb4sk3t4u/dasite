@@ -7,6 +7,7 @@ const PROJECTS = {
   "/mysteries": { binding: "MYSTERIES", rewriteAssets: false, name: "Mysteries of Knowledge", shortName: "Mysteries" },
   "/fiberlab": { binding: "FIBERLAB", rewriteAssets: false, name: "Fiber Field Lab", shortName: "FiberLab" },
   "/ripple": { binding: "RIPPLE", rewriteAssets: false, name: "Ripple", shortName: "Ripple" },
+  "/intel3000": { origin: "http://intel3000.g1ftb0x.com:3000", rewriteAssets: false, name: "Intel Terminal 3000", shortName: "Intel3000" },
 };
 
 function matchProject(pathname) {
@@ -106,9 +107,38 @@ function registrationResponse(project) {
   });
 }
 
+async function proxyIntelRoot(request, incoming) {
+  const upstream = new URL("http://intel3000.g1ftb0x.com:3000");
+  upstream.pathname = incoming.pathname;
+  upstream.search = incoming.search;
+
+  const headers = new Headers(request.headers);
+  headers.set("host", upstream.host);
+  headers.set("x-forwarded-proto", "https");
+  headers.set("x-g1ftb0x-project", "intel3000");
+
+  const upstreamRequest = new Request(upstream.toString(), {
+    method: request.method,
+    headers,
+    body: ["GET", "HEAD"].includes(request.method) ? undefined : request.body,
+    redirect: "manual",
+  });
+
+  return fetch(upstreamRequest);
+}
+
 export default {
   async fetch(request, env) {
     const incoming = new URL(request.url);
+
+    if (
+      incoming.pathname === "/api" ||
+      incoming.pathname.startsWith("/api/") ||
+      incoming.pathname === "/ws"
+    ) {
+      return proxyIntelRoot(request, incoming);
+    }
+
     const project = matchProject(incoming.pathname);
     if (!project) return fetch(request);
 

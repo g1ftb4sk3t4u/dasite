@@ -1,6 +1,6 @@
 name: Deploy G1ftB0x Project Router
 
-# redeploy-after-token-permission-update
+# redeploy-after-zone-route-permission-update
 on:
   push:
     branches: [main]

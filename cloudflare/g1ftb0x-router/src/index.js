@@ -1,6 +1,6 @@
 const PROJECTS = {
-  "/signalsafe": { origin: "https://g1ft-signalsafe.skillful-jam.workers.dev", rewriteAssets: false, name: "SignalSafe", shortName: "SignalSafe" },
-  "/skydex": { origin: "https://g1ft-skydex.meteor-shark.workers.dev", rewriteAssets: true, name: "SkyDex", shortName: "SkyDex" },
+  "/signalsafe": { binding: "SIGNALSAFE", rewriteAssets: false, name: "SignalSafe", shortName: "SignalSafe" },
+  "/skydex": { binding: "SKYDEX", rewriteAssets: true, name: "SkyDex", shortName: "SkyDex" },
   "/rabbit-hole": { binding: "RABBITHOLE", rewriteAssets: false, name: "Rabbit Hole", shortName: "Rabbit Hole" },
   "/worthwise": { binding: "WORTHWISE", rewriteAssets: false, name: "WorthWise", shortName: "WorthWise" },
   "/perfectday": { binding: "PERFECTDAY", rewriteAssets: true, name: "PerfectDay Atlas", shortName: "PerfectDay" },

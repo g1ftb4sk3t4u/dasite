@@ -1,0 +1,71 @@
+name: Deploy SignalSafe and SkyDex Production
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "labs/signalsafe/**"
+      - "cloudflare/signalsafe/**"
+      - "cloudflare/skydex/**"
+      - "scripts/mirror_gpt_site.py"
+      - ".github/workflows/deploy-signalsafe-skydex-production.yml"
+  workflow_dispatch:
+
+jobs:
+  signalsafe:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Prepare SignalSafe
+        run: |
+          set -euo pipefail
+          rm -rf cloudflare/signalsafe/public
+          mkdir -p cloudflare/signalsafe/public
+          cp labs/signalsafe/index.html cloudflare/signalsafe/public/index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("cloudflare/signalsafe/public/index.html")
+          s=p.read_text()
+          s=s.replace('href="../../labs.html"', 'href="https://www.g1ftb0x.com/labs.html"')
+          p.write_text(s)
+          PY
+          grep -q "SignalSafe" cloudflare/signalsafe/public/index.html
+          sha256sum cloudflare/signalsafe/public/index.html | tee cloudflare/signalsafe/source-sha256.txt
+
+      - name: Deploy permanent SignalSafe Worker
+        working-directory: cloudflare/signalsafe
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 deploy
+
+  skydex:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Mirror current SkyDex preview
+        run: |
+          set -euo pipefail
+          rm -rf cloudflare/skydex/public
+          mkdir -p cloudflare/skydex/public
+          python3 scripts/mirror_gpt_site.py             "https://g1ft-skydex.meteor-shark.workers.dev"             "cloudflare/skydex/public"             "cloudflare/skydex/mirror-manifest.txt"             "SkyDex"             "100000"
+          sha256sum cloudflare/skydex/public/index.html | tee cloudflare/skydex/source-sha256.txt
+
+      - name: Deploy permanent SkyDex Worker
+        working-directory: cloudflare/skydex
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 deploy

@@ -1,6 +1,5 @@
-name: Migrate Ripple to Cloudflare
+name: Deploy Ripple to Cloudflare
 
-# refresh-claim-link: 2026-09-17b
 on:
   push:
     branches: [main]
@@ -36,17 +35,20 @@ jobs:
           grep -q "Pass It Forward" public/index.html
           printf '%s  public/index.html\n' "$actual" | tee source-sha256.txt
 
-      - name: Deploy temporary Cloudflare preview
+      - name: Deploy permanent Ripple Worker
         working-directory: cloudflare/ripple
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -o pipefail
-          npx --yes wrangler@4 deploy --temporary 2>&1 | tee cloudflare-deploy.txt
+          npx --yes wrangler@4 deploy 2>&1 | tee cloudflare-deploy.txt
 
-      - name: Save migration evidence
+      - name: Save deployment evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ripple-cloudflare-migration
+          name: ripple-cloudflare-production
           path: |
             cloudflare/ripple/public
             cloudflare/ripple/source-sha256.txt

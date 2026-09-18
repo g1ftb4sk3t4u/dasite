@@ -1,5 +1,6 @@
 name: Migrate Fiber Field Lab to Cloudflare
 
+# refresh-claim-link: 2026-09-17
 on:
   push:
     branches: [main]
@@ -33,7 +34,8 @@ jobs:
           grep -q "OTDR" public/index.html
           grep -q "SFP & DOM Lab" public/index.html
           grep -q "Fiber" public/index.html
-          printf '%s  public/index.html\n' "$actual" | tee source-sha256.txt
+          printf '%s  public/index.html
+' "$actual" | tee source-sha256.txt
 
       - name: Deploy temporary Cloudflare preview
         working-directory: cloudflare/fiberlab

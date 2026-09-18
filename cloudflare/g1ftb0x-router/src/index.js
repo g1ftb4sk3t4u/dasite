@@ -7,7 +7,7 @@ const PROJECTS = {
   "/mysteries": { binding: "MYSTERIES", rewriteAssets: false, name: "Mysteries of Knowledge", shortName: "Mysteries" },
   "/fiberlab": { binding: "FIBERLAB", rewriteAssets: false, name: "Fiber Field Lab", shortName: "FiberLab" },
   "/ripple": { binding: "RIPPLE", rewriteAssets: false, name: "Ripple", shortName: "Ripple" },
-  "/intel3000": { origin: "http://intel3000.g1ftb0x.com:3000", rewriteAssets: false, name: "Intel Terminal 3000", shortName: "Intel3000" },
+  "/intel3000": { binding: "INTEL3000", rewriteAssets: false, name: "Intel Terminal 3000", shortName: "Intel3000" },
 };
 
 function matchProject(pathname) {

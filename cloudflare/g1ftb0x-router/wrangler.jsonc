@@ -8,6 +8,10 @@
     "binding": "ASSETS",
     "run_worker_first": true
   },
+  "services": [
+    { "binding": "PERFECTDAY", "service": "g1ft-perfectday" },
+    { "binding": "FIBERLAB", "service": "g1ft-fiberlab" }
+  ],
   "routes": [
     { "pattern": "www.g1ftb0x.com/signalsafe*", "zone_name": "g1ftb0x.com" },
     { "pattern": "www.g1ftb0x.com/skydex*", "zone_name": "g1ftb0x.com" },

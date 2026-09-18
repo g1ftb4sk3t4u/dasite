@@ -38,13 +38,7 @@ function injectPwa(text, project) {
 <meta data-g1ft-pwa name="mobile-web-app-capable" content="yes">
 <meta data-g1ft-pwa name="apple-mobile-web-app-capable" content="yes">
 <meta data-g1ft-pwa name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<script data-g1ft-pwa>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("${project.prefix}/sw.js", { scope: "${project.prefix}/" }).catch(() => {});
-  });
-}
-</script>`;
+<script data-g1ft-pwa src="${project.prefix}/pwa/register.js" defer></script>`;
   const headEnd = text.search(/<\/head\s*>/i);
   if (headEnd >= 0) return text.slice(0, headEnd) + block + text.slice(headEnd);
   return block + text;
@@ -75,9 +69,8 @@ function manifestResponse(project) {
 }
 
 function serviceWorkerResponse(project) {
-  const source = `const PROJECT_SCOPE = "${project.prefix}/";
-self.addEventListener("install", event => { self.skipWaiting(); });
-self.addEventListener("activate", event => { event.waitUntil(self.clients.claim()); });
+  const source = `self.addEventListener("install", () => self.skipWaiting());
+self.addEventListener("activate", event => event.waitUntil(self.clients.claim()));
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
   event.respondWith((async () => {
@@ -99,6 +92,20 @@ self.addEventListener("fetch", event => {
   });
 }
 
+function registrationResponse(project) {
+  const source = `if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("${project.prefix}/sw.js", { scope: "${project.prefix}/" }).catch(() => {});
+  });
+}`;
+  return new Response(source, {
+    headers: {
+      "content-type": "application/javascript; charset=utf-8",
+      "cache-control": "public, max-age=3600"
+    }
+  });
+}
+
 export default {
   async fetch(request, env) {
     const incoming = new URL(request.url);
@@ -109,6 +116,7 @@ export default {
 
     if (relativePath === "/manifest.webmanifest") return manifestResponse(project);
     if (relativePath === "/sw.js") return serviceWorkerResponse(project);
+    if (relativePath === "/pwa/register.js") return registrationResponse(project);
 
     if (relativePath.startsWith("/pwa/")) {
       return env.ASSETS.fetch(request);

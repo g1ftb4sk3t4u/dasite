@@ -1,6 +1,6 @@
 name: Migrate Ripple to Cloudflare
 
-# refresh-claim-link: 2026-09-17
+# refresh-claim-link: 2026-09-17b
 on:
   push:
     branches: [main]
@@ -34,8 +34,7 @@ jobs:
           grep -q "Daily Kindness Generator" public/index.html
           grep -q "Appreciation Note Studio" public/index.html
           grep -q "Pass It Forward" public/index.html
-          printf '%s  public/index.html
-' "$actual" | tee source-sha256.txt
+          printf '%s  public/index.html\n' "$actual" | tee source-sha256.txt
 
       - name: Deploy temporary Cloudflare preview
         working-directory: cloudflare/ripple

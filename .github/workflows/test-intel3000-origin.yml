@@ -1,0 +1,25 @@
+name: Test Intel3000 Origin
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/test-intel3000-origin.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Intel3000 frontend and API
+        run: |
+          set -euo pipefail
+          curl --fail --show-error --silent --max-time 15             -o /tmp/intel-home.html             -D /tmp/intel-home.headers             http://intel3000.g1ftb0x.com:3000/
+          grep -qi "Intel Terminal 3000" /tmp/intel-home.html
+          curl --fail --show-error --silent --max-time 15             http://intel3000.g1ftb0x.com:3000/api/stats             -o /tmp/intel-stats.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/intel-stats.json','r',encoding='utf-8') as f:
+              json.load(f)
+          print("Intel3000 origin frontend + API reachable")
+          PY

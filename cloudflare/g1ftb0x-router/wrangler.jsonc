@@ -40,6 +40,10 @@
     {
       "binding": "RIPPLE",
       "service": "g1ft-ripple"
+    },
+    {
+      "binding": "INTEL3000",
+      "service": "g1ft-intel3000"
     }
   ],
   "routes": [

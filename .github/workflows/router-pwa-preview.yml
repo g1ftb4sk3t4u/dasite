@@ -38,7 +38,7 @@ jobs:
         working-directory: cloudflare/g1ftb0x-router
         run: |
           set -o pipefail
-          npx wrangler deploy --temporary 2>&1 | tee router-preview.txt
+          npx wrangler deploy --temporary --config wrangler.preview.jsonc 2>&1 | tee router-preview.txt
 
       - name: Save preview evidence
         if: always()

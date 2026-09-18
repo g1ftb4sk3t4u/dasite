@@ -1,12 +1,12 @@
 const PROJECTS = {
   "/signalsafe": { origin: "https://g1ft-signalsafe.skillful-jam.workers.dev", rewriteAssets: false, name: "SignalSafe", shortName: "SignalSafe" },
   "/skydex": { origin: "https://g1ft-skydex.meteor-shark.workers.dev", rewriteAssets: true, name: "SkyDex", shortName: "SkyDex" },
-  "/rabbit-hole": { origin: "https://g1ft-rabbit-hole.graceful-pendulum.workers.dev", rewriteAssets: false, name: "Rabbit Hole", shortName: "Rabbit Hole" },
-  "/worthwise": { origin: "https://g1ft-worthwise.cautious-drive.workers.dev", rewriteAssets: false, name: "WorthWise", shortName: "WorthWise" },
+  "/rabbit-hole": { binding: "RABBITHOLE", rewriteAssets: false, name: "Rabbit Hole", shortName: "Rabbit Hole" },
+  "/worthwise": { binding: "WORTHWISE", rewriteAssets: false, name: "WorthWise", shortName: "WorthWise" },
   "/perfectday": { binding: "PERFECTDAY", rewriteAssets: true, name: "PerfectDay Atlas", shortName: "PerfectDay" },
-  "/mysteries": { origin: "https://g1ft-mysteries.spangled-watch.workers.dev", rewriteAssets: false, name: "Mysteries of Knowledge", shortName: "Mysteries" },
+  "/mysteries": { binding: "MYSTERIES", rewriteAssets: false, name: "Mysteries of Knowledge", shortName: "Mysteries" },
   "/fiberlab": { binding: "FIBERLAB", rewriteAssets: false, name: "Fiber Field Lab", shortName: "FiberLab" },
-  "/ripple": { origin: "https://g1ft-ripple.scrawny-dragonfruit.workers.dev", rewriteAssets: false, name: "Ripple", shortName: "Ripple" },
+  "/ripple": { binding: "RIPPLE", rewriteAssets: false, name: "Ripple", shortName: "Ripple" },
 };
 
 function matchProject(pathname) {

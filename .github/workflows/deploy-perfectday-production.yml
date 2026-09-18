@@ -1,0 +1,51 @@
+name: Deploy PerfectDay Production
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cloudflare/perfectday/**"
+      - "scripts/mirror_gpt_site.py"
+      - ".github/workflows/deploy-perfectday-production.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Mirror and verify PerfectDay Atlas
+        run: |
+          set -euo pipefail
+          rm -rf cloudflare/perfectday/public
+          mkdir -p cloudflare/perfectday/public
+          python3 scripts/mirror_gpt_site.py             "https://perfectday-atlas.g1ft.chatgpt.site"             "cloudflare/perfectday/public"             "cloudflare/perfectday/mirror-manifest.txt"             "PerfectDay"             "50000"
+          sha256sum cloudflare/perfectday/public/index.html | tee cloudflare/perfectday/source-sha256.txt
+
+      - name: Deploy permanent PerfectDay Worker
+        working-directory: cloudflare/perfectday
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy 2>&1 | tee cloudflare-deploy.txt
+
+      - name: Save deployment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perfectday-cloudflare-production
+          path: |
+            cloudflare/perfectday/public
+            cloudflare/perfectday/mirror-manifest.txt
+            cloudflare/perfectday/source-sha256.txt
+            cloudflare/perfectday/cloudflare-deploy.txt
+          if-no-files-found: warn

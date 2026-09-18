@@ -9,11 +9,13 @@
     "run_worker_first": true
   },
   "services": [
-    { "binding": "PERFECTDAY", "service": "g1ft-perfectday" },
-    { "binding": "FIBERLAB", "service": "g1ft-fiberlab" },
+    { "binding": "SIGNALSAFE", "service": "g1ft-signalsafe" },
+    { "binding": "SKYDEX", "service": "g1ft-skydex" },
     { "binding": "RABBITHOLE", "service": "g1ft-rabbit-hole" },
     { "binding": "WORTHWISE", "service": "g1ft-worthwise" },
+    { "binding": "PERFECTDAY", "service": "g1ft-perfectday" },
     { "binding": "MYSTERIES", "service": "g1ft-mysteries" },
+    { "binding": "FIBERLAB", "service": "g1ft-fiberlab" },
     { "binding": "RIPPLE", "service": "g1ft-ripple" }
   ],
   "routes": [

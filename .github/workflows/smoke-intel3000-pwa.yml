@@ -1,0 +1,50 @@
+name: Smoke Test Intel3000 PWA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/smoke-intel3000-pwa.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify public Intel3000 PWA
+        run: |
+          set -euo pipefail
+
+          curl --fail --show-error --silent --max-time 20             https://g1ftb0x.com/intel3000/ -o /tmp/home.html
+          grep -qi "Intel Terminal 3000" /tmp/home.html
+          grep -q 'data-g1ft-pwa' /tmp/home.html
+          grep -q '/intel3000/manifest.webmanifest' /tmp/home.html
+
+          curl --fail --show-error --silent --max-time 20             https://g1ftb0x.com/intel3000/styles.css -o /tmp/styles.css
+          test "$(wc -c < /tmp/styles.css)" -gt 500
+
+          curl --fail --show-error --silent --max-time 20             https://g1ftb0x.com/intel3000/manifest.webmanifest -o /tmp/manifest.json
+          python3 - <<'PY'
+          import json
+          m=json.load(open('/tmp/manifest.json'))
+          assert m['name'] == 'Intel Terminal 3000'
+          assert m['start_url'] == '/intel3000/'
+          assert m['scope'] == '/intel3000/'
+          assert m['display'] == 'standalone'
+          assert any(i.get('sizes') == '192x192' for i in m['icons'])
+          assert any(i.get('sizes') == '512x512' for i in m['icons'])
+          PY
+
+          curl --fail --show-error --silent --max-time 20             https://g1ftb0x.com/intel3000/pwa/icon-192.png -o /tmp/icon.png
+          python3 - <<'PY'
+          b=open('/tmp/icon.png','rb').read(8)
+          assert b == b'\x89PNG\r\n\x1a\n'
+          PY
+
+          curl --fail --show-error --silent --max-time 20             https://g1ftb0x.com/api/stats -o /tmp/stats.json
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/stats.json'))
+          assert isinstance(data, dict)
+          print("Intel3000 HTTPS frontend, PWA assets, and Linode API are all healthy.")
+          PY

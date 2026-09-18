@@ -1,0 +1,53 @@
+name: G1ftB0x Router PWA Preview
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cloudflare/g1ftb0x-router/**"
+      - ".github/workflows/router-pwa-preview.yml"
+  workflow_dispatch:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: cloudflare/g1ftb0x-router/package-lock.json
+
+      - name: Install router dependencies
+        working-directory: cloudflare/g1ftb0x-router
+        run: npm install
+
+      - name: Build PWA assets
+        working-directory: cloudflare/g1ftb0x-router
+        run: |
+          npm run build:pwa
+          test -f public/signalsafe/pwa/icon-192.png
+          test -f public/signalsafe/pwa/icon-512.png
+          test -f public/skydex/pwa/icon-192.png
+          test -f public/ripple/pwa/icon-512.png
+
+      - name: Deploy temporary router preview
+        working-directory: cloudflare/g1ftb0x-router
+        run: |
+          set -o pipefail
+          npx wrangler deploy --temporary 2>&1 | tee router-preview.txt
+
+      - name: Save preview evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1ftb0x-router-pwa-preview
+          path: |
+            cloudflare/g1ftb0x-router/public
+            cloudflare/g1ftb0x-router/router-preview.txt
+          if-no-files-found: warn

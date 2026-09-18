@@ -1,0 +1,61 @@
+name: Deploy Intel3000 Frontend
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "cloudflare/intel3000/**"
+      - ".github/workflows/deploy-intel3000-frontend.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout G1ftB0x
+        uses: actions/checkout@v4
+
+      - name: Checkout Intel3000 source
+        uses: actions/checkout@v4
+        with:
+          repository: g1ftb4sk3t4u/intel-terminal3000
+          path: _intel3000_source
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Prepare frontend-only build
+        run: |
+          set -euo pipefail
+          rm -rf cloudflare/intel3000/public
+          mkdir -p cloudflare/intel3000/public
+          cp -a _intel3000_source/intel-terminal3000/frontend/. cloudflare/intel3000/public/
+          test -s cloudflare/intel3000/public/index.html
+          grep -qi "Intel Terminal 3000" cloudflare/intel3000/public/index.html
+          test -s cloudflare/intel3000/public/app-base.js
+          grep -q "window.API_BASE" cloudflare/intel3000/public/app-base.js
+          sha256sum cloudflare/intel3000/public/index.html | tee cloudflare/intel3000/source-sha256.txt
+
+      - name: Deploy permanent Intel3000 frontend Worker
+        working-directory: cloudflare/intel3000
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy 2>&1 | tee cloudflare-deploy.txt
+
+      - name: Save deployment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: intel3000-frontend-cloudflare-production
+          path: |
+            cloudflare/intel3000/source-sha256.txt
+            cloudflare/intel3000/cloudflare-deploy.txt
+          if-no-files-found: warn

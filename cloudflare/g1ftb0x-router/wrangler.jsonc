@@ -10,7 +10,11 @@
   },
   "services": [
     { "binding": "PERFECTDAY", "service": "g1ft-perfectday" },
-    { "binding": "FIBERLAB", "service": "g1ft-fiberlab" }
+    { "binding": "FIBERLAB", "service": "g1ft-fiberlab" },
+    { "binding": "RABBITHOLE", "service": "g1ft-rabbit-hole" },
+    { "binding": "WORTHWISE", "service": "g1ft-worthwise" },
+    { "binding": "MYSTERIES", "service": "g1ft-mysteries" },
+    { "binding": "RIPPLE", "service": "g1ft-ripple" }
   ],
   "routes": [
     { "pattern": "www.g1ftb0x.com/signalsafe*", "zone_name": "g1ftb0x.com" },

@@ -3,9 +3,9 @@ const PROJECTS = {
   "/skydex": { origin: "https://g1ft-skydex.meteor-shark.workers.dev", rewriteAssets: true, name: "SkyDex", shortName: "SkyDex" },
   "/rabbit-hole": { origin: "https://g1ft-rabbit-hole.graceful-pendulum.workers.dev", rewriteAssets: false, name: "Rabbit Hole", shortName: "Rabbit Hole" },
   "/worthwise": { origin: "https://g1ft-worthwise.cautious-drive.workers.dev", rewriteAssets: false, name: "WorthWise", shortName: "WorthWise" },
-  "/perfectday": { origin: "https://g1ft-perfectday.smiling-reply.workers.dev", rewriteAssets: true, name: "PerfectDay Atlas", shortName: "PerfectDay" },
+  "/perfectday": { binding: "PERFECTDAY", rewriteAssets: true, name: "PerfectDay Atlas", shortName: "PerfectDay" },
   "/mysteries": { origin: "https://g1ft-mysteries.spangled-watch.workers.dev", rewriteAssets: false, name: "Mysteries of Knowledge", shortName: "Mysteries" },
-  "/fiberlab": { origin: "https://g1ft-fiberlab.coconut-rudbeckia.workers.dev", rewriteAssets: false, name: "Fiber Field Lab", shortName: "FiberLab" },
+  "/fiberlab": { binding: "FIBERLAB", rewriteAssets: false, name: "Fiber Field Lab", shortName: "FiberLab" },
   "/ripple": { origin: "https://g1ft-ripple.scrawny-dragonfruit.workers.dev", rewriteAssets: false, name: "Ripple", shortName: "Ripple" },
 };
 
@@ -124,12 +124,12 @@ export default {
 
     let upstreamPath = relativePath;
     if (!upstreamPath.startsWith("/")) upstreamPath = "/" + upstreamPath;
-    const upstream = new URL(project.origin);
+    const upstream = new URL(project.origin || "https://g1ftb0x-service.internal");
     upstream.pathname = upstreamPath;
     upstream.search = incoming.search;
 
     const headers = new Headers(request.headers);
-    headers.set("host", upstream.host);
+    if (project.origin) headers.set("host", upstream.host);
     headers.set("x-g1ftb0x-project", project.slug);
 
     const upstreamRequest = new Request(upstream.toString(), {
@@ -139,15 +139,17 @@ export default {
       redirect: "manual",
     });
 
-    const response = await fetch(upstreamRequest);
+    const response = project.binding
+      ? await env[project.binding].fetch(upstreamRequest)
+      : await fetch(upstreamRequest);
     const outHeaders = new Headers(response.headers);
     outHeaders.set("x-g1ftb0x-router", "1");
 
     const location = outHeaders.get("location");
     if (location) {
       try {
-        const target = new URL(location, project.origin);
-        if (target.origin === project.origin) outHeaders.set("location", project.prefix + target.pathname + target.search + target.hash);
+        const target = new URL(location, upstream);
+        if (target.origin === upstream.origin) outHeaders.set("location", project.prefix + target.pathname + target.search + target.hash);
       } catch {}
     }
 

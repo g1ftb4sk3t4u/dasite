@@ -9,31 +9,130 @@
     "run_worker_first": true
   },
   "services": [
-    { "binding": "SIGNALSAFE", "service": "g1ft-signalsafe" },
-    { "binding": "SKYDEX", "service": "g1ft-skydex" },
-    { "binding": "RABBITHOLE", "service": "g1ft-rabbit-hole" },
-    { "binding": "WORTHWISE", "service": "g1ft-worthwise" },
-    { "binding": "PERFECTDAY", "service": "g1ft-perfectday" },
-    { "binding": "MYSTERIES", "service": "g1ft-mysteries" },
-    { "binding": "FIBERLAB", "service": "g1ft-fiberlab" },
-    { "binding": "RIPPLE", "service": "g1ft-ripple" }
+    {
+      "binding": "SIGNALSAFE",
+      "service": "g1ft-signalsafe"
+    },
+    {
+      "binding": "SKYDEX",
+      "service": "g1ft-skydex"
+    },
+    {
+      "binding": "RABBITHOLE",
+      "service": "g1ft-rabbit-hole"
+    },
+    {
+      "binding": "WORTHWISE",
+      "service": "g1ft-worthwise"
+    },
+    {
+      "binding": "PERFECTDAY",
+      "service": "g1ft-perfectday"
+    },
+    {
+      "binding": "MYSTERIES",
+      "service": "g1ft-mysteries"
+    },
+    {
+      "binding": "FIBERLAB",
+      "service": "g1ft-fiberlab"
+    },
+    {
+      "binding": "RIPPLE",
+      "service": "g1ft-ripple"
+    }
   ],
   "routes": [
-    { "pattern": "www.g1ftb0x.com/signalsafe*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "www.g1ftb0x.com/skydex*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "www.g1ftb0x.com/rabbit-hole*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "www.g1ftb0x.com/worthwise*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "www.g1ftb0x.com/perfectday*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "www.g1ftb0x.com/mysteries*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "www.g1ftb0x.com/fiberlab*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "www.g1ftb0x.com/ripple*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/signalsafe*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/skydex*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/rabbit-hole*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/worthwise*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/perfectday*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/mysteries*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/fiberlab*", "zone_name": "g1ftb0x.com" },
-    { "pattern": "g1ftb0x.com/ripple*", "zone_name": "g1ftb0x.com" }
+    {
+      "pattern": "www.g1ftb0x.com/signalsafe*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/skydex*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/rabbit-hole*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/worthwise*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/perfectday*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/mysteries*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/fiberlab*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/ripple*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/signalsafe*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/skydex*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/rabbit-hole*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/worthwise*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/perfectday*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/mysteries*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/fiberlab*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/ripple*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/intel3000*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/api*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "www.g1ftb0x.com/ws*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/intel3000*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/api*",
+      "zone_name": "g1ftb0x.com"
+    },
+    {
+      "pattern": "g1ftb0x.com/ws*",
+      "zone_name": "g1ftb0x.com"
+    }
+  ],
+  "compatibility_flags": [
+    "allow_custom_ports"
   ]
 }

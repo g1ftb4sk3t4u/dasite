@@ -1,8 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
-const root = new URL("..", import.meta.url);
 const sourceDir = new URL("../icon-src/", import.meta.url);
 const publicDir = new URL("../public/", import.meta.url);
 
@@ -21,10 +21,11 @@ for (const file of entries) {
   await fs.writeFile(new URL("icon.svg", out), svg);
 
   for (const size of [192, 512]) {
+    const target = fileURLToPath(new URL(`icon-${size}.png`, out));
     await sharp(svg)
       .resize(size, size, { fit: "contain" })
       .png({ compressionLevel: 9, palette: true, colours: 128 })
-      .toFile(new URL(`icon-${size}.png`, out));
+      .toFile(target);
   }
 
   console.log(`Built PWA icons for ${slug}`);

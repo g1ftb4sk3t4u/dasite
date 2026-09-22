@@ -161,3 +161,10 @@ body.blog-theme .site-nav a.active{color:#42deff;text-shadow:0 0 10px rgba(52,21
   .topic-pill,.hub-card,.hub-button{transition:none!important}
   .topic-pill:hover{transform:none}
 }
+
+.category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.1rem;margin-top:1.1rem}
+.category-card{--cat:#34d8ff;border:1px solid color-mix(in srgb,var(--cat) 36%,transparent);border-radius:13px;background:linear-gradient(155deg,#081722,#040d14);padding:1.05rem;display:flex;flex-direction:column;min-height:210px}
+.category-card.ai{--cat:#b678ff}.category-card.security{--cat:#ff6269}.category-card.general{--cat:#38d9ff}
+.category-card .card-kicker{color:var(--cat);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+.category-card h2{font-size:1.18rem;line-height:1.2;margin:.65rem 0}.category-card h2 a{color:#effcff;text-decoration:none}
+.category-card p{color:#91a8b2;font-size:.84rem;line-height:1.55}.category-card .card-meta{margin-top:auto;padding-top:.8rem;color:#688d9b;font-size:.7rem}

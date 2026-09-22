@@ -1,41 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="G1FTB0X field notes: AI, cybersecurity, networking, science, automation and project writeups."><title>Field Notes | G1FTB0X</title><link rel="stylesheet" href="style.css"><link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"></head>
-  <link href="retro-polish.css" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="G1ftB0x Blog Hub — general field notes plus AI, security, GEO, weather, music, science, ham radio and IT.">
+  <title>Blog Hub | G1ftB0x Labs</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="blog-hub.css">
+  <link rel="stylesheet" href="retro-polish.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
 <body>
 <nav class="site-nav"><a href="index.html">Home</a><a href="labs.html">Labs</a><a href="blog.html" class="active">Blog</a><a href="resources.html">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-<main class="blog-container">
-  <section class="blog-header"><div class="post-kicker">G1FTB0X // FIELD NOTES</div><h2>What I’m building, what I’m learning, and what is worth digging into.</h2><p>AI, cyber security, networking, science, automation and notes from things being built inside G1ft Labs. Some posts are tutorials, some are project logs, and some are just rabbit holes worth sharing.</p></section>
 
-  <section class="blog-section"><div class="blog-section-title"><h3>Latest</h3><span class="section-tag">Current</span></div><div class="blog-posts">
-    <article class="blog-post"><h2><a href="posts/ai-and-automation/disposable-ai-cloud-labs.html"><span class="fresh-tag">NEW</span>Disposable AI Cloud Labs: Test More, Spend Less</a></h2><p class="post-date">September 17, 2026</p><p>Using AI to spin up Docker containers and temporary cloud VMs, test an idea hard, save the working recipe, and tear the infrastructure back down before another experiment becomes a permanent bill.</p><a class="read-more" href="posts/ai-and-automation/disposable-ai-cloud-labs.html">Read field notes</a></article>
-    <article class="blog-post"><h2><a href="posts/ai-and-automation/building-ai-websites-without-spending-a-fortune.html">How I’m Building AI-Powered Websites Without Spending a Fortune</a></h2><p class="post-date">September 17, 2026</p><p>The workflow I’m using to prototype with AI, keep finished projects in private GitHub repos, deploy through Cloudflare, and give them their own G1ft Labs homes without turning every experiment into another monthly bill.</p><a class="read-more" href="posts/ai-and-automation/building-ai-websites-without-spending-a-fortune.html">Read field notes</a></article>
-    <article class="blog-post"><h2><a href="posts/ai-and-automation/weekly-august-19-2026.html">AI, Cyber, Science & Internet Digest — Aug 19, 2026</a></h2><p class="post-date">August 19, 2026</p><p>Frontier cyber-capable AI, Apple’s Screen Sharing authentication patch, Curiosity’s huge field of Martian polygon fractures, the new IETF NOC lead, and the control-plane problem surrounding advanced cyber models.</p><a class="read-more" href="posts/ai-and-automation/weekly-august-19-2026.html">Read field notes</a></article>
-    <article class="blog-post"><h2><a href="posts/ai-and-automation/weekly-april-week2.html">Weekly AI & Tech Digest — Apr 14, 2026</a></h2><p class="post-date">April 14, 2026</p><p>Long-context model gains, practical agent workflows, patch discipline, AI-assisted research pipelines, and in-browser AI momentum.</p><a class="read-more" href="posts/ai-and-automation/weekly-april-week2.html">Read digest</a></article>
-    <article class="blog-post"><h2><a href="posts/ai-and-automation/weekly-april-week1.html">Weekly AI & Tech Digest — Apr 7, 2026</a></h2><p class="post-date">April 7, 2026</p><p>Agentic coding tools, browser security, open models, launch systems and WebGPU.</p><a class="read-more" href="posts/ai-and-automation/weekly-april-week1.html">Read digest</a></article>
-  </div></section>
+<main class="blog-hub">
+  <section class="hub-hero">
+    <div class="hub-eyebrow">G1FTB0X // BLOG HUB</div>
+    <h1><span>Blog Hub</span></h1>
+    <p>General thoughts, deep dives, tutorials, weather adventures, field photos, network notes and specialized posts across the things I’m curious about.</p>
+    <div class="hub-search"><input id="blogSearch" type="search" placeholder="Search posts, topics, or ideas…" aria-label="Search blog cards"></div>
+  </section>
 
-  <section class="blog-section"><div class="blog-section-title"><h3>Archive</h3><span class="section-tag">2026</span></div><div class="blog-archive"><ul class="archive-list">
-    <li><a href="posts/ai-and-automation/mr-anderson-ahead-of-its-time.html">Mr. Anderson: A Prescient Experiment in Multi-Agent AI Systems</a></li>
-    <li><a href="posts/ai-and-automation/february-2026-recap.html">February 2026 — Monthly Recap</a></li>
-    <li><a href="posts/ai-and-automation/weekly-march-week1.html">Weekly AI & Tech Digest — Mar 23</a></li>
-    <li><a href="posts/ai-and-automation/weekly-march-week2.html">Weekly AI & Tech Digest — Mar 30</a></li>
-    <li><a href="posts/ai-and-automation/weekly-march-week3.html">Weekly AI & Tech Digest — Apr 6</a></li>
-    <li><a href="posts/ai-and-automation/weekly-ai-news-feb16.html">Weekly AI News Digest — Feb 16</a></li>
-    <li><a href="posts/ai-and-automation/building-ai-projects-that-get-used.html">Building AI Projects That Actually Get Used</a></li>
-    <li><a href="posts/ai-and-automation/ai-tools-links.html">AI Tools & Resources — Quick Links</a></li>
-    <li><a href="posts/ai-and-automation/ai-for-beginners-part2.html">AI for Beginners — Web Development & GitHub, Part 2</a></li>
-    <li><a href="posts/ai-and-automation/ai-for-beginners-part1.html">AI for Beginners — Building Without Code, Part 1</a></li>
-  </ul></div></section>
+  <nav class="topic-strip" aria-label="Blog categories">
+    <a class="topic-pill topic-general" href="#general"><span class="topic-icon">▤</span><span><strong>General Blog</strong><small>Tech, life, projects and everything else.</small></span></a>
+    <a class="topic-pill topic-ai" href="posts/ai-and-automation/"><span class="topic-icon">◉</span><span><strong>AI</strong><small>Models, agents, tools and experiments.</small></span></a>
+    <a class="topic-pill topic-security" href="posts/hacking-cybersec/"><span class="topic-icon">⬡</span><span><strong>Security</strong><small>Threat intel, defense and research.</small></span></a>
+    <a class="topic-pill topic-geo" href="#geo"><span class="topic-icon">◎</span><span><strong>GEO</strong><small>Maps, location data and exploration.</small></span></a>
+    <a class="topic-pill topic-weather" href="#weather"><span class="topic-icon">☁</span><span><strong>Weather</strong><small>Forecasts, storms and adventures.</small></span></a>
+    <a class="topic-pill topic-music" href="posts/music/"><span class="topic-icon">♫</span><span><strong>Music</strong><small>Gear, sound, writing and recording.</small></span></a>
+    <a class="topic-pill topic-science" href="posts/science/"><span class="topic-icon">⚗</span><span><strong>Science</strong><small>Research, space and discoveries.</small></span></a>
+    <a class="topic-pill topic-ham" href="#ham"><span class="topic-icon">⌁</span><span><strong>Ham Radio</strong><small>Antennas, operating and RF projects.</small></span></a>
+    <a class="topic-pill topic-it" href="#it"><span class="topic-icon">▦</span><span><strong>IT</strong><small>Networking, Linux, servers and labs.</small></span></a>
+  </nav>
 
-  <section class="projects" style="padding-left:0;padding-right:0"><div class="section-label"><span></span> BROWSE BY CATEGORY</div><div class="project-grid" style="margin-top:1.2rem">
-    <a href="posts/ai-and-automation/" class="project-card"><h3>AI & Automation</h3><p>Models, tools, workflows, agents and project notes.</p></a>
-    <a href="posts/hacking-cybersec/" class="project-card"><h3>Hacking / CyberSec</h3><p>Security research, defense, vulnerability notes and cyber developments.</p></a>
-    <a href="posts/science/" class="project-card"><h3>Science</h3><p>Research, space, biology, physics and technical rabbit holes.</p></a>
-    <a href="posts/music/" class="project-card"><h3>Music</h3><p>Sound, instruments, production and music technology.</p></a>
-    <a href="posts/spacebook/" class="project-card"><h3>Spacebook</h3><p>Personal project notes and experiments from the wider workshop.</p></a>
-    <a href="posts/misc/" class="project-card"><h3>Misc</h3><p>The useful things that refuse to fit a category.</p></a>
-  </div></section>
+  <section class="hub-grid">
+    <article class="hub-panel" data-search="security cyber threat intel ransomware zyxel veeam network">
+      <div class="panel-head">
+        <div class="panel-title"><span class="panel-icon" style="color:#ff6269">⬡</span><b>Security</b></div>
+        <a class="panel-link" href="posts/hacking-cybersec/">View all →</a>
+      </div>
+      <div class="feature-post">
+        <a class="feature-media" href="posts/hacking-cybersec/daily-2026-09-22.html">
+          <img src="assets/blog/security/cyber-threat-recap-2026-09-22.svg" alt="Cyber Threat Intel Recap — September 22, 2026">
+        </a>
+        <div class="feature-copy">
+          <span class="post-badge">Daily Threat Intel</span>
+          <h2><a href="posts/hacking-cybersec/daily-2026-09-22.html">Cyber Threat Intel — September 22, 2026</a></h2>
+          <p>Today’s actionable recap: Zyxel GS1900 active exploitation, a broader infrastructure campaign spanning multiple public management surfaces, BigCommerce/Ribon compromise and Veeam Agent privilege escalation.</p>
+          <div class="feature-meta"><span>Sep 22, 2026</span><span>Security</span><span>Daily recap</span></div>
+          <div class="feature-actions">
+            <a class="hub-button primary" href="posts/hacking-cybersec/daily-2026-09-22.html">Read recap</a>
+            <a class="hub-button" href="assets/blog/security/cyber-threat-recap-2026-09-22.svg">Open summary image</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="side-grid">
+      <article class="hub-card card-ai" data-search="ai automation cloud docker labs agents models">
+        <div class="card-top"><span class="card-cat">AI</span><a class="panel-link" href="posts/ai-and-automation/">View all →</a></div>
+        <div class="mini-art"></div>
+        <div class="card-body"><h3><a href="posts/ai-and-automation/disposable-ai-cloud-labs.html">Disposable AI Cloud Labs: Test More, Spend Less</a></h3><p>Spin up temporary infrastructure, test ideas hard, save what works and tear the lab back down.</p><div class="card-meta">Sep 17, 2026 • AI</div></div>
+      </article>
+
+      <article class="hub-card card-general" id="general" data-search="general blog websites github cloudflare projects field notes">
+        <div class="card-top"><span class="card-cat">General Blog</span><span class="panel-link">Latest</span></div>
+        <div class="mini-art"></div>
+        <div class="card-body"><h3><a href="posts/ai-and-automation/building-ai-websites-without-spending-a-fortune.html">How I’m Building AI-Powered Websites Without Spending a Fortune</a></h3><p>A practical field note on keeping experiments cheap, portable and under one G1ftB0x home.</p><div class="card-meta">Sep 17, 2026 • Field Notes</div></div>
+      </article>
+
+      <article class="hub-card card-geo" id="geo" data-search="geo maps location gps gis travel exploration">
+        <div class="card-top"><span class="card-cat">GEO</span><span class="panel-link">New section</span></div>
+        <div class="coming-soon"><div><b>Coming soon</b><p>Maps, location data, field exploration, GIS experiments and geographic rabbit holes.</p></div></div>
+      </article>
+
+      <article class="hub-card card-weather" id="weather" data-search="weather storms forecasts adventures photos lightning radar">
+        <div class="card-top"><span class="card-cat">Weather</span><span class="panel-link">New section</span></div>
+        <div class="coming-soon"><div><b>Coming soon</b><p>Weather adventures, storm days, field photos, forecasts and the data behind them.</p></div></div>
+      </article>
+
+      <article class="hub-card card-music" data-search="music guitar recording studio sound gear songwriting">
+        <div class="card-top"><span class="card-cat">Music</span><a class="panel-link" href="posts/music/">View all →</a></div>
+        <div class="coming-soon"><div><b>Coming soon</b><p>Guitar, recording, gear, songwriting, sound experiments and whatever ends up making noise.</p></div></div>
+      </article>
+
+      <article class="hub-card card-science" data-search="science research astronomy space physics biology discoveries">
+        <div class="card-top"><span class="card-cat">Science</span><a class="panel-link" href="posts/science/">View all →</a></div>
+        <div class="coming-soon"><div><b>Coming soon</b><p>Space, physics, biology, research notes and discoveries worth digging into.</p></div></div>
+      </article>
+
+      <article class="hub-card card-ham" id="ham" data-search="ham radio amateur rf antennas hf vhf uhf propagation">
+        <div class="card-top"><span class="card-cat">Ham Radio</span><span class="panel-link">New section</span></div>
+        <div class="coming-soon"><div><b>Coming soon</b><p>Antennas, propagation, operating notes, radio projects and shack experiments.</p></div></div>
+      </article>
+
+      <article class="hub-card card-it" id="it" data-search="it networking linux servers tutorials mikrotik nokia fiber labs">
+        <div class="card-top"><span class="card-cat">IT</span><span class="panel-link">New section</span></div>
+        <div class="coming-soon"><div><b>Coming soon</b><p>Network tutorials, Linux fun, servers, troubleshooting notes and hands-on lab writeups.</p></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="general-feed" aria-labelledby="recent-notes">
+    <div class="general-feed-head"><h2 id="recent-notes">More from the field notes</h2><span class="panel-link">Recent posts</span></div>
+    <div class="feed-row" data-search="ai cloud disposable labs"><span class="feed-date">Sep 17, 2026</span><div><a href="posts/ai-and-automation/disposable-ai-cloud-labs.html"><strong>Disposable AI Cloud Labs: Test More, Spend Less</strong></a><p>Temporary infrastructure as a cheap, repeatable AI-assisted lab workflow.</p></div><span class="feed-tag">AI</span></div>
+    <div class="feed-row" data-search="websites github cloudflare ai hosting"><span class="feed-date">Sep 17, 2026</span><div><a href="posts/ai-and-automation/building-ai-websites-without-spending-a-fortune.html"><strong>Building AI-Powered Websites Without Spending a Fortune</strong></a><p>Private GitHub repos, Cloudflare deployment and a cleaner way to keep experiments alive.</p></div><span class="feed-tag">GENERAL</span></div>
+    <div class="feed-row" data-search="ai cyber science internet digest august"><span class="feed-date">Aug 19, 2026</span><div><a href="posts/ai-and-automation/weekly-august-19-2026.html"><strong>AI, Cyber, Science & Internet Digest</strong></a><p>A cross-topic briefing on AI, security, science and Internet infrastructure.</p></div><span class="feed-tag">DIGEST</span></div>
+  </section>
+
+  <section class="hub-footer-callout">
+    <div><h3>More to explore</h3><p>This hub will fill out naturally as new posts land. Empty sections stay marked “Coming soon” until there is something real to put there.</p></div>
+    <a class="hub-button primary" href="labs.html">Explore the Labs →</a>
+  </section>
 </main>
-<footer><div class="social-links"><a href="https://github.com/g1ftb4sk3t4u" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@G1ftb4sk3t4u" target="_blank" rel="noopener">Medium</a></div><p>&copy; 2026 G1FTB0X</p></footer>
-</body></html>
+
+<footer><div class="social-links"><a href="https://github.com/g1ftb4sk3t4u" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@G1ftb4sk3t4u" target="_blank" rel="noopener">Medium</a></div><p>&copy; 2026 G1ftB0x Labs</p></footer>
+
+<script>
+const q=document.getElementById('blogSearch');
+const items=[...document.querySelectorAll('[data-search]')];
+q?.addEventListener('input',()=>{const term=q.value.trim().toLowerCase();items.forEach(el=>{const text=(el.dataset.search+' '+el.innerText).toLowerCase();el.style.display=!term||text.includes(term)?'':'none';});});
+</script>
+</body>
+</html>

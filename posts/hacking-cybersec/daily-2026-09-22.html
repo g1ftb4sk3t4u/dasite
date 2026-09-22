@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Daily cyber threat intelligence recap for September 22, 2026: Zyxel GS1900 exploitation, infrastructure campaigns, BigCommerce/Ribon and Veeam.">
+  <title>Cyber Threat Intel — September 22, 2026 | G1ftB0x</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../blog-hub.css">
+  <link rel="stylesheet" href="../../retro-polish.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="site-nav"><a href="../../index.html">Home</a><a href="../../labs.html">Labs</a><a href="../../blog.html" class="active">Blog</a><a href="../../resources.html">Resources</a><a href="../../about.html">About</a><a href="../../contact.html">Contact</a></nav>
+
+<main class="daily-shell">
+  <header class="daily-lead">
+    <div class="hub-eyebrow">SECURITY // DAILY THREAT INTEL</div>
+    <h1>Cyber Threat Intel — September 22, 2026</h1>
+    <p>A compact daily recap of the threats, breaches and exploitation activity worth paying attention to.</p>
+  </header>
+
+  <a href="../../assets/blog/security/cyber-threat-recap-2026-09-22.svg" aria-label="Open the September 22 cyber threat recap graphic">
+    <img class="daily-image" src="../../assets/blog/security/cyber-threat-recap-2026-09-22.svg" alt="Cyber Threat Intel Recap for September 22, 2026">
+  </a>
+
+  <div class="daily-grid">
+    <section class="daily-box">
+      <h2>Top developments</h2>
+      <ol>
+        <li><strong class="hot">Zyxel GS1900 / CVE-2026-7273:</strong> active exploitation moved into CISA KEV. GreyNoise reported 996 switches compromised across 48 countries, with configuration data and hashed credentials taken.</li>
+        <li><strong>Broader infrastructure campaign:</strong> the same or closely related activity has targeted public management surfaces including UniFi, WordPress, Gitea, Zyxel and Proxmox-class infrastructure.</li>
+        <li><strong>BigCommerce / Ribon:</strong> a third-party application credential compromise led to customer-data exposure and malicious script injection on affected merchant storefronts.</li>
+        <li><strong class="warn">Veeam Agent / CVE-2026-32996:</strong> exploitation is being observed for SYSTEM-level privilege escalation on vulnerable Windows endpoints.</li>
+        <li><strong>Control-plane targeting:</strong> management interfaces, backup tooling, network devices and trusted SaaS integrations continue to offer attackers more leverage than a single endpoint.</li>
+      </ol>
+    </section>
+
+    <aside class="daily-box">
+      <h2>What to do now</h2>
+      <p><strong class="good">Patch:</strong> prioritize exposed Zyxel GS1900 and vulnerable Veeam Agent builds.</p>
+      <p><strong class="good">Hunt:</strong> review historical network/DNS/firewall telemetry for infrastructure tied to the active GreyNoise-tracked campaign.</p>
+      <p><strong class="good">Audit:</strong> inspect third-party app credentials and injected storefront JavaScript if BigCommerce/Ribon is present.</p>
+      <p><strong class="warn">Local watch:</strong> the Qilin listing for ADM remains an attacker claim. No independently confirmed Quincy-area impact was identified in today's review.</p>
+      <div class="feature-actions">
+        <a class="hub-button primary" href="../../assets/blog/security/cyber-threat-recap-2026-09-22.svg">Open recap graphic</a>
+        <a class="hub-button" href="index.html">Security archive</a>
+      </div>
+    </aside>
+  </div>
+
+  <section class="daily-box" style="margin-top:1rem">
+    <h2>Source set</h2>
+    <p>This recap was built from current vendor, government and threat-intelligence reporting, including CISA, GreyNoise, Zyxel, Arctic Wolf and BigCommerce. Ransomware leak-site claims are kept separate from confirmed victim disclosures.</p>
+  </section>
+</main>
+
+<footer><div class="social-links"><a href="https://github.com/g1ftb4sk3t4u" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@G1ftb4sk3t4u" target="_blank" rel="noopener">Medium</a></div><p>&copy; 2026 G1ftB0x Labs</p></footer>
+</body>
+</html>

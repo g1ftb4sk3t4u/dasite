@@ -64,3 +64,100 @@
 @media(max-width:1200px){.topic-strip{grid-template-columns:repeat(5,1fr)}.hub-grid{grid-template-columns:1fr}.side-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:900px){.side-grid{grid-template-columns:1fr 1fr}.feature-post{grid-template-columns:1fr}.feature-media{min-height:auto}.daily-grid{grid-template-columns:1fr}.feed-row{grid-template-columns:90px 1fr}.feed-tag{display:none}}
 @media(max-width:650px){.blog-hub{padding:0 .7rem 3rem}.hub-hero{margin:0 -.7rem 1rem;padding:2.5rem 1rem 2rem;min-height:260px}.hub-hero h1{font-size:3.65rem}.topic-strip{display:flex;overflow-x:auto;padding-bottom:.35rem}.topic-pill{min-width:165px}.side-grid{grid-template-columns:1fr}.feature-post{padding:.75rem}.hub-footer-callout{align-items:flex-start;flex-direction:column}.feed-row{grid-template-columns:1fr;gap:.25rem}.hub-search{max-width:none}}
+
+
+/* 2026-09-22 refinement pass */
+body.blog-theme{
+  background:
+    radial-gradient(circle at 78% -8%,rgba(52,216,255,.10),transparent 34rem),
+    radial-gradient(circle at 12% 24%,rgba(76,141,255,.055),transparent 28rem),
+    #030912;
+  color:#eefaff;
+}
+body.blog-theme .site-nav{
+  background:rgba(3,10,18,.94);
+  border-bottom-color:rgba(52,216,255,.20);
+}
+body.blog-theme .site-nav a{color:#b9cad2}
+body.blog-theme .site-nav a:hover,
+body.blog-theme .site-nav a.active{color:#42deff;text-shadow:0 0 10px rgba(52,216,255,.25)}
+
+.blog-hub{max-width:1500px}
+.hub-hero{min-height:274px;padding-top:3rem;padding-bottom:3rem;margin-bottom:1.35rem}
+.hub-hero p{max-width:760px;line-height:1.62}
+.hub-search{margin-top:1.65rem}
+.hub-search input{padding:.9rem 1.05rem}
+
+.topic-strip{gap:.78rem;margin:1.05rem 0 1.7rem}
+.topic-pill{min-height:78px;padding:.76rem .82rem;border-radius:13px;align-items:center}
+.topic-pill strong{font-size:.92rem}
+.topic-pill small{font-size:.64rem;color:#819ba6}
+
+.hub-grid{gap:1.25rem}
+.hub-panel{border-radius:16px}
+.panel-head{padding:1.05rem 1.2rem}
+.panel-title b{font-size:1.45rem}
+
+.feature-post{grid-template-columns:minmax(350px,1.05fr) minmax(310px,.95fr);gap:1.25rem;padding:1.2rem}
+.feature-media{min-height:375px;border-radius:12px}
+.feature-copy{padding:.25rem .35rem .55rem}
+.feature-copy p{max-width:58ch;line-height:1.62}
+.feature-meta{margin:1rem 0 1.1rem}
+.feature-actions{gap:.75rem}
+
+.side-grid{gap:.95rem}
+.hub-card{min-height:218px;border-radius:13px}
+.hub-card .card-body{padding:.2rem .9rem .95rem}
+.hub-card h3{line-height:1.27}
+.hub-card p{line-height:1.52}
+.mini-art{height:80px;margin:0 .8rem}
+
+.coming-soon{min-height:145px;padding:1rem .95rem}
+.coming-soon b{font-size:.78rem;opacity:.92}
+.coming-soon p{font-size:.76rem;line-height:1.48;color:#849da8}
+.card-geo,.card-weather,.card-music,.card-science,.card-ham,.card-it{
+  background:linear-gradient(160deg,#071620,#040d15);
+  border-color:color-mix(in srgb,var(--accent) 31%,transparent);
+}
+
+.general-feed{margin-top:1.35rem;padding:1.1rem 1.15rem;border-radius:15px}
+.general-feed-head{margin-bottom:.85rem}
+.feed-row{padding:.95rem .2rem}
+.feed-row p{max-width:72ch;line-height:1.5}
+
+.hub-footer-callout{margin-top:1.3rem;padding:1.1rem 1.2rem}
+.hub-footer-callout p{line-height:1.5}
+
+.category-shell,.daily-shell{margin-top:2.4rem}
+.category-hero{padding:1.8rem}
+.security-archive{gap:1.2rem}
+.security-card{padding:1.1rem}
+.daily-grid{gap:1.2rem}
+.daily-box{padding:1.25rem;line-height:1.6}
+
+@media(min-width:1201px){
+  .topic-pill{grid-template-columns:30px 1fr;min-height:70px}
+  .topic-pill small{display:none}
+}
+@media(max-width:1200px){
+  .topic-strip{grid-template-columns:repeat(3,1fr)}
+  .side-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .feature-post{grid-template-columns:1fr}
+  .feature-media{min-height:auto}
+}
+@media(max-width:650px){
+  .hub-hero{min-height:245px;padding-top:2.25rem;padding-bottom:2.2rem}
+  .hub-hero h1{font-size:3.45rem}
+  .topic-strip{gap:.65rem;margin-bottom:1.25rem}
+  .topic-pill{min-width:160px;min-height:82px}
+  .topic-pill small{display:block}
+  .side-grid{grid-template-columns:1fr}
+  .coming-soon{min-height:124px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .topic-pill,.hub-card,.hub-button{transition:none!important}
+  .topic-pill:hover{transform:none}
+}

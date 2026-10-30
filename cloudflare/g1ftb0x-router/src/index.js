@@ -131,6 +131,13 @@ export default {
   async fetch(request, env) {
     const incoming = new URL(request.url);
 
+    if (incoming.pathname === "/cloudlab") {
+      return Response.redirect(new URL("/cloudlab/", incoming), 308);
+    }
+    if (incoming.pathname === "/cloudlab/" || incoming.pathname.startsWith("/cloudlab/")) {
+      return env.ASSETS.fetch(request);
+    }
+
     if (
       incoming.pathname === "/api" ||
       incoming.pathname.startsWith("/api/") ||

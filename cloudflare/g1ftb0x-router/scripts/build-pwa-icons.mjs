@@ -30,3 +30,10 @@ for (const file of entries) {
 
   console.log(`Built PWA icons for ${slug}`);
 }
+
+// Bundle CloudLab from the site repository into static assets.
+const cloudlabSource = new URL("../../../cloudlab/index.html", import.meta.url);
+const cloudlabDir = new URL("./cloudlab/", publicDir);
+await fs.mkdir(cloudlabDir, { recursive: true });
+await fs.copyFile(cloudlabSource, new URL("index.html", cloudlabDir));
+console.log("Bundled CloudLab atlas");

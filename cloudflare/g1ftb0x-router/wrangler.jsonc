@@ -47,6 +47,8 @@
     }
   ],
   "routes": [
+    { "pattern": "g1ftb0x.com/cloudlab*", "zone_name": "g1ftb0x.com" },
+    { "pattern": "www.g1ftb0x.com/cloudlab*", "zone_name": "g1ftb0x.com" },
     {
       "pattern": "www.g1ftb0x.com/signalsafe*",
       "zone_name": "g1ftb0x.com"

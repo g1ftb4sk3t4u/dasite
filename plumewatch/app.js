@@ -378,11 +378,32 @@ async function refreshWeather() {
   weatherFor=key;
   renderLocal();renderDiagnostics();drawMapOverlays();
 }
+const refreshInterval = 5 * 60 * 1000;
+let refreshTimer, refreshDue = 0, refreshing = false;
+function scheduleRefresh() {
+  clearTimeout(refreshTimer);
+  if(document.hidden || refreshing) return;
+  refreshTimer=setTimeout(refreshAll,Math.max(0,refreshDue-Date.now()));
+}
 async function refreshAll() {
+  if(refreshing || document.hidden) return;
+  refreshing=true;
+  clearTimeout(refreshTimer);
   $('refresh').disabled=true;
   $('refresh').textContent='Refreshing…';
-  try {await Promise.allSettled([refreshSource('epa'),refreshSource('army'),refreshSource('aircraft'),refreshWeather()]);}
-  finally {$('refresh').disabled=false;$('refresh').textContent='Refresh';}
+  $('refresh-status').textContent='Updating feeds';
+  try {
+    await Promise.allSettled([refreshSource('epa'),refreshSource('army'),refreshSource('aircraft'),refreshWeather()]);
+  } finally {
+    refreshing=false;
+    const now=Date.now();
+    refreshDue=now+refreshInterval;
+    $('refresh').disabled=false;
+    $('refresh').textContent='Refresh';
+    $('refresh-status').textContent='Auto · 5 min';
+    $('refresh-status').title='Last dashboard check '+dateText(new Date(now).toISOString());
+    scheduleRefresh();
+  }
 }
 function download(rows,ext,baseName) {
   if(!rows.length)return;
@@ -462,10 +483,8 @@ for(const [id,cat] of [['model-links','Plume models'],['wx-links','Weather'],['a
 document.documentElement.dataset.theme=get('theme','dark');
 fillSelects();layoutView();renderUpdates();renderLocal();renderLead();renderAircraft();renderDiagnostics();route();
 tick();setInterval(tick,1000);
+document.addEventListener('visibilitychange',scheduleRefresh);
 refreshAll();
-setInterval(()=>{if(!document.hidden){refreshSource('epa');refreshWeather();}},300000);
-setInterval(()=>{if(!document.hidden)refreshSource('army');},600000);
-setInterval(()=>{if(!document.hidden&&(active==='command'||active==='visuals'))refreshSource('aircraft');},300000);
 $('model-version').innerHTML=PW.models.map(([label],i)=>'<option value="'+i+'">'+esc(label)+'</option>').join('');
 function showModel(){
   const [label,url]=PW.models[Number(byId('model-version'))];

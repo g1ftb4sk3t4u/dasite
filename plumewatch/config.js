@@ -15,7 +15,7 @@ window.PW = {
     ["EPA station inventory","Lead monitoring","Structured · 5 min","https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/Air_Sampling_and_Monitoring_Location/FeatureServer/0","epa"],
     ["EPA public dashboard","Lead monitoring","Official viewer","https://experience.arcgis.com/experience/1ddcf8b9d8314971b00dac8893ae9cd6"],
     ["EPA response","Official updates","Incident portal","https://response.epa.gov/IAAAPleadazide"],
-    ["Army notifications","Official updates","Incident index · 10 min","https://www.army.mil/asc","army"],
+    ["Army notifications","Official updates","Incident index · 5 min","https://www.army.mil/asc","army"],
     ["Missouri DNR","Official updates","Incident portal","https://dnr.mo.gov/iowa-lead-azide-detonation"],
     ["Illinois EPA","Official updates","Incident portal","https://epa.illinois.gov/iowa-plant-updates.html"],
     ["Iowa HHS","Official updates","Public guidance","https://hhs.iowa.gov/media/19860/download?inline="],

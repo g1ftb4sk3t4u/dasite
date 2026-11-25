@@ -33,7 +33,7 @@
     <div class="clock"><span>CT</span> <time id="ct">—</time></div><div class="clock utc"><span>UTC</span> <time id="utc">—</time></div>
     <button id="theme" title="Toggle light or dark theme" aria-label="Toggle theme">◐</button>
     <button id="theater" title="Toggle theater mode" aria-label="Toggle theater mode">⛶</button>
-    <button class="primary" id="refresh">Refresh</button>
+    <div class="refresh-control"><button class="primary" id="refresh">Refresh</button><small class="refresh-status" id="refresh-status">Auto · 5 min</small></div>
    </div>
   </header>
 
@@ -122,7 +122,12 @@
 
   <section id="visuals" class="page" hidden>
    <div class="intro"><div><p class="eyebrow">REGIONAL VISUAL MONITORING</p><h1>Aviation &amp; imagery</h1><p class="sub">Public flight activity, satellite loops and camera sources.</p></div></div>
-   <article class="panel"><div class="panel-head"><div><h2>Regional aircraft</h2><div class="muted" id="air-status"></div></div><button id="air-layer">Show aircraft on map</button></div>
+   <article class="panel aviation-map-panel">
+    <div class="panel-head"><div><h2>Live aircraft map</h2><div class="muted">Centered on southeast Iowa, northeast Missouri and western Illinois</div></div><a class="button" href="https://adsb.lol/?lat=40.55&amp;lon=-91.8&amp;zoom=8" target="_blank" rel="noopener noreferrer">Open full map</a></div>
+    <iframe class="aviation-map" src="https://adsb.lol/?hideSideBar&amp;lat=40.55&amp;lon=-91.8&amp;zoom=8" title="adsb.lol live regional aircraft map" loading="lazy" allowfullscreen></iframe>
+    <div class="panel-body aviation-credit"><p class="muted">Live map by <a href="https://www.adsb.lol/about" target="_blank" rel="noopener noreferrer">adsb.lol</a>. Click an aircraft for details. Flight activity alone does not establish a monitoring mission.</p></div>
+   </article>
+   <article class="panel"><div class="panel-head"><div><h2>Regional aircraft snapshot</h2><div class="muted" id="air-status"></div></div><button id="air-layer">Show on command map</button></div>
    <div class="panel-body"><p class="muted">Aircraft roles are unverified. Location, route and altitude alone cannot identify an environmental monitoring mission.</p><div class="toolbar"><input id="flight-search" type="search" placeholder="Identifier, type or category" aria-label="Filter aircraft"><input id="min-alt" type="number" placeholder="Minimum altitude (ft)" aria-label="Minimum altitude in feet"></div></div>
    <div class="tablewrap"><table><thead><tr><th>Identifier</th><th>Category / type</th><th>Altitude</th><th>Heading</th><th>Speed</th><th>Position</th></tr></thead><tbody id="flight-table"></tbody></table></div>
    <div class="panel-body cards" id="air-links"></div></article>

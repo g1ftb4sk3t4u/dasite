@@ -43,7 +43,7 @@
    </div>
    <div class="advisory"><span class="badge amber" id="status-badge">Planning notice</span><span id="incident-status"><strong>Last verified planning notice: November 25, 8:50 a.m. CST.</strong> Check the Army notice for current operation status and any official all-clear.</span><a target="_blank" rel="noopener" href="https://www.army.mil/asc">Army notices</a></div>
    <div class="metrics">
-    <article class="metric"><span>EPA LEAD SAMPLING</span><strong id="m-sample">Loading</strong><small id="m-sample-note">Xact monitor layer</small></article>
+    <article class="metric"><span>EPA LEAD SAMPLING</span><strong id="m-sample">Loading</strong><small id="m-sample-note">Xact monitor layer</small><small id="m-sample-peak"></small></article>
     <article class="metric"><span>STATIONS REPORTING</span><strong id="m-stations">—</strong><small id="m-stations-note">Inventory and Xact timestamps</small></article>
     <article class="metric"><span>SURFACE WIND</span><strong id="m-wind">—</strong><small id="m-weather-note">NWS station observation</small></article>
     <article class="metric"><span>PUBLIC AIRCRAFT</span><strong id="m-air">—</strong><small id="m-air-note">Regional ADS-B feed</small></article>
@@ -90,8 +90,9 @@
    <div class="advisory"><span class="badge amber">Reading guide</span><span>A numeric zero is the value reported by one monitor for one sample. It does not establish conditions elsewhere or an official all-clear. Detection limits, validation flags, offline status and laboratory results are absent from these layers.</span></div>
    <div id="epa-embed" class="panel" hidden></div>
    <article class="panel"><div class="panel-head"><div><h2>Monitoring stations</h2><div class="muted" id="lead-status" role="status"></div></div></div>
-   <div class="panel-body toolbar"><input id="station-search" type="search" placeholder="Search station or instrument" aria-label="Search stations"><select id="station-sort" aria-label="Sort stations"><option value="latest">Newest sample</option><option value="highest">Highest latest reading</option><option value="name">Station ID</option><option value="near">Distance from Middletown</option></select><button id="dl-live">Export samples CSV</button></div>
-   <div class="tablewrap"><table><thead><tr><th>Station</th><th>Latest sample (CT)</th><th>Reported lead</th><th>Data status</th><th>From Middletown</th><th>Instruments</th></tr></thead><tbody id="station-table"></tbody></table></div></article>
+   <div class="panel-body toolbar"><input id="station-search" type="search" placeholder="Search station or instrument" aria-label="Search stations"><select id="station-sort" aria-label="Sort stations"><option value="latest">Newest sample</option><option value="highest">Highest latest reading</option><option value="peak">Highest Nov 25 peak since 7 a.m. CST</option><option value="name">Station ID</option><option value="near">Distance from Middletown</option></select><button id="dl-live">Export samples CSV</button></div>
+   <div class="tablewrap"><table><thead><tr><th>Station</th><th>Latest sample (CT)</th><th>Latest lead</th><th>Peak since Nov 25, 7 a.m. CST</th><th>Data status</th><th>From Middletown</th><th>Instruments</th></tr></thead><tbody id="station-table"></tbody></table></div></article>
+   <article class="panel"><div class="panel-head"><div><h2>Positive Xact values</h2><div class="muted">Raw values since Nov 25, 7 a.m. CST. The feed does not provide confirmation or identify the source of lead.</div></div></div><div class="tablewrap"><table><thead><tr><th>Sample time (CT)</th><th>Station</th><th>Reported lead</th></tr></thead><tbody id="positive-table"></tbody></table></div></article>
    <article class="panel"><div class="panel-head"><h2>Station history</h2><select id="trend-station" aria-label="Station history filter"></select></div><div class="panel-body" id="lead-trend"></div></article>
    <article class="panel"><div class="panel-head"><h2>Additional environmental data</h2></div><div class="panel-body"><p class="muted">AQI, PM2.5 and PM10 are separate from lead sampling.</p><div id="env-links" class="cards"></div></div></article>
   </section>
@@ -123,8 +124,8 @@
   <section id="visuals" class="page" hidden>
    <div class="intro"><div><p class="eyebrow">REGIONAL VISUAL MONITORING</p><h1>Aviation &amp; imagery</h1><p class="sub">Public flight activity, satellite loops and camera sources.</p></div></div>
    <article class="panel aviation-map-panel">
-    <div class="panel-head"><div><h2>Live aircraft map</h2><div class="muted">Centered on southeast Iowa, northeast Missouri and western Illinois</div></div><a class="button" href="https://adsb.lol/?lat=40.55&amp;lon=-91.8&amp;zoom=8" target="_blank" rel="noopener noreferrer">Open full map</a></div>
-    <iframe class="aviation-map" src="https://adsb.lol/?hideSideBar&amp;lat=40.55&amp;lon=-91.8&amp;zoom=8" title="adsb.lol live regional aircraft map" loading="lazy" allowfullscreen></iframe>
+    <div class="panel-head"><div><h2>Live aircraft map</h2><div class="muted">Centered on southeast Iowa, northeast Missouri and western Illinois</div></div><a class="button" href="https://adsb.lol/?nowebgl&amp;lat=40.55&amp;lon=-91.8&amp;zoom=8" target="_blank" rel="noopener noreferrer">Open full map</a></div>
+    <iframe class="aviation-map" src="https://adsb.lol/?hideSideBar&amp;nowebgl&amp;lat=40.55&amp;lon=-91.8&amp;zoom=8" title="adsb.lol live regional aircraft map" loading="lazy" allowfullscreen></iframe>
     <div class="panel-body aviation-credit"><p class="muted">Live map by <a href="https://www.adsb.lol/about" target="_blank" rel="noopener noreferrer">adsb.lol</a>. Click an aircraft for details. Flight activity alone does not establish a monitoring mission.</p></div>
    </article>
    <article class="panel"><div class="panel-head"><div><h2>Regional aircraft snapshot</h2><div class="muted" id="air-status"></div></div><button id="air-layer">Show on command map</button></div>

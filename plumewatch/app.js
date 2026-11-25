@@ -101,6 +101,7 @@ function formats() {
   const rows=statusData.epa?.data?.samples??[];
   return [...rows].sort((a,b)=>Date.parse(b.at??0)-Date.parse(a.at??0));
 }
+const peakStart = '2026-11-25T13:00:00.000Z';
 function joinedStations() {
   const markers=new Map();
   for(const s of statusData.epa?.data?.stations??[]) if(s.key)markers.set(s.key,{...s});
@@ -109,6 +110,7 @@ function joinedStations() {
     if(!markers.has(key))markers.set(key,{id:a.station,key,lat:a.lat,lon:a.lon,instruments:'Xact'});
     const s=markers.get(key);
     if(!s.latest)s.latest=a;
+    if(a.at>=peakStart && isNum(a.value) && (!s.peak || a.value>s.peak.value))s.peak=a;
     if(s.lat==null){s.lat=a.lat;s.lon=a.lon;}
   }
   return [...markers.values()].map(s=>({...s,miles:isNum(s.lat)&&isNum(s.lon)?distance(PW.incident,[s.lat,s.lon]):null}));
@@ -129,18 +131,22 @@ function renderLead() {
   const stations=joinedStations();
   const rows=formats();
   const latest=rows.find(x=>x.at);
-  const positive=rows.find(x=>x.value>0);
+  const positives=rows.filter(x=>x.at>=peakStart && x.value>0);
+  const peak=stations.map(s=>s.peak).filter(Boolean).reduce((best,r)=>!best||r.value>best.value?r:best,null);
   const currentRows=stations.filter(s=>s.latest?.at&&!staleness(s.latest.at,90));
   $('m-sample').textContent=latest?sampleText(latest):data?'Unavailable':'Loading';
-  $('m-sample-note').textContent=latest?latest.station+' · '+dateText(latest.at)+(staleness(latest.at,90)?' · Stale':'')+(positive?' · Positive values in history':''):'Xact monitor layer';
+  $('m-sample-note').textContent=latest?latest.station+' · '+dateText(latest.at)+(staleness(latest.at,90)?' · Stale':''):'Xact monitor layer';
+  $('m-sample-peak').textContent=peak?'Peak since Nov 25, 7 a.m. CST · '+sampleText(peak)+' · '+peak.station+' · '+dateText(peak.at):'';
+  $('positive-table').innerHTML=positives.map(r=>'<tr><td>'+esc(dateText(r.at))+'</td><td>'+esc(r.station)+'</td><td>'+esc(sampleText(r))+'</td></tr>').join('')||
+    '<tr><td colspan="3">'+(data?.data?'No positive values reported in this window.':'Awaiting EPA samples.')+'</td></tr>';
   $('m-stations').textContent=data?.data?currentRows.length+' / '+stations.length:'—';
   $('m-stations-note').textContent=data?.data?'Sample in last 90 minutes / listed':'EPA station layer';
   $('lead-status').textContent=data?.data?rows.length+' Xact samples · '+stations.length+' stations · '+sourceStatus(data)[0]+(data.data.partial?' · Partial upstream result':''):(data?.error||'Awaiting EPA response');
   const search=byId('station-search').toLowerCase();
   const order=byId('station-sort');
-  const compare={latest:(a,b)=>(b.latest?.at??'').localeCompare(a.latest?.at??''),highest:(a,b)=>(b.latest?.value??-Infinity)-(a.latest?.value??-Infinity),name:(a,b)=>a.id.localeCompare(b.id),near:(a,b)=>(a.miles??Infinity)-(b.miles??Infinity)};
+  const compare={latest:(a,b)=>(b.latest?.at??'').localeCompare(a.latest?.at??''),highest:(a,b)=>(b.latest?.value??-Infinity)-(a.latest?.value??-Infinity),peak:(a,b)=>(b.peak?.value??-Infinity)-(a.peak?.value??-Infinity),name:(a,b)=>a.id.localeCompare(b.id),near:(a,b)=>(a.miles??Infinity)-(b.miles??Infinity)};
   const shown=stations.filter(s=>(s.id+' '+(s.instruments??'')).toLowerCase().includes(search)).sort(compare[order]);
-  $('station-table').innerHTML=shown.map(s=>'<tr><td><button data-trend="'+esc(s.key)+'">'+esc(s.id)+'</button></td><td>'+esc(dateText(s.latest?.at))+'</td><td>'+esc(sampleText(s.latest))+'</td><td>'+esc(sampleState(s.latest))+(staleness(s.latest?.at,90)?' · Stale':'')+'</td><td>'+(s.miles==null?'—':s.miles.toFixed(1)+' mi')+'</td><td>'+esc(s.instruments??'—')+'</td></tr>').join('')||'<tr><td colspan="6">No matching stations.</td></tr>';
+  $('station-table').innerHTML=shown.map(s=>'<tr><td><button data-trend="'+esc(s.key)+'">'+esc(s.id)+'</button></td><td>'+esc(dateText(s.latest?.at))+'</td><td>'+esc(sampleText(s.latest))+'</td><td>'+esc(sampleText(s.peak))+(s.peak?'<br><small>'+esc(dateText(s.peak.at))+'</small>':'')+'</td><td>'+esc(sampleState(s.latest))+(staleness(s.latest?.at,90)?' · Stale':'')+'</td><td>'+(s.miles==null?'—':s.miles.toFixed(1)+' mi')+'</td><td>'+esc(s.instruments??'—')+'</td></tr>').join('')||'<tr><td colspan="7">No matching stations.</td></tr>';
   const previous=byId('trend-station');
   const trendStations=[...new Map(rows.map(x=>[x.stationKey || x.station,x.station])).entries()].sort();
   $('trend-station').innerHTML=trendStations.map(([id,name])=>'<option value="'+esc(id)+'">'+esc(name)+'</option>').join('');

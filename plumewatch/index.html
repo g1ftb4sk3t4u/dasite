@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="Regional lead monitoring, weather and official incident updates for Middletown, Iowa.">
+ <meta name="plumewatch-api-origin" content="https://plumewatch.g1ft.chatgpt.site">
+ <title>PlumeWatch | Incident Operations</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+ <link rel="stylesheet" href="/plumewatch/style.css">
+ <script defer src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+ <script defer src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+ <script defer src="/plumewatch/config.js"></script><script defer src="/plumewatch/app.js"></script>
+</head>
+<body>
+ <aside class="sidebar">
+  <a class="brand" href="#command"><span class="logo" aria-hidden="true">◉</span><span>Plume<span class="accent">Watch</span><small>INCIDENT OPERATIONS</small></span></a>
+  <nav aria-label="Main navigation">
+   <a href="#command"><i>▤</i> Command center</a>
+   <a href="#monitoring"><i>◉</i> Lead monitoring</a>
+   <a href="#weather"><i>≋</i> Weather & models</a>
+   <a href="#community"><i>⌖</i> Community watch</a>
+   <a href="#updates"><i>▣</i> Official updates</a>
+   <a href="#visuals"><i>◎</i> Aviation & imagery</a>
+   <a href="#archive"><i>▥</i> Archive & reports</a>
+   <a href="#sources"><i>☷</i> Sources & diagnostics</a>
+  </nav>
+  <div class="sidebar-foot"><span class="dot"></span> IAAAP · NOV 2026 <small>IA / MO / IL MONITORING REGION</small></div>
+ </aside>
+ <main>
+  <header class="topbar">
+   <div class="context"><span class="dot"></span><span>REGIONAL INCIDENT MONITOR</span></div>
+   <div class="topactions">
+    <div class="clock"><span>CT</span> <time id="ct">—</time></div><div class="clock utc"><span>UTC</span> <time id="utc">—</time></div>
+    <button id="theme" title="Toggle light or dark theme" aria-label="Toggle theme">◐</button>
+    <button id="theater" title="Toggle theater mode" aria-label="Toggle theater mode">⛶</button>
+    <button class="primary" id="refresh">Refresh</button>
+   </div>
+  </header>
+
+  <section id="command" class="page">
+   <div class="intro"><div><p class="eyebrow">IOWA ARMY AMMUNITION PLANT</p><h1>Command center</h1><p class="sub">Lead azide incident <span>·</span> Middletown, Iowa <span>·</span> November 25, 2026</p></div>
+    <label class="watch-select">Watch location<select id="location" aria-label="Watch location"></select></label>
+   </div>
+   <div class="advisory"><span class="badge amber" id="status-badge">Planning notice</span><span id="incident-status"><strong>Last verified planning notice: November 25, 8:50 a.m. CST.</strong> Check the Army notice for current operation status and any official all-clear.</span><a target="_blank" rel="noopener" href="https://www.army.mil/asc">Army notices</a></div>
+   <div class="metrics">
+    <article class="metric"><span>EPA LEAD SAMPLING</span><strong id="m-sample">Loading</strong><small id="m-sample-note">Xact monitor layer</small></article>
+    <article class="metric"><span>STATIONS REPORTING</span><strong id="m-stations">—</strong><small id="m-stations-note">Inventory and Xact timestamps</small></article>
+    <article class="metric"><span>SURFACE WIND</span><strong id="m-wind">—</strong><small id="m-weather-note">NWS station observation</small></article>
+    <article class="metric"><span>PUBLIC AIRCRAFT</span><strong id="m-air">—</strong><small id="m-air-note">Regional ADS-B feed</small></article>
+   </div>
+   <div class="workbar"><h2>Regional operations</h2><button id="layout-toggle">Customize layout</button></div>
+   <div id="layout-controls" class="toolbar" hidden></div>
+   <div id="dashboard" class="dashboard">
+    <article class="panel map-panel" data-module="map">
+     <div class="panel-head"><div><h2>Regional map</h2><div class="muted">EPA stations, watch locations and weather overlays</div></div><button id="map-full" aria-label="Toggle full-screen map">⛶</button></div>
+     <div class="map-tools">
+      <label class="compact-label">Map style
+       <select id="base-map"><option value="dark">Dark</option><option value="street">Street</option><option value="terrain">Terrain</option><option value="satellite">Satellite</option></select>
+      </label>
+      <details id="layers"><summary>Layers</summary><div class="layer-menu">
+       <label><input type="checkbox" data-layer="incident" checked> Incident reference</label>
+       <label><input type="checkbox" data-layer="cities" checked> Watch locations</label>
+       <label><input type="checkbox" data-layer="stations" checked> EPA monitoring stations</label>
+       <label><input type="checkbox" data-layer="counties"> County boundaries</label>
+       <label><input type="checkbox" data-layer="wind"> NWS station wind</label>
+       <label><input type="checkbox" data-layer="radar"> IEM radar mosaic</label>
+       <label><input type="checkbox" data-layer="aircraft"> Public aircraft</label>
+       <a href="#weather">Official and independent model products</a>
+     </div></details>
+      <button id="fit-map">Fit region</button>
+     </div>
+     <div id="map" aria-label="Interactive regional operations map"></div>
+     <div class="legend"><span><i class="orange"></i> Incident reference</span><span><i class="cyan"></i> Watch locations</span><span><i class="blue"></i> EPA station</span><span>Modeled footprints available under Weather & models</span></div>
+    </article>
+    <article class="panel local-panel" data-module="watch">
+     <div class="panel-head"><div><p class="eyebrow">SELECTED WATCH LOCATION</p><h2 id="watch-title">Macon, MO</h2></div><a class="text-link" href="#community">Profile</a></div>
+     <div id="watch-brief" class="panel-body"></div>
+    </article>
+    <article class="panel" data-module="updates">
+     <div class="panel-head"><h2>Latest official updates</h2><a class="text-link" href="#updates">Full feed</a></div><div id="brief-updates" class="panel-body"></div>
+    </article>
+    <article class="panel" data-module="diagnostics">
+     <div class="panel-head"><h2>Source health</h2><a class="text-link" href="#sources">Diagnostics</a></div><div id="health" class="panel-body"></div>
+    </article>
+   </div>
+  </section>
+
+  <section id="monitoring" class="page" hidden>
+   <div class="intro"><div><p class="eyebrow">EPA ARCGIS DATA</p><h1>Lead monitoring</h1><p class="sub">Xact observations and EPA air sampling station inventory.</p></div><div class="toolbar"><a class="button" target="_blank" rel="noopener" href="https://experience.arcgis.com/experience/1ddcf8b9d8314971b00dac8893ae9cd6">EPA dashboard</a><button id="show-epa">Open embedded viewer</button></div></div>
+   <div class="advisory"><span class="badge amber">Reading guide</span><span>A numeric zero is the value reported by one monitor for one sample. It does not establish conditions elsewhere or an official all-clear. Detection limits, validation flags, offline status and laboratory results are absent from these layers.</span></div>
+   <div id="epa-embed" class="panel" hidden></div>
+   <article class="panel"><div class="panel-head"><div><h2>Monitoring stations</h2><div class="muted" id="lead-status" role="status"></div></div></div>
+   <div class="panel-body toolbar"><input id="station-search" type="search" placeholder="Search station or instrument" aria-label="Search stations"><select id="station-sort" aria-label="Sort stations"><option value="latest">Newest sample</option><option value="highest">Highest latest reading</option><option value="name">Station ID</option><option value="near">Distance from Middletown</option></select><button id="dl-live">Export samples CSV</button></div>
+   <div class="tablewrap"><table><thead><tr><th>Station</th><th>Latest sample (CT)</th><th>Reported lead</th><th>Data status</th><th>From Middletown</th><th>Instruments</th></tr></thead><tbody id="station-table"></tbody></table></div></article>
+   <article class="panel"><div class="panel-head"><h2>Station history</h2><select id="trend-station" aria-label="Station history filter"></select></div><div class="panel-body" id="lead-trend"></div></article>
+   <article class="panel"><div class="panel-head"><h2>Additional environmental data</h2></div><div class="panel-body"><p class="muted">AQI, PM2.5 and PM10 are separate from lead sampling.</p><div id="env-links" class="cards"></div></div></article>
+  </section>
+
+  <section id="weather" class="page" hidden>
+   <div class="intro"><div><p class="eyebrow">ATMOSPHERIC CONDITIONS</p><h1>Weather &amp; models</h1><p class="sub" id="weather-title">Macon, MO · NWS observations and hourly forecast</p></div><a class="button" href="#community">Change location</a></div>
+   <div class="columns">
+    <article class="panel"><div class="panel-head"><h2>Observed conditions</h2></div><div id="weather-now" class="panel-body"></div></article>
+    <article class="panel"><div class="panel-head"><h2>Active NWS alerts</h2></div><div id="wx-alerts" class="panel-body"></div></article>
+   </div>
+   <article class="panel"><div class="panel-head"><h2>Observed and forecast wind</h2></div><div id="wx-chart" class="panel-body"></div><div id="wx-forecast" class="tablewrap"></div></article>
+   <div class="columns">
+    <article class="panel"><div class="panel-head"><h2>Dispersion and deposition products</h2></div><div class="panel-body"><p class="muted">Army and independent products show modeled conditions. They do not establish where lead was measured.</p><div class="model-preview"><label>Published model image<select id="model-version"></select></label><a id="model-image-link" target="_blank" rel="noopener noreferrer"><img id="model-image" alt="Official Army modeled deposition map" loading="lazy"></a></div><div id="model-links" class="cards"></div></div></article>
+    <article class="panel"><div class="panel-head"><h2>Wind travel time calculator</h2></div><div class="panel-body"><p class="muted">Distance ÷ constant wind speed. Use along-wind distance. The result describes simple transport and cannot predict arrival, concentration, deposition or exposure.</p><form class="toolbar" id="transport"><label>Distance (mi)<input name="distance" type="number" min="0" max="10000" step="any" required></label><label>Wind (mph)<input name="speed" type="number" min="0.1" max="300" step="any" required></label><button class="primary">Calculate</button></form><output id="travel-result"></output><h3>Atmospheric tools</h3><div id="wx-links" class="cards"></div></div></article>
+   </div>
+  </section>
+
+  <section id="community" class="page" hidden>
+   <div class="intro"><div><p class="eyebrow">COMMUNITY MONITORING</p><h1>Community watch</h1><p class="sub">Choose a location for local weather, nearby EPA stations and official state guidance.</p></div><select id="community-select" aria-label="Select community"></select></div>
+   <div class="columns"><article class="panel"><div class="panel-head"><h2 id="community-title">Macon, MO</h2></div><div id="community-body" class="panel-body"></div></article><article class="panel"><div class="panel-head"><h2>Nearby EPA stations</h2></div><div id="community-stations" class="panel-body"></div></article></div>
+   <div class="columns"><article class="panel"><div class="panel-head"><h2>Official regional guidance</h2></div><div id="community-advice" class="panel-body"></div></article><article class="panel"><div class="panel-head"><h2>Add a watch point</h2></div><div class="panel-body"><form id="add-watch"><label>Name<input name="name" required maxlength="55"></label><div class="toolbar"><label>Latitude<input name="lat" type="number" min="37" max="43" step="any" required></label><label>Longitude<input name="lon" type="number" min="-95" max="-88" step="any" required></label><button class="primary">Add location</button></div></form><button id="remove-watch" hidden>Remove selected custom location</button></div></article></div>
+  </section>
+
+  <section id="updates" class="page" hidden>
+   <div class="intro"><div><p class="eyebrow">INCIDENT TIMELINE</p><h1>Official updates &amp; news</h1><p class="sub">Army notices refresh while open. State and media entries are a verified starting archive.</p></div></div>
+   <article class="panel"><div class="panel-head"><h2>Communications feed</h2><span id="feed-status" class="muted"></span></div><div class="panel-body toolbar"><input type="search" id="news-search" placeholder="Search headlines or source" aria-label="Search updates"><select id="news-kind" aria-label="Filter communications"></select></div><div id="feed" class="panel-body feed"></div></article>
+  </section>
+
+  <section id="visuals" class="page" hidden>
+   <div class="intro"><div><p class="eyebrow">REGIONAL VISUAL MONITORING</p><h1>Aviation &amp; imagery</h1><p class="sub">Public flight activity, satellite loops and camera sources.</p></div></div>
+   <article class="panel"><div class="panel-head"><div><h2>Regional aircraft</h2><div class="muted" id="air-status"></div></div><button id="air-layer">Show aircraft on map</button></div>
+   <div class="panel-body"><p class="muted">Aircraft roles are unverified. Location, route and altitude alone cannot identify an environmental monitoring mission.</p><div class="toolbar"><input id="flight-search" type="search" placeholder="Identifier, type or category" aria-label="Filter aircraft"><input id="min-alt" type="number" placeholder="Minimum altitude (ft)" aria-label="Minimum altitude in feet"></div></div>
+   <div class="tablewrap"><table><thead><tr><th>Identifier</th><th>Category / type</th><th>Altitude</th><th>Heading</th><th>Speed</th><th>Position</th></tr></thead><tbody id="flight-table"></tbody></table></div>
+   <div class="panel-body cards" id="air-links"></div></article>
+   <article class="panel"><div class="panel-head"><h2>Satellite products</h2></div><div class="panel-body"><p class="muted">See each publisher for acquisition time, resolution and loop controls. Satellite imagery cannot directly measure airborne lead concentration.</p><div class="cards" id="sat-links"></div></div></article>
+   <article class="panel"><div class="panel-head"><h2>Camera directory</h2></div><div class="panel-body"><p class="muted">Camera operators provide image times and availability.</p><div class="cards" id="camera-links"></div></div></article>
+  </section>
+
+  <section id="archive" class="page" hidden>
+   <div class="intro"><div><p class="eyebrow">INCIDENT RECORD</p><h1>Archive &amp; reports</h1><p class="sub">Query stored observations, export records and print a community situation report.</p></div><button class="primary" id="print">Print / Save PDF</button></div>
+   <article class="panel no-print"><div class="panel-head"><h2>Observation archive</h2></div><div class="panel-body"><form class="toolbar" id="archive-form"><label>Dataset<select name="dataset"><option value="epa">EPA samples</option><option value="weather">NWS for selected watch point</option><option value="army">Army notices</option></select></label><label>From (UTC)<input name="from" type="date"></label><label>Through (UTC)<input name="through" type="date"></label><button class="primary">Load records</button><button id="archive-csv" type="button" disabled>CSV</button><button id="archive-json" type="button" disabled>JSON</button></form><p id="archive-status" role="status" class="muted"></p><div id="archive-results"></div></div></article>
+   <article class="panel report"><div class="panel-head"><h2>Community situation report</h2></div><div id="report-body" class="panel-body"></div></article>
+  </section>
+
+  <section id="sources" class="page" hidden>
+   <div class="intro"><div><p class="eyebrow">DATA PROVENANCE</p><h1>Sources &amp; diagnostics</h1><p class="sub">Retrieval state, upstream links and last successful refresh.</p></div></div>
+   <article class="panel"><div class="panel-head"><h2>Regional source directory</h2><input id="source-search" type="search" placeholder="Filter sources" aria-label="Filter sources"></div><div class="tablewrap"><table><thead><tr><th>Source</th><th>Category</th><th>Method</th><th>Status</th><th>Last attempt (CT)</th><th>Last success (CT)</th></tr></thead><tbody id="source-table"></tbody></table></div></article>
+  </section>
+  <footer>PlumeWatch <span>·</span> Independent environmental incident dashboard <span>·</span> <a href="#sources">Source directory</a> <span>·</span> <a href="https://g1ftb0x.com/">G1ftB0x Labs</a></footer>
+ </main>
+</body>
+</html>
